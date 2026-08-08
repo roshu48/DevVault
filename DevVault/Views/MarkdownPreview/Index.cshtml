@@ -1,0 +1,227 @@
+﻿@{
+    ViewData["Title"] = "Markdown Preview";
+}
+
+<div class="markdown-preview-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="markdown-preview-header">
+
+        <div class="markdown-preview-breadcrumb">
+
+            <a href="/">
+                Developer Tools
+            </a>
+
+            <i class="bi bi-chevron-right"></i>
+
+            <span>
+                Markdown Preview
+            </span>
+
+        </div>
+
+
+        <div class="markdown-preview-title-section">
+
+            <div>
+
+                <h1>Markdown Preview</h1>
+
+                <p>
+                    Write Markdown and preview the rendered document in real time.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MARKDOWN WORKSPACE
+    ====================================================== -->
+
+    <section class="markdown-workspace-card">
+
+        <!-- =================================================
+             EDITOR
+        ================================================== -->
+
+        <div class="markdown-panel markdown-editor-panel">
+
+            <div class="markdown-panel-header">
+
+                <div class="markdown-panel-title">
+
+                    <div class="markdown-panel-icon">
+                        <i class="bi bi-pencil-square"></i>
+                    </div>
+
+                    <div>
+                        <h2>EDITOR</h2>
+                        <span>Write your Markdown</span>
+                    </div>
+
+                </div>
+
+                <span class="markdown-status">
+                    <i class="bi bi-circle-fill"></i>
+                    Live
+                </span>
+
+            </div>
+
+
+@*             <div class="markdown-editor-container">
+
+                <textarea id="markdownInput"
+                          class="markdown-editor"
+                          spellcheck="false"
+                          placeholder="# Start writing...
+
+## Features
+
+- JSON Formatter
+- JWT Decoder
+- Regex Tester
+
+**Developer Tools**"></textarea>
+
+            </div> *@
+
+            <div class="markdown-editor-container">
+
+                <textarea id="markdownInput"
+                          class="markdown-editor"
+                          spellcheck="false"></textarea>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             DIVIDER
+        ================================================== -->
+
+        <div class="markdown-workspace-divider"></div>
+
+
+        <!-- =================================================
+             PREVIEW
+        ================================================== -->
+
+        <div class="markdown-panel markdown-preview-panel">
+
+            <div class="markdown-panel-header">
+
+                <div class="markdown-panel-title">
+
+                    <div class="markdown-panel-icon">
+                       <i class="bi bi-eye"></i>
+                    </div>
+
+                    <div>
+                        <h2>PREVIEW</h2>
+                        <span>Rendered Markdown</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="markdown-preview-container">
+
+                <article id="markdownPreview"
+                         class="markdown-rendered">
+
+                    <h1>DevVault</h1>
+
+                    <hr>
+
+                    <h2>Features</h2>
+
+                    <ul>
+                        <li>JSON Formatter</li>
+                        <li>JWT Decoder</li>
+                        <li>Regex Tester</li>
+                    </ul>
+
+                    <p>
+                        <strong>Developer Tools</strong>
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ACTION BAR
+    ====================================================== -->
+
+    <div class="markdown-action-bar">
+
+    <button type="button"
+            id="newMarkdownBtn"
+            class="markdown-action-btn markdown-action-primary">
+        <i class="bi bi-file-earmark-plus"></i>
+        <span>New</span>
+    </button>
+
+
+    <button type="button"
+            id="copyMarkdownBtn"
+            class="markdown-action-btn">
+        <i class="bi bi-copy"></i>
+        <span>Copy</span>
+    </button>
+
+
+    <button type="button"
+            id="downloadMarkdownBtn"
+            class="markdown-action-btn">
+        <i class="bi bi-download"></i>
+        <span>Download</span>
+    </button>
+
+
+    <button type="button"
+            id="clearMarkdownBtn"
+            class="markdown-action-btn markdown-action-danger">
+        <i class="bi bi-trash3"></i>
+        <span>Clear</span>
+    </button>
+
+</div>
+
+</div>
+
+
+@section Scripts {
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+
+    <!-- Markdown parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- HTML sanitizer -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
+
+    <!-- Your JavaScript -->
+    <script src="~/js/markdown-preview.js"
+            asp-append-version="true"></script>
+}

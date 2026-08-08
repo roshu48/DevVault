@@ -1,0 +1,1264 @@
+﻿/* =========================================================
+   DEVVAULT - MARKDOWN PREVIEW
+   EasyMDE + Live Preview
+   Light + Dark Theme
+========================================================= */
+
+
+/* =========================================================
+   LIGHT THEME VARIABLES
+========================================================= */
+
+.markdown-preview-page {
+    --md-card-bg: #ffffff;
+    --md-input-bg: #ffffff;
+    --md-editor-bg: #f8fafc;
+    --md-preview-bg: #ffffff;
+    --md-border: #e2e8f0;
+    --md-border-hover: #cbd5e1;
+    --md-text: #1e293b;
+    --md-text-secondary: #64748b;
+    --md-text-muted: #94a3b8;
+    --md-accent: #6366f1;
+    --md-accent-hover: #4f46e5;
+    --md-accent-soft: rgba(99, 102, 241, 0.10);
+    --md-success: #16a34a;
+    --md-danger: #dc2626;
+    --md-code-bg: #f1f5f9;
+    --md-toolbar-bg: #ffffff;
+    --md-toolbar-hover: #f1f5f9;
+    --md-toolbar-active: rgba(99, 102, 241, 0.10);
+    --md-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    --md-shadow-hover: 0 5px 18px rgba(15, 23, 42, 0.07);
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   DARK THEME VARIABLES
+========================================================= */
+
+html[data-theme="dark"] .markdown-preview-page,
+body[data-theme="dark"] .markdown-preview-page,
+html[data-bs-theme="dark"] .markdown-preview-page,
+body[data-bs-theme="dark"] .markdown-preview-page,
+html.dark .markdown-preview-page,
+body.dark .markdown-preview-page,
+html.dark-mode .markdown-preview-page,
+body.dark-mode .markdown-preview-page,
+html.dark-theme .markdown-preview-page,
+body.dark-theme .markdown-preview-page,
+html.theme-dark .markdown-preview-page,
+body.theme-dark .markdown-preview-page,
+.dark .markdown-preview-page,
+.dark-mode .markdown-preview-page,
+.dark-theme .markdown-preview-page {
+    --md-card-bg: #151c2c;
+    --md-input-bg: #111827;
+    --md-editor-bg: #0d1422;
+    --md-preview-bg: #151c2c;
+    --md-border: #273449;
+    --md-border-hover: #3b4a63;
+    --md-text: #f1f5f9;
+    --md-text-secondary: #94a3b8;
+    --md-text-muted: #64748b;
+    --md-accent: #818cf8;
+    --md-accent-hover: #6366f1;
+    --md-accent-soft: rgba(129, 140, 248, 0.12);
+    --md-success: #4ade80;
+    --md-danger: #f87171;
+    --md-code-bg: #1a2333;
+    --md-toolbar-bg: #111827;
+    --md-toolbar-hover: #1a2333;
+    --md-toolbar-active: rgba(129, 140, 248, 0.14);
+    --md-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+    --md-shadow-hover: 0 6px 24px rgba(0, 0, 0, 0.30);
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.markdown-preview-header {
+    margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   BREADCRUMB
+========================================================= */
+
+.markdown-preview-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+
+    .markdown-preview-breadcrumb a {
+        color: var(--md-text-secondary);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+
+        .markdown-preview-breadcrumb a:hover {
+            color: var(--md-accent);
+        }
+
+
+    .markdown-preview-breadcrumb i {
+        color: var(--md-text-muted);
+        font-size: 10px;
+    }
+
+
+    .markdown-preview-breadcrumb span {
+        color: var(--md-text-secondary);
+        font-weight: 500;
+    }
+
+
+/* =========================================================
+   PAGE TITLE
+========================================================= */
+
+.markdown-preview-title-section h1 {
+    margin: 0;
+    color: var(--md-text);
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+}
+
+
+.markdown-preview-title-section p {
+    margin: 8px 0 0;
+    color: var(--md-text-secondary);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   MAIN WORKSPACE
+========================================================= */
+
+.markdown-workspace-card {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr);
+    min-height: 560px;
+    overflow: hidden;
+    background: var(--md-card-bg);
+    border: 1px solid var(--md-border);
+    border-radius: 12px;
+    box-shadow: var(--md-shadow);
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+/* =========================================================
+   PANELS
+========================================================= */
+
+.markdown-panel {
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--md-card-bg);
+}
+
+
+/* =========================================================
+   WORKSPACE DIVIDER
+========================================================= */
+
+.markdown-workspace-divider {
+    width: 1px;
+    background: var(--md-border);
+}
+
+
+/* =========================================================
+   PANEL HEADER
+========================================================= */
+
+.markdown-panel-header {
+    height: 72px;
+    flex: 0 0 72px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    border-bottom: 1px solid var(--md-border);
+    background: var(--md-card-bg);
+}
+
+
+/* =========================================================
+   PANEL TITLE
+========================================================= */
+
+.markdown-panel-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+
+/* =========================================================
+   PANEL ICON
+========================================================= */
+
+.markdown-panel-icon {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: var(--md-accent-soft);
+    color: var(--md-accent);
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   PANEL TITLE TEXT
+========================================================= */
+
+.markdown-panel-title h2 {
+    margin: 0;
+    color: var(--md-text);
+    font-size: 14px;
+    line-height: 1.3;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+
+.markdown-panel-title span {
+    display: block;
+    margin-top: 3px;
+    color: var(--md-text-secondary);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   LIVE STATUS
+========================================================= */
+
+.markdown-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 9px;
+    border: 1px solid var(--md-border);
+    border-radius: 6px;
+    color: var(--md-success);
+    background: var(--md-input-bg);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+    .markdown-status i {
+        font-size: 6px;
+        color: var(--md-success);
+    }
+
+
+/* =========================================================
+   EASYMDE EDITOR CONTAINER
+========================================================= */
+
+.markdown-editor-container {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--md-editor-bg);
+}
+
+
+    /* =========================================================
+   EASYMDE MAIN CONTAINER
+========================================================= */
+
+    .markdown-editor-container .EasyMDEContainer {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        background: var(--md-editor-bg);
+    }
+
+
+    /* =========================================================
+   EASYMDE TOOLBAR
+========================================================= */
+
+    .markdown-editor-container .editor-toolbar {
+        flex: 0 0 auto;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        padding: 8px 10px;
+        border: none;
+        border-bottom: 1px solid var(--md-border);
+        border-radius: 0;
+        background: var(--md-toolbar-bg);
+        opacity: 1;
+        box-sizing: border-box;
+    }
+
+
+        /* =========================================================
+   EASYMDE TOOLBAR BUTTON
+========================================================= */
+
+        .markdown-editor-container
+        .editor-toolbar button {
+            width: 31px;
+            height: 31px;
+            margin: 0;
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid transparent;
+            border-radius: 6px;
+            background: transparent;
+            color: var(--md-text-secondary);
+            font-size: 14px;
+            cursor: pointer;
+            transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+        }
+
+
+            /* =========================================================
+   TOOLBAR HOVER
+========================================================= */
+
+            .markdown-editor-container
+            .editor-toolbar button:hover {
+                color: var(--md-text);
+                background: var(--md-toolbar-hover);
+                border-color: var(--md-border);
+            }
+
+
+            /* =========================================================
+   TOOLBAR ACTIVE
+========================================================= */
+
+            .markdown-editor-container
+            .editor-toolbar button.active {
+                color: var(--md-accent);
+                background: var(--md-toolbar-active);
+                border-color: var(--md-accent);
+            }
+
+
+            /* =========================================================
+   TOOLBAR DISABLED
+========================================================= */
+
+            .markdown-editor-container
+            .editor-toolbar button.disabled {
+                opacity: 0.4;
+                cursor: default;
+            }
+
+
+        /* =========================================================
+   TOOLBAR SEPARATOR
+========================================================= */
+
+        .markdown-editor-container
+        .editor-toolbar i.separator {
+            width: 1px;
+            height: 22px;
+            margin: 0 6px;
+            border: none;
+            background: var(--md-border);
+            opacity: 1;
+        }
+
+
+        /* =========================================================
+   EASYMDE TOOLBAR ICONS
+========================================================= */
+
+        .markdown-editor-container
+        .editor-toolbar button:before {
+            color: inherit;
+        }
+
+
+    /* =========================================================
+   CODEMIRROR EDITOR
+========================================================= */
+
+    .markdown-editor-container .CodeMirror {
+        flex: 1;
+        width: 100%;
+        min-height: 0;
+        height: auto;
+        border: none;
+        border-radius: 0;
+        background: var(--md-editor-bg);
+        color: var(--md-text);
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        font-size: 14px;
+        line-height: 1.75;
+        box-sizing: border-box;
+    }
+
+
+    /* =========================================================
+   CODEMIRROR SCROLL AREA
+========================================================= */
+
+    .markdown-editor-container
+    .CodeMirror-scroll {
+        min-height: 0;
+        padding: 20px 22px;
+        box-sizing: border-box;
+        overflow-x: auto;
+    }
+
+
+    /* =========================================================
+   CODEMIRROR CODE
+========================================================= */
+
+    .markdown-editor-container
+    .CodeMirror-lines {
+        padding: 0;
+    }
+
+
+    /* =========================================================
+   CODEMIRROR CURSOR
+========================================================= */
+
+    .markdown-editor-container
+    .CodeMirror-cursor {
+        border-left: 2px solid var(--md-accent);
+    }
+
+
+    /* =========================================================
+   CODEMIRROR SELECTION
+========================================================= */
+
+    .markdown-editor-container
+    .CodeMirror-selected {
+        background: var(--md-accent-soft) !important;
+    }
+
+
+    /* =========================================================
+   CODEMIRROR PLACEHOLDER
+========================================================= */
+
+    .markdown-editor-container
+    .CodeMirror-placeholder {
+        color: var(--md-text-muted);
+        opacity: 1;
+    }
+
+
+    /* =========================================================
+   CODEMIRROR GUTTER
+========================================================= */
+
+    .markdown-editor-container
+    .CodeMirror-gutters {
+        border: none;
+        background: var(--md-editor-bg);
+    }
+
+
+    /* =========================================================
+   CODEMIRROR SCROLLBAR
+========================================================= */
+
+    .markdown-editor-container
+    .CodeMirror-vscrollbar::-webkit-scrollbar,
+    .markdown-editor-container
+    .CodeMirror-hscrollbar::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+
+    .markdown-editor-container
+    .CodeMirror-vscrollbar::-webkit-scrollbar-track,
+    .markdown-editor-container
+    .CodeMirror-hscrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+
+    .markdown-editor-container
+    .CodeMirror-vscrollbar::-webkit-scrollbar-thumb,
+    .markdown-editor-container
+    .CodeMirror-hscrollbar::-webkit-scrollbar-thumb {
+        background: var(--md-border-hover);
+        border-radius: 10px;
+    }
+
+
+        .markdown-editor-container
+        .CodeMirror-vscrollbar::-webkit-scrollbar-thumb:hover,
+        .markdown-editor-container
+        .CodeMirror-hscrollbar::-webkit-scrollbar-thumb:hover {
+            background: var(--md-text-muted);
+        }
+
+
+    /* =========================================================
+   EASYMDE STATUS BAR
+========================================================= */
+
+    .markdown-editor-container
+    .editor-statusbar {
+        display: none;
+    }
+
+
+/* =========================================================
+   EASYMDE FULLSCREEN
+========================================================= */
+
+.EasyMDEContainer .CodeMirror-fullscreen {
+    z-index: 9999;
+    background: var(--md-editor-bg);
+    color: var(--md-text);
+}
+
+
+.editor-toolbar.fullscreen {
+    z-index: 10000;
+    background: var(--md-toolbar-bg);
+    border-bottom: 1px solid var(--md-border);
+}
+
+
+/* =========================================================
+   EASYMDE TOOLTIP
+========================================================= */
+
+.markdown-editor-container
+.editor-toolbar button[title]:hover::after {
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   PREVIEW CONTAINER
+========================================================= */
+
+.markdown-preview-container {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    padding: 28px;
+    background: var(--md-preview-bg);
+}
+
+
+    /* =========================================================
+   PREVIEW SCROLLBAR
+========================================================= */
+
+    .markdown-preview-container::-webkit-scrollbar {
+        width: 8px;
+    }
+
+
+    .markdown-preview-container::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+
+    .markdown-preview-container::-webkit-scrollbar-thumb {
+        background: var(--md-border-hover);
+        border-radius: 10px;
+    }
+
+
+        .markdown-preview-container::-webkit-scrollbar-thumb:hover {
+            background: var(--md-text-muted);
+        }
+
+
+/* =========================================================
+   RENDERED MARKDOWN
+========================================================= */
+
+.markdown-rendered {
+    max-width: 900px;
+    margin: 0 auto;
+    color: var(--md-text);
+    font-size: 15px;
+    line-height: 1.75;
+    overflow-wrap: break-word;
+}
+
+
+    /* =========================================================
+   HEADINGS
+========================================================= */
+
+    .markdown-rendered h1 {
+        margin: 0 0 20px;
+        color: var(--md-text);
+        font-size: 30px;
+        line-height: 1.25;
+        font-weight: 700;
+        letter-spacing: -0.4px;
+    }
+
+
+    .markdown-rendered h2 {
+        margin: 28px 0 12px;
+        color: var(--md-text);
+        font-size: 22px;
+        line-height: 1.35;
+        font-weight: 650;
+    }
+
+
+    .markdown-rendered h3 {
+        margin: 24px 0 10px;
+        color: var(--md-text);
+        font-size: 18px;
+        line-height: 1.4;
+        font-weight: 650;
+    }
+
+
+    .markdown-rendered h4 {
+        margin: 20px 0 8px;
+        color: var(--md-text);
+        font-size: 16px;
+    }
+
+
+    .markdown-rendered h5 {
+        margin: 18px 0 8px;
+        color: var(--md-text);
+        font-size: 15px;
+    }
+
+
+    .markdown-rendered h6 {
+        margin: 16px 0 8px;
+        color: var(--md-text-secondary);
+        font-size: 14px;
+    }
+
+
+    /* =========================================================
+   PARAGRAPHS
+========================================================= */
+
+    .markdown-rendered p {
+        margin: 0 0 16px;
+        color: var(--md-text-secondary);
+    }
+
+
+    .markdown-rendered strong {
+        color: var(--md-text);
+        font-weight: 700;
+    }
+
+
+    .markdown-rendered em {
+        color: var(--md-text);
+    }
+
+
+    .markdown-rendered del {
+        color: var(--md-text-muted);
+    }
+
+
+    /* =========================================================
+   HORIZONTAL RULE
+========================================================= */
+
+    .markdown-rendered hr {
+        height: 1px;
+        margin: 24px 0;
+        border: none;
+        background: var(--md-border);
+    }
+
+
+    /* =========================================================
+   LISTS
+========================================================= */
+
+    .markdown-rendered ul,
+    .markdown-rendered ol {
+        margin: 0 0 18px;
+        padding-left: 26px;
+        color: var(--md-text-secondary);
+    }
+
+
+    .markdown-rendered li {
+        margin: 5px 0;
+        padding-left: 3px;
+    }
+
+
+        .markdown-rendered li > p {
+            margin-bottom: 6px;
+        }
+
+
+    /* =========================================================
+   LINKS
+========================================================= */
+
+    .markdown-rendered a {
+        color: var(--md-accent);
+        text-decoration: none;
+        transition: color 0.15s ease;
+    }
+
+
+        .markdown-rendered a:hover {
+            color: var(--md-accent-hover);
+            text-decoration: underline;
+        }
+
+
+    /* =========================================================
+   INLINE CODE
+========================================================= */
+
+    .markdown-rendered code {
+        padding: 3px 6px;
+        border: 1px solid var(--md-border);
+        border-radius: 5px;
+        background: var(--md-code-bg);
+        color: var(--md-accent);
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+        font-size: 0.88em;
+    }
+
+
+    /* =========================================================
+   CODE BLOCK
+========================================================= */
+
+    .markdown-rendered pre {
+        margin: 20px 0;
+        padding: 16px 18px;
+        overflow-x: auto;
+        border: 1px solid var(--md-border);
+        border-radius: 8px;
+        background: var(--md-editor-bg);
+        color: var(--md-text);
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+        font-size: 13px;
+        line-height: 1.65;
+    }
+
+
+        .markdown-rendered pre code {
+            padding: 0;
+            border: none;
+            background: transparent;
+            color: inherit;
+        }
+
+
+        /* =========================================================
+   CODE BLOCK SCROLLBAR
+========================================================= */
+
+        .markdown-rendered pre::-webkit-scrollbar {
+            height: 7px;
+        }
+
+
+        .markdown-rendered pre::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+
+        .markdown-rendered pre::-webkit-scrollbar-thumb {
+            background: var(--md-border-hover);
+            border-radius: 10px;
+        }
+
+
+    /* =========================================================
+   BLOCKQUOTE
+========================================================= */
+
+    .markdown-rendered blockquote {
+        margin: 18px 0;
+        padding: 10px 16px;
+        border-left: 3px solid var(--md-accent);
+        background: var(--md-accent-soft);
+        color: var(--md-text-secondary);
+    }
+
+
+        .markdown-rendered blockquote p {
+            margin: 0;
+        }
+
+
+    /* =========================================================
+   TABLE
+========================================================= */
+
+    .markdown-rendered table {
+        width: 100%;
+        margin: 20px 0;
+        border-collapse: collapse;
+        border: 1px solid var(--md-border);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+
+    .markdown-rendered th,
+    .markdown-rendered td {
+        padding: 10px 12px;
+        border: 1px solid var(--md-border);
+        text-align: left;
+    }
+
+
+    .markdown-rendered th {
+        background: var(--md-code-bg);
+        color: var(--md-text);
+        font-weight: 600;
+    }
+
+
+    .markdown-rendered td {
+        color: var(--md-text-secondary);
+    }
+
+
+    /* =========================================================
+   TABLE ROW HOVER
+========================================================= */
+
+    .markdown-rendered tbody tr:hover {
+        background: var(--md-accent-soft);
+    }
+
+
+    /* =========================================================
+   IMAGES
+========================================================= */
+
+    .markdown-rendered img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 18px 0;
+        border-radius: 8px;
+        border: 1px solid var(--md-border);
+    }
+
+
+/* =========================================================
+   ACTION BAR
+========================================================= */
+
+.markdown-action-bar {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* =========================================================
+   ACTION BUTTON
+========================================================= */
+
+.markdown-action-btn {
+    height: 40px;
+    padding: 0 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid var(--md-border);
+    border-radius: 7px;
+    background: var(--md-card-bg);
+    color: var(--md-text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+
+    .markdown-action-btn:hover {
+        color: var(--md-text);
+        border-color: var(--md-border-hover);
+        background: var(--md-input-bg);
+        box-shadow: var(--md-shadow);
+    }
+
+
+    .markdown-action-btn:active {
+        transform: translateY(1px);
+    }
+
+
+/* =========================================================
+   PRIMARY ACTION
+========================================================= */
+
+.markdown-action-primary {
+    border-color: var(--md-accent);
+    background: var(--md-accent);
+    color: #ffffff;
+}
+
+
+    .markdown-action-primary:hover {
+        border-color: var(--md-accent-hover);
+        background: var(--md-accent-hover);
+        color: #ffffff;
+    }
+
+
+/* =========================================================
+   DANGER ACTION
+========================================================= */
+
+.markdown-action-danger:hover {
+    border-color: rgba(220, 38, 38, 0.35);
+    background: rgba(220, 38, 38, 0.07);
+    color: var(--md-danger);
+}
+
+
+/* =========================================================
+   DISABLED ACTION
+========================================================= */
+
+.markdown-action-btn:disabled {
+    opacity: 0.75;
+    cursor: default;
+    transform: none;
+}
+
+
+/* =========================================================
+   EMPTY PREVIEW STATE
+========================================================= */
+
+.markdown-empty-state {
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+}
+
+
+/* =========================================================
+   EMPTY ICON
+========================================================= */
+
+.markdown-empty-icon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    border-radius: 10px;
+    background: var(--md-accent-soft);
+    color: var(--md-accent);
+    font-size: 21px;
+}
+
+
+/* =========================================================
+   EMPTY TITLE
+========================================================= */
+
+.markdown-empty-state h3 {
+    margin: 0 0 7px;
+    color: var(--md-text);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   EMPTY DESCRIPTION
+========================================================= */
+
+.markdown-empty-state p {
+    max-width: 330px;
+    margin: 0;
+    color: var(--md-text-secondary);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+.markdown-preview-page button:focus-visible {
+    outline: 2px solid var(--md-accent);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .markdown-workspace-card {
+        grid-template-columns: 1fr;
+        grid-template-rows: minmax(400px, 1fr) 1px minmax(400px, 1fr);
+        min-height: 900px;
+    }
+
+
+    .markdown-workspace-divider {
+        width: 100%;
+        height: 1px;
+    }
+
+
+    .markdown-editor-container {
+        min-height: 400px;
+    }
+
+
+    .markdown-preview-container {
+        min-height: 400px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .markdown-preview-header {
+        margin-bottom: 22px;
+    }
+
+
+    .markdown-preview-title-section h1 {
+        font-size: 26px;
+    }
+
+
+    .markdown-preview-title-section p {
+        font-size: 14px;
+    }
+
+
+    .markdown-preview-breadcrumb {
+        font-size: 13px;
+    }
+
+
+    .markdown-workspace-card {
+        grid-template-rows: minmax(350px, 1fr) 1px minmax(350px, 1fr);
+        border-radius: 10px;
+    }
+
+
+    .markdown-panel-header {
+        height: 64px;
+        flex-basis: 64px;
+        padding: 12px 14px;
+    }
+
+
+    .markdown-panel-icon {
+        width: 34px;
+        height: 34px;
+        flex-basis: 34px;
+        font-size: 13px;
+    }
+
+
+    .markdown-panel-title h2 {
+        font-size: 13px;
+    }
+
+
+    .markdown-panel-title span {
+        font-size: 11px;
+    }
+
+
+    .markdown-status {
+        padding: 4px 7px;
+        font-size: 10px;
+    }
+
+
+    /* ---------------------------------------------
+       EASYMDE MOBILE TOOLBAR
+    --------------------------------------------- */
+
+    .markdown-editor-container
+    .editor-toolbar {
+        min-height: 46px;
+        padding: 7px 8px;
+        gap: 1px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+    }
+
+
+        .markdown-editor-container
+        .editor-toolbar button {
+            width: 29px;
+            height: 29px;
+            flex: 0 0 29px;
+        }
+
+
+        .markdown-editor-container
+        .editor-toolbar i.separator {
+            margin: 0 4px;
+        }
+
+
+    .markdown-editor-container
+    .CodeMirror-scroll {
+        padding: 16px;
+    }
+
+
+    .markdown-editor-container
+    .CodeMirror {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+
+    .markdown-preview-container {
+        padding: 20px 16px;
+    }
+
+
+    .markdown-rendered {
+        font-size: 14px;
+    }
+
+
+        .markdown-rendered h1 {
+            font-size: 26px;
+        }
+
+
+        .markdown-rendered h2 {
+            font-size: 20px;
+        }
+
+
+        .markdown-rendered h3 {
+            font-size: 17px;
+        }
+
+
+    .markdown-action-bar {
+        flex-wrap: wrap;
+    }
+
+
+    .markdown-action-btn {
+        flex: 1;
+        min-width: 110px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .markdown-preview-title-section h1 {
+        font-size: 24px;
+    }
+
+
+    .markdown-action-bar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .markdown-action-btn {
+        width: 100%;
+    }
+
+
+    .markdown-panel-header {
+        padding: 10px 12px;
+    }
+
+
+    .markdown-panel-title {
+        gap: 8px;
+    }
+
+
+    .markdown-panel-icon {
+        width: 32px;
+        height: 32px;
+        flex-basis: 32px;
+    }
+
+
+    .markdown-status {
+        display: none;
+    }
+}

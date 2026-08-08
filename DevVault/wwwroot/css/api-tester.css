@@ -1241,3 +1241,18 @@ body.theme-dark .api-tester-page,
             margin-right: 0;
         }
 }
+
+.api-tab.active {
+    color: var(--api-accent);
+    font-weight: 600;
+}
+
+    .api-tab.active::after {
+        content: "";
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        bottom: -1px;
+        height: 2px;
+        background: var(--api-accent);
+    }

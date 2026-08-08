@@ -95,7 +95,7 @@
                     class="api-tab active"
                     data-tab="params">
 
-                <i class="fa-solid fa-sliders"></i>
+                <i class="bi bi-sliders"></i>
                 Params
 
             </button>
@@ -104,7 +104,7 @@
                     class="api-tab"
                     data-tab="headers">
 
-                <i class="fa-solid fa-list"></i>
+                <i class="bi bi-list"></i>
                 Headers
 
             </button>
@@ -113,7 +113,7 @@
                     class="api-tab"
                     data-tab="body">
 
-                <i class="fa-solid fa-code"></i>
+                <i class="bi bi-code-slash"></i>
                 Body
 
             </button>
@@ -122,7 +122,7 @@
                     class="api-tab"
                     data-tab="auth">
 
-                <i class="fa-solid fa-lock"></i>
+                <i class="bi bi-lock-fill"></i>
                 Auth
 
             </button>
@@ -150,7 +150,7 @@
                         id="addParamBtn"
                         class="api-add-btn">
 
-                    <i class="fa-solid fa-plus"></i>
+                    <i class="bi bi-plus"></i>
                     Add Parameter
 
                 </button>
@@ -184,7 +184,7 @@
                         <button type="button"
                                 class="api-remove-btn">
 
-                            <i class="fa-solid fa-trash"></i>
+                            <i class="bi bi-trash"></i>
 
                         </button>
 
@@ -217,7 +217,7 @@
                         id="addHeaderBtn"
                         class="api-add-btn">
 
-                    <i class="fa-solid fa-plus"></i>
+                    <i class="bi bi-plus"></i>
                     Add Header
 
                 </button>
@@ -251,7 +251,7 @@
                         <button type="button"
                                 class="api-remove-btn">
 
-                            <i class="fa-solid fa-trash"></i>
+                            <i class="bi bi-trash"></i>
 
                         </button>
 
@@ -271,7 +271,7 @@
                         <button type="button"
                                 class="api-remove-btn">
 
-                            <i class="fa-solid fa-trash"></i>
+                            <i class="bi bi-trash"></i>
 
                         </button>
 
@@ -393,7 +393,7 @@
             <div class="api-result-title">
 
                 <div class="api-result-icon">
-                    <i class="fa-solid fa-arrow-up"></i>
+                    <i class="bi bi-arrow-up"></i>
                 </div>
 
                 <div>
@@ -408,7 +408,7 @@
                     class="api-copy-btn"
                     id="copyRequestBtn">
 
-                <i class="fa-regular fa-copy"></i>
+                <i class="bi bi-copy"></i>
                 Copy
 
             </button>
@@ -460,7 +460,7 @@
             <div class="api-result-title">
 
                 <div class="api-result-icon api-response-icon">
-                    <i class="fa-solid fa-arrow-down"></i>
+                    <i class="bi bi-arrow-down"></i>
                 </div>
 
                 <div>
@@ -475,7 +475,7 @@
                     class="api-copy-btn"
                     id="copyResponseBtn">
 
-                <i class="fa-regular fa-copy"></i>
+                <i class="bi bi-copy"></i>
                 Copy
 
             </button>
@@ -491,7 +491,7 @@
                 <span class="api-status-dot"></span>
 
                 <span id="responseStatus">
-                    Status: 200 OK
+                    @* Status: 200 OK *@
                 </span>
 
             </div>
@@ -499,13 +499,13 @@
 
             <div class="api-response-info">
                 <span id="responseTime">
-                    Time: 182 ms
+                    @* Time: 182 ms *@
                 </span>
 
                 <span class="api-meta-divider"></span>
 
                 <span id="responseSize">
-                    Size: 1.24 KB
+                    @* Size: 1.24 KB *@
                 </span>
             </div>
 
@@ -541,11 +541,7 @@
             <div class="api-code-container">
 
                 <pre id="apiResponseOutput"
-                     class="api-code">{
-  "id": 1,
-  "name": "John",
-  "email": "john@example.com"
-}</pre>
+                     class="api-code"></pre>
 
             </div>
 
@@ -570,3 +566,6 @@ Cache-Control: no-cache</pre>
     </section>
 
 </div>
+@section Scripts {
+    <script src="~/js/api-tester.js" asp-append-version="true"></script>
+}
