@@ -1,0 +1,461 @@
+﻿@{
+    ViewData["Title"] = "Regex Tester";
+}
+
+<div class="regex-page">
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+    <div class="regex-header">
+
+        <div class="regex-breadcrumb">
+            <a href="/" class="regex-breadcrumb-link">
+                Developer Tools
+            </a>
+
+            <i class="bi bi-chevron-right"></i>
+
+            <span class="active">Regex Tester</span>
+        </div>
+
+        <h1>Regex Tester</h1>
+
+        <p>
+            Test and debug regular expressions in real time.
+        </p>
+
+    </div>
+
+
+    <!-- =====================================================
+         REGEX TESTER CARD
+    ====================================================== -->
+    <div class="regex-card">
+
+        <!-- =================================================
+             REGULAR EXPRESSION
+        ================================================== -->
+        <div class="regex-section">
+
+            <label class="regex-label">
+                REGULAR EXPRESSION
+            </label>
+
+            <div class="regex-input-wrapper">
+
+                <span class="regex-prefix">/</span>
+
+                <input
+                    type="text"
+                    id="regexInput"
+                    class="regex-input"                  
+                    placeholder="Enter regular expression..."
+                />
+
+                <span class="regex-suffix">/</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             FLAGS
+        ================================================== -->
+        <div class="regex-section">
+
+            <label class="regex-label">
+                FLAGS
+            </label>
+
+            <div class="regex-flags">
+
+                <label class="regex-flag">
+                    <input type="checkbox" id="flagGlobal" value="g">
+                    <span>g</span>
+                </label>
+
+                <label class="regex-flag">
+                    <input type="checkbox" id="flagIgnoreCase" value="i">
+                    <span>i</span>
+                </label>
+
+                <label class="regex-flag">
+                    <input type="checkbox" id="flagMultiline" value="m">
+                    <span>m</span>
+                </label>
+
+                <label class="regex-flag">
+                    <input type="checkbox" id="flagDotAll" value="s">
+                    <span>s</span>
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             TEST STRING
+        ================================================== -->
+        <div class="regex-section">
+
+            <label class="regex-label">
+                TEST STRING
+            </label>
+
+            <textarea
+                id="testString"
+                class="regex-textarea"
+                placeholder="Enter text to test..."
+            >hello@gmail.com</textarea>
+
+        </div>
+
+
+        <!-- =================================================
+             ACTIONS
+        ================================================== -->
+        <div class="regex-actions">
+
+            <button
+                type="button"
+                id="testRegexBtn"
+                class="regex-btn regex-btn-primary">
+
+                <i class="bi bi-play-fill"></i>
+                Test Regex
+
+            </button>
+
+            <button
+                type="button"
+                id="clearRegexBtn"
+                class="regex-btn regex-btn-secondary">
+
+                <i class="bi bi-x-lg"></i>
+                Clear
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         RESULT CARD
+    ====================================================== -->
+    <div class="regex-result-card">
+
+        <div class="regex-result-header">
+
+            <div>
+                <div class="regex-result-title">
+                    RESULT
+                </div>
+
+                <div
+                    id="regexStatus"
+                    class="regex-status regex-status-success">
+
+                    <span class="regex-status-dot"></span>
+
+                    <span id="regexStatusText">
+                        Match Found
+                    </span>
+
+                </div>
+            </div>
+
+            <div class="regex-match-count">
+
+                <span>Matches:</span>
+
+                <strong id="matchCount">
+                    1
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             MATCHES
+        ================================================== -->
+        <div class="regex-matches-container">
+
+            <div class="regex-matches-title">
+                MATCHES
+            </div>
+
+            <div id="regexMatches" class="regex-matches">
+
+                <div class="regex-match-item">
+
+                    <span class="regex-match-number">
+                        1
+                    </span>
+
+                    <span class="regex-match-value">
+                        hello@gmail.com
+                    </span>
+
+                    <span class="regex-match-label">
+                        Match
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/regex-tester.css" />
+}
+
+@section Scripts {
+
+<script>
+
+    const regexInput = document.getElementById("regexInput");
+    const testString = document.getElementById("testString");
+
+    const testRegexBtn = document.getElementById("testRegexBtn");
+    const clearRegexBtn = document.getElementById("clearRegexBtn");
+
+    const regexStatus = document.getElementById("regexStatus");
+    const regexStatusText = document.getElementById("regexStatusText");
+
+    const matchCount = document.getElementById("matchCount");
+    const regexMatches = document.getElementById("regexMatches");
+
+
+    function getFlags() {
+
+        let flags = "";
+
+        if (document.getElementById("flagGlobal").checked)
+            flags += "g";
+
+        if (document.getElementById("flagIgnoreCase").checked)
+            flags += "i";
+
+        if (document.getElementById("flagMultiline").checked)
+            flags += "m";
+
+        if (document.getElementById("flagDotAll").checked)
+            flags += "s";
+
+        return flags;
+    }
+
+
+    function testRegex() {
+
+        const pattern = regexInput.value;
+        const text = testString.value;
+        const flags = getFlags();
+
+        regexMatches.innerHTML = "";
+
+        if (!pattern) {
+
+            showError("Please enter a regular expression.");
+
+            return;
+        }
+
+
+        try {
+
+            const regex = new RegExp(pattern, flags);
+
+            let matches = [];
+
+            if (flags.includes("g")) {
+
+                matches = [...text.matchAll(regex)];
+
+            } else {
+
+                const match = regex.exec(text);
+
+                if (match) {
+                    matches.push(match);
+                }
+
+            }
+
+
+            if (matches.length > 0) {
+
+                showSuccess("Match Found");
+
+                matchCount.textContent = matches.length;
+
+                matches.forEach((match, index) => {
+
+                    const item = document.createElement("div");
+
+                    item.className = "regex-match-item";
+
+                    item.innerHTML = `
+                        <span class="regex-match-number">
+                            ${index + 1}
+                        </span>
+
+                        <span class="regex-match-value">
+                            ${escapeHtml(match[0])}
+                        </span>
+
+                        <span class="regex-match-label">
+                            Match
+                        </span>
+                    `;
+
+                    regexMatches.appendChild(item);
+
+                });
+
+            } else {
+
+                showNoMatch();
+
+            }
+
+        } catch (error) {
+
+            showError(error.message);
+
+        }
+
+    }
+
+
+    function showSuccess(message) {
+
+        regexStatus.className =
+            "regex-status regex-status-success";
+
+        regexStatusText.textContent = message;
+
+    }
+
+
+    function showNoMatch() {
+
+        regexStatus.className =
+            "regex-status regex-status-warning";
+
+        regexStatusText.textContent =
+            "No Match Found";
+
+        matchCount.textContent = "0";
+
+        regexMatches.innerHTML = `
+            <div class="regex-empty-state">
+                <i class="bi bi-search"></i>
+                <span>No matches found in the test string.</span>
+            </div>
+        `;
+
+    }
+
+
+    function showError(message) {
+
+        regexStatus.className =
+            "regex-status regex-status-error";
+
+        regexStatusText.textContent =
+            "Invalid Regex";
+
+        matchCount.textContent = "0";
+
+        regexMatches.innerHTML = `
+            <div class="regex-error-state">
+                <i class="bi bi-exclamation-triangle"></i>
+
+                <div>
+                    <strong>Invalid regular expression</strong>
+                    <span>${escapeHtml(message)}</span>
+                </div>
+            </div>
+        `;
+
+    }
+
+
+    function escapeHtml(value) {
+
+        return value
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+
+    }
+
+
+    function clearRegex() {
+
+        regexInput.value = "";
+
+        testString.value = "";
+
+        document.getElementById("flagGlobal").checked = false;
+        document.getElementById("flagIgnoreCase").checked = false;
+        document.getElementById("flagMultiline").checked = false;
+        document.getElementById("flagDotAll").checked = false;
+
+        regexStatus.className =
+            "regex-status";
+
+        regexStatusText.textContent =
+            "Waiting for test";
+
+        matchCount.textContent = "0";
+
+        regexMatches.innerHTML = `
+            <div class="regex-empty-state">
+                <i class="bi bi-braces"></i>
+                <span>Run a regex test to see matches here.</span>
+            </div>
+        `;
+
+    }
+
+
+    testRegexBtn.addEventListener("click", testRegex);
+
+    clearRegexBtn.addEventListener("click", clearRegex);
+
+
+    // Real-time testing
+    regexInput.addEventListener("input", testRegex);
+    testString.addEventListener("input", testRegex);
+
+    document.querySelectorAll(".regex-flag input")
+        .forEach(flag => {
+
+            flag.addEventListener("change", testRegex);
+
+        });
+
+
+    // Initial test
+    testRegex();
+
+</script>
+
+}

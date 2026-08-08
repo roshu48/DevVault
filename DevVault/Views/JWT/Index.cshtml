@@ -1,0 +1,216 @@
+﻿@{
+    ViewData["Title"] = "JWT Section";
+}
+<!-- =========================================================
+     DEVVAULT JWT DECODER PAGE
+========================================================= -->
+
+<div class="jwt-page">
+
+    <!-- =====================================================
+         JWT HEADER
+    ====================================================== -->
+    <div class="jwt-header">
+
+        <div class="jwt-breadcrumb">
+            <a style="color:gray; cursor:pointer; text-decoration:none" href="/">Developer Tools</a>            
+            <i class="bi bi-chevron-right"></i>
+            <span class="active">JWT Decoder</span>
+        </div>
+
+        <div class="jwt-title-section">
+            <div>
+                <h1>JWT Decoder</h1>
+
+                <p>
+                    Decode and inspect JSON Web Tokens
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         JWT TOKEN INPUT
+    ====================================================== -->
+    <section class="jwt-input-card ">
+
+        <div class="jwt-section-label">
+            <i class="fa-solid fa-key"></i>
+            <span>JWT Token</span>
+        </div>
+
+        <textarea id="jwtInput"
+                  class="jwt-token-input"
+                  placeholder="Paste your JWT token here..."
+                  spellcheck="false"></textarea>
+
+
+        <!-- ACTIONS -->
+        <div class="jwt-actions">
+
+            <button type="button"
+                    id="decodeJwtBtn"
+                    class="jwt-btn jwt-btn-primary">
+                <i class="fa-solid fa-unlock-keyhole"></i>
+                Decode JWT
+            </button>
+
+            <button type="button"
+                    id="clearJwtBtn"
+                    class="jwt-btn jwt-btn-secondary">
+                <i class="fa-solid fa-eraser"></i>
+                Clear
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         JWT ERROR
+    ====================================================== -->
+    <div id="jwtError"
+         class="jwt-error"
+         style="display: none;">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span id="jwtErrorMessage">
+            Invalid JWT token.
+        </span>
+    </div>
+
+
+    <!-- =====================================================
+         JWT RESULT
+    ====================================================== -->
+    @* <section id="jwtResult"
+             class="jwt-result"> *@
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+    <div class="jwt-result-card mt-4">
+
+            <div class="jwt-result-header">
+
+                <div class="jwt-result-title">
+
+                    <div class="jwt-result-icon">
+                        <i class="fa-solid fa-heading"></i>
+                    </div>
+
+                    <div>
+                        <h2>HEADER</h2>
+                        <span>JWT algorithm and token type</span>
+                    </div>
+
+                </div>
+
+
+                <button type="button"
+                        class="jwt-copy-btn"
+                        id="btnHeaderCopy">
+                    <i class="fa-regular fa-copy"></i>
+                    Copy
+                </button>
+
+            </div>
+
+
+            <div class="jwt-code-container">
+
+                <pre id="jwtHeaderOutput"
+                     class="jwt-code"></pre>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             PAYLOAD
+        ================================================== -->
+    <div class="jwt-result-card mt-4">
+
+            <div class="jwt-result-header">
+
+                <div class="jwt-result-title">
+
+                    <div class="jwt-result-icon">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+
+                    <div>
+                        <h2>PAYLOAD</h2>
+                        <span>Token claims and user data</span>
+                    </div>
+
+                </div>
+
+
+                <button type="button"
+                        class="jwt-copy-btn"
+                        id="btnPayLoadCopy">
+                    <i class="fa-regular fa-copy"></i>
+                    Copy
+                </button>
+
+            </div>
+
+
+            <div class="jwt-code-container">
+
+                <pre id="jwtPayloadOutput"
+                     class="jwt-code">
+                </pre>
+            </div>
+
+        </div>      
+    @* </section> *@
+
+    <!-- =================================================
+     SIGNATURE
+================================================== -->
+    <div class="jwt-result-card mt-4">
+
+        <div class="jwt-result-header">
+
+            <div class="jwt-result-title">
+
+                <div class="jwt-result-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <div>
+                    <h2>SIGNATURE</h2>
+                    <span>Token signature</span>
+                </div>
+
+            </div>
+
+            <button type="button"
+                    class="jwt-copy-btn"
+                    id="btnSignatureCopy"
+                    data-copy-target="jwtSignatureOutput">
+
+                <i class="fa-regular fa-copy"></i>
+                Copy
+
+            </button>
+
+        </div>
+
+
+        <div class="jwt-code-container jwt-signature-container">
+
+            <pre id="jwtSignatureOutput"
+                 class="jwt-code"></pre>
+
+        </div>
+
+    </div>
+
+</div>
+   <script src="~/js/jwt-decoder.js"></script>

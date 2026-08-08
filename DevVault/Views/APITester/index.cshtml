@@ -1,0 +1,572 @@
+﻿@{
+    ViewData["Title"] = "API Tester";
+}
+
+<!-- =====================================================
+     API TESTER PAGE
+====================================================== -->
+<div class="api-tester-page">
+
+    <!-- =================================================
+         HEADER
+    ================================================== -->
+    <div class="api-tester-header">
+
+        <div class="api-tester-breadcrumb">
+            <a href="/">Developer Tools</a>
+            <i class="bi bi-chevron-right"></i>
+            <span class="active">API Tester</span>
+        </div>
+
+        <div class="api-tester-title-section">
+            <div>
+                <h1>API Tester</h1>
+
+                <p>
+                    Send HTTP requests and inspect API responses.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         REQUEST BAR
+    ================================================== -->
+    <section class="api-request-card">
+
+        <div class="api-request-bar">
+
+            <!-- METHOD -->
+            <div class="api-method-wrapper">
+
+                <select id="apiMethod"
+                        class="api-method-select">
+
+                    <option value="GET">GET</option>
+                    <option value="POST">POST</option>
+                    <option value="PUT">PUT</option>
+                    <option value="PATCH">PATCH</option>
+                    <option value="DELETE">DELETE</option>
+
+                </select>
+
+            </div>
+
+
+            <!-- URL -->
+            <div class="api-url-wrapper">
+
+                <input type="text"
+                       id="apiUrl"
+                       class="api-url-input"
+                       placeholder="https://api.example.com/users"
+                       spellcheck="false" />
+
+            </div>
+
+
+            <!-- SEND -->
+            <button type="button"
+                    id="sendApiRequestBtn"
+                    class="api-btn api-btn-primary">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+                <span>Send</span>
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         REQUEST CONFIGURATION
+    ================================================== -->
+    <section class="api-config-card">
+
+        <!-- TABS -->
+        <div class="api-tabs">
+
+            <button type="button"
+                    class="api-tab active"
+                    data-tab="params">
+
+                <i class="fa-solid fa-sliders"></i>
+                Params
+
+            </button>
+
+            <button type="button"
+                    class="api-tab"
+                    data-tab="headers">
+
+                <i class="fa-solid fa-list"></i>
+                Headers
+
+            </button>
+
+            <button type="button"
+                    class="api-tab"
+                    data-tab="body">
+
+                <i class="fa-solid fa-code"></i>
+                Body
+
+            </button>
+
+            <button type="button"
+                    class="api-tab"
+                    data-tab="auth">
+
+                <i class="fa-solid fa-lock"></i>
+                Auth
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             PARAMS
+        ================================================== -->
+        <div id="paramsTab"
+             class="api-tab-content active">
+
+            <div class="api-config-header">
+
+                <div>
+                    <h3>Query Parameters</h3>
+
+                    <p>
+                        Add parameters to your request URL.
+                    </p>
+                </div>
+
+                <button type="button"
+                        id="addParamBtn"
+                        class="api-add-btn">
+
+                    <i class="fa-solid fa-plus"></i>
+                    Add Parameter
+
+                </button>
+
+            </div>
+
+
+            <div class="api-key-value-table">
+
+                <div class="api-kv-row api-kv-header">
+
+                    <div>Key</div>
+                    <div>Value</div>
+                    <div></div>
+
+                </div>
+
+
+                <div id="paramsContainer">
+
+                    <div class="api-kv-row">
+
+                        <input type="text"
+                               class="api-kv-input"
+                               placeholder="Parameter name" />
+
+                        <input type="text"
+                               class="api-kv-input"
+                               placeholder="Parameter value" />
+
+                        <button type="button"
+                                class="api-remove-btn">
+
+                            <i class="fa-solid fa-trash"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             HEADERS
+        ================================================== -->
+        <div id="headersTab"
+             class="api-tab-content">
+
+            <div class="api-config-header">
+
+                <div>
+                    <h3>Request Headers</h3>
+
+                    <p>
+                        Add custom HTTP headers to your request.
+                    </p>
+                </div>
+
+                <button type="button"
+                        id="addHeaderBtn"
+                        class="api-add-btn">
+
+                    <i class="fa-solid fa-plus"></i>
+                    Add Header
+
+                </button>
+
+            </div>
+
+
+            <div class="api-key-value-table">
+
+                <div class="api-kv-row api-kv-header">
+
+                    <div>Key</div>
+                    <div>Value</div>
+                    <div></div>
+
+                </div>
+
+
+                <div id="headersContainer">
+
+                    <div class="api-kv-row">
+
+                        <input type="text"
+                               class="api-kv-input"
+                               placeholder="Authorization" />
+
+                        <input type="text"
+                               class="api-kv-input"
+                               placeholder="Bearer token..." />
+
+                        <button type="button"
+                                class="api-remove-btn">
+
+                            <i class="fa-solid fa-trash"></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="api-kv-row">
+
+                        <input type="text"
+                               class="api-kv-input"
+                               placeholder="Content-Type" />
+
+                        <input type="text"
+                               class="api-kv-input"
+                               placeholder="application/json" />
+
+                        <button type="button"
+                                class="api-remove-btn">
+
+                            <i class="fa-solid fa-trash"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             BODY
+        ================================================== -->
+        <div id="bodyTab"
+             class="api-tab-content">
+
+            <div class="api-config-header">
+
+                <div>
+                    <h3>Request Body</h3>
+
+                    <p>
+                        Enter the body content for your request.
+                    </p>
+                </div>
+
+                <select id="bodyType"
+                        class="api-body-type">
+
+                    <option value="json">JSON</option>
+                    <option value="text">Text</option>
+                    <option value="xml">XML</option>
+
+                </select>
+
+            </div>
+
+
+            <textarea id="apiRequestBody"
+                      class="api-body-editor"
+                      spellcheck="false"
+                      placeholder='{
+            "name": "John",
+            "email": "john@example.com"
+            }'></textarea>
+
+        </div>
+
+
+        <!-- =================================================
+             AUTH
+        ================================================== -->
+        <div id="authTab"
+             class="api-tab-content">
+
+            <div class="api-config-header">
+
+                <div>
+                    <h3>Authentication</h3>
+
+                    <p>
+                        Configure authentication for your API request.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="api-auth-grid">
+
+                <div class="api-form-group">
+
+                    <label for="authType">
+                        Authentication Type
+                    </label>
+
+                    <select id="authType"
+                            class="api-form-input">
+
+                        <option value="none">No Authentication</option>
+                        <option value="bearer">Bearer Token</option>
+                        <option value="basic">Basic Auth</option>
+                        <option value="apikey">API Key</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="api-form-group">
+
+                    <label for="authToken">
+                        Token / Credentials
+                    </label>
+
+                    <input type="text"
+                           id="authToken"
+                           class="api-form-input"
+                           placeholder="Enter authentication value..." />
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         REQUEST
+    ================================================== -->
+    <section class="api-result-card">
+
+        <div class="api-result-header">
+
+            <div class="api-result-title">
+
+                <div class="api-result-icon">
+                    <i class="fa-solid fa-arrow-up"></i>
+                </div>
+
+                <div>
+                    <h2>REQUEST</h2>
+                    <span>Request configuration</span>
+                </div>
+
+            </div>
+
+
+            <button type="button"
+                    class="api-copy-btn"
+                    id="copyRequestBtn">
+
+                <i class="fa-regular fa-copy"></i>
+                Copy
+
+            </button>
+
+        </div>
+
+
+        <div class="api-request-preview">
+
+            <div class="api-request-preview-row">
+
+                <span class="api-preview-label">
+                    Method
+                </span>
+
+                <span id="previewMethod"
+                      class="api-method-badge">
+                    GET
+                </span>
+
+            </div>
+
+
+            <div class="api-request-preview-row">
+
+                <span class="api-preview-label">
+                    URL
+                </span>
+
+                <span id="previewUrl"
+                      class="api-preview-url">
+                    https://api.example.com/users
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         RESPONSE
+    ================================================== -->
+    <section class="api-result-card api-response-card">
+
+        <div class="api-result-header">
+
+            <div class="api-result-title">
+
+                <div class="api-result-icon api-response-icon">
+                    <i class="fa-solid fa-arrow-down"></i>
+                </div>
+
+                <div>
+                    <h2>RESPONSE</h2>
+                    <span>API response data</span>
+                </div>
+
+            </div>
+
+
+            <button type="button"
+                    class="api-copy-btn"
+                    id="copyResponseBtn">
+
+                <i class="fa-regular fa-copy"></i>
+                Copy
+
+            </button>
+
+        </div>
+
+
+        <!-- RESPONSE META -->
+        <div class="api-response-meta">
+
+            <div class="api-response-status">
+
+                <span class="api-status-dot"></span>
+
+                <span id="responseStatus">
+                    Status: 200 OK
+                </span>
+
+            </div>
+
+
+            <div class="api-response-info">
+                <span id="responseTime">
+                    Time: 182 ms
+                </span>
+
+                <span class="api-meta-divider"></span>
+
+                <span id="responseSize">
+                    Size: 1.24 KB
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- RESPONSE TABS -->
+        <div class="api-response-tabs">
+
+            <button type="button"
+                    class="api-response-tab active"
+                    data-response-tab="responseBody">
+
+                Body
+
+            </button>
+
+            <button type="button"
+                    class="api-response-tab"
+                    data-response-tab="responseHeaders">
+
+                Headers
+
+            </button>
+
+        </div>
+
+
+        <!-- RESPONSE BODY -->
+        <div id="responseBody"
+             class="api-response-content active">
+
+            <div class="api-code-container">
+
+                <pre id="apiResponseOutput"
+                     class="api-code">{
+  "id": 1,
+  "name": "John",
+  "email": "john@example.com"
+}</pre>
+
+            </div>
+
+        </div>
+
+
+        <!-- RESPONSE HEADERS -->
+        <div id="responseHeaders"
+             class="api-response-content">
+
+            <div class="api-code-container">
+
+                <pre id="apiResponseHeaders"
+                     class="api-code">Content-Type: application/json
+Content-Length: 124
+Cache-Control: no-cache</pre>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>

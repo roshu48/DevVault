@@ -1,0 +1,615 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="devvault-dashboard">
+
+    <!-- =========================================
+         WELCOME HEADER
+    ========================================== -->
+
+    <div class="dashboard-welcome">
+
+        <div>
+            <h1>
+                Welcome to DevVault
+                <span>👋</span>
+            </h1>
+
+            <p>
+                Your personal workspace for developer tools and resources.
+            </p>
+        </div>
+
+        <div class="dashboard-search">
+
+            <i class="bi bi-search"></i>
+
+            <input type="text"
+                   placeholder="Search tools..." />
+
+            <span class="search-key">
+                Ctrl K
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         DEVELOPER TOOLS
+    ========================================== -->
+
+    <section class="tools-section">
+
+        <div class="section-heading">
+
+            <div>
+                <h2>Developer Tools</h2>
+
+                <p>
+                    Useful tools for everyday development.
+                </p>
+            </div>
+
+            <span class="tools-count">
+                6 Tools
+            </span>
+
+        </div>
+
+
+        <div class="tools-grid">
+
+
+            <!-- =================================
+                 JSON FORMATTER
+            ================================== -->
+
+            <a href="/Formatter"
+               class="tool-card">
+
+                <div class="tool-card-top">
+
+                    <div class="tool-icon json-icon">
+                        <i class="bi bi-braces"></i>
+                    </div>
+
+                    <i class="bi bi-arrow-up-right tool-arrow"></i>
+
+                </div>
+
+                <h3>
+                    Formatters
+                </h3>
+
+                <p>
+                    Format, validate and beautify JSON data.
+                </p>
+
+                <div class="tool-tags">
+
+                    <span>
+                        JSON
+                    </span>
+
+                    <span>
+                        SQL
+                    </span>
+
+                    <span>
+                        JavaScript
+                    </span>
+
+                    <span>
+                        HTML
+                    </span>
+
+                    <span>
+                        XML
+                    </span>
+
+                    <span>
+                        C#
+                    </span>
+                    <span>
+                        Java
+                    </span>
+                </div>
+
+            </a>
+
+
+            <!-- =================================
+                 JWT TOOL
+            ================================== -->
+
+            <a href="/JWT"
+               class="tool-card">
+
+                <div class="tool-card-top">
+
+                    <div class="tool-icon jwt-icon">
+                        <i class="bi bi-key"></i>
+                    </div>
+
+                    <i class="bi bi-arrow-up-right tool-arrow"></i>
+
+                </div>
+
+                <h3>
+                    JWT Tool
+                </h3>
+
+                <p>
+                    Decode and inspect JSON Web Tokens quickly.
+                </p>
+
+                <div class="tool-tags">
+
+                    <span>
+                        JWT
+                    </span>
+
+                    <span>
+                        Security
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <!-- =================================
+                 REGEX TESTER
+            ================================== -->
+
+            <a href="/RegEx"
+               class="tool-card">
+
+                <div class="tool-card-top">
+
+                    <div class="tool-icon regex-icon">
+                        <i class="bi bi-regex"></i>
+                    </div>
+
+                    <i class="bi bi-arrow-up-right tool-arrow"></i>
+
+                </div>
+
+                <h3>
+                    Regex Tester
+                </h3>
+
+                <p>
+                    Test and debug regular expressions instantly.
+                </p>
+
+                <div class="tool-tags">
+
+                    <span>
+                        Regex
+                    </span>
+
+                    <span>
+                        Tester
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <!-- =================================
+                 API TESTER
+            ================================== -->
+
+            <a href="/APITester"
+               class="tool-card">
+
+                <div class="tool-card-top">
+
+                    <div class="tool-icon api-icon">
+                        <i class="bi bi-cloud-arrow-up"></i>
+                    </div>
+
+                    <i class="bi bi-arrow-up-right tool-arrow"></i>
+
+                </div>
+
+                <h3>
+                    API Tester
+                </h3>
+
+                <p>
+                    Send HTTP requests and inspect API responses.
+                </p>
+
+                <div class="tool-tags">
+
+                    <span>
+                        REST
+                    </span>
+
+                    <span>
+                        HTTP
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <!-- =================================
+                 MARKDOWN PREVIEW
+            ================================== -->
+
+            <a href="#"
+               class="tool-card">
+
+                <div class="tool-card-top">
+
+                    <div class="tool-icon markdown-icon">
+                        <i class="bi bi-markdown"></i>
+                    </div>
+
+                    <i class="bi bi-arrow-up-right tool-arrow"></i>
+
+                </div>
+
+                <h3>
+                    Markdown Preview
+                </h3>
+
+                <p>
+                    Write Markdown and preview the result instantly.
+                </p>
+
+                <div class="tool-tags">
+
+                    <span>
+                        Markdown
+                    </span>
+
+                    <span>
+                        Preview
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <!-- =================================
+                 COLOR TOOL
+            ================================== -->
+
+            <a href="#"
+               class="tool-card">
+
+                <div class="tool-card-top">
+
+                    <div class="tool-icon color-icon">
+                        <i class="bi bi-palette"></i>
+                    </div>
+
+                    <i class="bi bi-arrow-up-right tool-arrow"></i>
+
+                </div>
+
+                <h3>
+                    Color Tool
+                </h3>
+
+                <p>
+                    Pick colors and convert between color formats.
+                </p>
+
+                <div class="tool-tags">
+
+                    <span>
+                        HEX
+                    </span>
+
+                    <span>
+                        RGB
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         RECENT SNIPPETS + QUICK ACCESS
+    ========================================== -->
+
+    <div class="dashboard-bottom">
+
+
+        <!-- =================================
+             RECENT SNIPPETS
+        ================================== -->
+
+        <section class="dashboard-panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <h2>
+                        Recent Snippets
+                    </h2>
+
+                    <p>
+                        Your recently saved code.
+                    </p>
+                </div>
+
+                <a href="#">
+                    View all
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <div class="snippet-list">
+
+
+                <!-- Snippet -->
+
+                <div class="snippet-row">
+
+                    <div class="snippet-file-icon">
+                        <i class="bi bi-filetype-js"></i>
+                    </div>
+
+                    <div class="snippet-content">
+
+                        <h4>
+                            JWT Authentication
+                        </h4>
+
+                        <span>
+                            JavaScript
+                        </span>
+
+                    </div>
+
+                    <small>
+                        2 hours ago
+                    </small>
+
+                </div>
+
+
+                <!-- Snippet -->
+
+                <div class="snippet-row">
+
+                    <div class="snippet-file-icon">
+                        <i class="bi bi-filetype-java"></i>
+                    </div>
+
+                    <div class="snippet-content">
+
+                        <h4>
+                            JDBC Connection
+                        </h4>
+
+                        <span>
+                            Java
+                        </span>
+
+                    </div>
+
+                    <small>
+                        Yesterday
+                    </small>
+
+                </div>
+
+
+                <!-- Snippet -->
+
+                <div class="snippet-row">
+
+                    <div class="snippet-file-icon">
+                        <i class="bi bi-filetype-cs"></i>
+                    </div>
+
+                    <div class="snippet-content">
+
+                        <h4>
+                            API Response Model
+                        </h4>
+
+                        <span>
+                            C#
+                        </span>
+
+                    </div>
+
+                    <small>
+                        2 days ago
+                    </small>
+
+                </div>
+
+
+                <!-- Snippet -->
+
+                <div class="snippet-row">
+
+                    <div class="snippet-file-icon">
+                        <i class="bi bi-filetype-py"></i>
+                    </div>
+
+                    <div class="snippet-content">
+
+                        <h4>
+                            Python API Request
+                        </h4>
+
+                        <span>
+                            Python
+                        </span>
+
+                    </div>
+
+                    <small>
+                        3 days ago
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================
+             QUICK ACCESS
+        ================================== -->
+
+        <section class="dashboard-panel quick-panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <h2>
+                        Quick Access
+                    </h2>
+
+                    <p>
+                        Frequently used tools.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="quick-tools">
+
+
+                <a href="/Json">
+
+                    <div class="quick-tool-icon json-icon">
+                        <i class="bi bi-braces"></i>
+                    </div>
+
+                    <div>
+                        <strong>
+                            JSON Formatter
+                        </strong>
+
+                        <span>
+                            Format JSON
+                        </span>
+                    </div>
+
+                    <i class="bi bi-chevron-right"></i>
+
+                </a>
+
+
+                <a href="/Jwt">
+
+                    <div class="quick-tool-icon jwt-icon">
+                        <i class="bi bi-key"></i>
+                    </div>
+
+                    <div>
+                        <strong>
+                            JWT Tool
+                        </strong>
+
+                        <span>
+                            Decode JWT
+                        </span>
+                    </div>
+
+                    <i class="bi bi-chevron-right"></i>
+
+                </a>
+
+
+                <a href="/Regex">
+
+                    <div class="quick-tool-icon regex-icon">
+                        <i class="bi bi-regex"></i>
+                    </div>
+
+                    <div>
+                        <strong>
+                            Regex Tester
+                        </strong>
+
+                        <span>
+                            Test expressions
+                        </span>
+                    </div>
+
+                    <i class="bi bi-chevron-right"></i>
+
+                </a>
+
+
+                <a href="/Api">
+
+                    <div class="quick-tool-icon api-icon">
+                        <i class="bi bi-cloud-arrow-up"></i>
+                    </div>
+
+                    <div>
+                        <strong>
+                            API Tester
+                        </strong>
+
+                        <span>
+                            Test APIs
+                        </span>
+                    </div>
+
+                    <i class="bi bi-chevron-right"></i>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- =========================================
+         DEVELOPER TIP
+    ========================================== -->
+
+    <div class="developer-tip">
+
+        <div class="tip-icon">
+            <i class="bi bi-lightbulb"></i>
+        </div>
+
+        <div>
+
+            <strong>
+                Developer Tip
+            </strong>
+
+            <p>
+                Use <kbd>Ctrl</kbd> + <kbd>K</kbd> to quickly search
+                for tools and resources in DevVault.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>

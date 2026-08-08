@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "C# Monaco Editor";
+}
+
+<div style="padding: 20px;">
+    <h2>C# Code Editor</h2>
+
+    <div id="editor" style="height: 500px; border: 1px solid #333;"></div>
+
+    <br />
+
+    <button id="getCode">Get Code</button>
+
+    <pre id="output"></pre>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs/loader.min.js"></script>
+
+    <script>
+        require.config({
+            paths: {
+                vs: "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs"
+            }
+        });
+
+        require(["vs/editor/editor.main"], function () {
+
+            var editor = monaco.editor.create(
+                document.getElementById("editor"),
+                {
+                    value: `using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("Hello World!");
+    }
+}`,
+                    language: "csharp",
+                    theme: "vs-dark",
+
+                    automaticLayout: true,
+
+                    fontSize: 16,
+
+                    minimap: {
+                        enabled: true
+                    },
+
+                    wordWrap: "on",
+
+                    scrollBeyondLastLine: false
+                }
+            );
+
+            document.getElementById("getCode").addEventListener("click", function () {
+
+                var code = editor.getValue();
+
+                document.getElementById("output").textContent = code;
+
+                console.log(code);
+            });
+        });
+    </script>
+}

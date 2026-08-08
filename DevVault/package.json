@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@wasm-fmt/clang-format": "^22.1.8",
+    "monaco-editor": "^0.56.0"
+  },
+  "devDependencies": {
+    "eslint": "^10.8.1",
+    "vite": "^7.3.6"
+  },
+  "scripts": {
+    "build:formatter": "vite build"
+  }
+}

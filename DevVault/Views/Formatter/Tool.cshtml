@@ -1,0 +1,296 @@
+﻿@{
+    var formatterType = ViewBag.FormatterType?.ToString()?.ToLower() ?? "json";
+
+    var formatterName = formatterType switch
+    {
+        "json" => "JSON Formatter",
+        "sql" => "SQL Formatter",
+        "javascript" => "JavaScript Formatter",
+        "html" => "HTML Formatter",
+        "css" => "CSS Formatter",
+        "xml" => "XML Formatter",
+        "csharp" => "C# Formatter",
+        "java" => "Java Formatter",
+        _ => "JSON Formatter"
+    };
+
+    var formatterDescription = formatterType switch
+    {
+        "json" => "Format, validate and beautify JSON data.",
+        "sql" => "Format and beautify SQL queries.",
+        "javascript" => "Format and clean JavaScript code.",
+        "html" => "Format and organize HTML markup.",
+        "css" => "Format and beautify CSS stylesheets.",
+        "xml" => "Format and structure XML documents.",
+        "csharp" => "Format and organize C# source code.",
+        "java" => "Format and clean Java source code.",
+        _ => "Format, validate and beautify JSON data."
+    };
+
+    var formatterIcon = formatterType switch
+    {
+        "json" => "bi-braces",
+        "sql" => "bi-database",
+        "javascript" => "bi-filetype-js",
+        "html" => "bi-filetype-html",
+        "css" => "bi-filetype-css",
+        "xml" => "bi-code-slash",
+        "csharp" => "bi-filetype-cs",
+        "java" => "bi-filetype-java",
+        _ => "bi-braces"
+    };
+}
+
+<div class="formatter-tool-page">
+
+
+    <!-- =====================================================
+         TOOL HEADER
+    ====================================================== -->
+
+    <div class="formatter-tool-header">
+
+        <div class="formatter-tool-title">
+
+            <a href="/Formatter"
+               class="back-to-formatters">
+
+                <i class="bi bi-arrow-left"></i>
+
+                <span>
+                    Formatters
+                </span>
+
+            </a>
+
+
+            <div class="formatter-title-row">
+
+                <div class="formatter-tool-icon">
+                    <i class="bi @formatterIcon"></i>
+                </div>
+
+                <div>
+
+                    <h1>
+                        @formatterName
+                    </h1>
+
+                    <p>
+                        @formatterDescription
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         TOOL WORKSPACE
+    ====================================================== -->
+
+    <section class="formatter-editor">
+
+
+        <!-- =================================================
+             EDITOR HEADER
+        ================================================== -->
+
+        <div class="formatter-editor-header">
+
+            <div class="editor-header-left">
+
+                <span class="editor-label">
+                    Input
+                </span>
+
+                <span class="editor-language">
+                    @formatterType.ToUpper()
+                </span>
+
+            </div>
+
+
+            <div class="editor-actions">
+
+                <button type="button"
+                        class="formatter-action-btn"
+                        id="pasteBtn">
+
+                    <i class="bi bi-clipboard"></i>
+
+                    Paste
+
+                </button>
+
+                <button type="button"
+                        class="formatter-action-btn"
+                        id="clearBtn">
+
+                    <i class="bi bi-trash3"></i>
+
+                    Clear
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             EDITOR BODY
+        ================================================== -->   
+        <div class="formatter-editor-body">           
+            <div id="editor"
+                 data-formatter-type="@formatterType"
+                 style="height: 500px; width: 100%; border: 1px solid #444;">
+            </div>
+            <pre id="output"></pre>
+        </div>       
+
+        <!-- =================================================
+             TOOLBAR
+        ================================================== -->
+
+        <div class="formatter-toolbar">
+
+            <div class="formatter-main-actions">
+
+                <button type="button"
+                        class="formatter-primary-btn"
+                        id="formatBtn">
+
+                    <i class="bi bi-magic"></i>
+
+                    Format
+
+                </button>
+
+
+                @* @if (formatterType == "json")
+                {
+                    <button type="button"
+                            class="formatter-secondary-btn"
+                            id="minifyBtn">
+
+                        <i class="bi bi-arrows-collapse"></i>
+
+                        Minify
+
+                    </button>
+
+                    <button type="button"
+                            class="formatter-secondary-btn"
+                            id="validateBtn">
+
+                        <i class="bi bi-check-circle"></i>
+
+                        Validate
+
+                    </button>
+                } *@
+
+            </div>
+
+
+            <div class="formatter-secondary-actions">
+
+                <button type="button"
+                        class="formatter-secondary-btn"
+                        id="copyBtn">
+
+                    <i class="bi bi-copy"></i>
+
+                    Copy
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         OUTPUT
+    ====================================================== -->
+
+    <section class="formatter-output">
+
+
+        <!-- Output Header -->
+
+        <div class="formatter-output-header">
+
+            <div>
+
+                <span class="editor-label">
+                    Output
+                </span>
+
+                <span class="formatter-status"
+                      id="formatterStatus">
+
+                    Ready
+
+                </span>
+
+            </div>
+
+
+            <button type="button"
+                    class="formatter-action-btn"
+                    id="copyOutputBtn">
+
+                <i class="bi bi-copy"></i>
+
+                Copy
+
+            </button>
+
+        </div>
+
+
+        <!-- Output Area -->
+
+        <div class="formatter-output-body">
+
+            <pre id="formatterOutput"
+                 class="formatter-output-content">Your formatted result will appear here...</pre>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ERROR / STATUS
+    ====================================================== -->
+
+    <div class="formatter-message"
+         id="formatterMessage">
+
+        <i class="bi bi-info-circle"></i>
+
+        <span id="formatterMessageText">
+            Ready to format your code.
+        </span>
+
+    </div>    
+
+    <!-- Monaco AMD loader: ONLY ONCE -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs/loader.min.js"></script>
+        
+    <!-- Your module -->
+    <script type="module" src="~/js/formatter-editor.js"></script>
+</div>

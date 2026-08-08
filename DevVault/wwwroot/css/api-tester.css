@@ -1,0 +1,1243 @@
+﻿/* =========================================================
+   DEVVAULT - API TESTER
+   Complete Light / Dark Theme CSS
+========================================================= */
+
+
+/* =========================================================
+   PAGE VARIABLES - LIGHT THEME
+========================================================= */
+
+.api-tester-page {
+    --api-bg: #ffffff;
+    --api-card-bg: #ffffff;
+    --api-input-bg: #ffffff;
+    --api-code-bg: #f8fafc;
+    --api-border: #e2e8f0;
+    --api-border-hover: #cbd5e1;
+    --api-text: #1e293b;
+    --api-text-secondary: #64748b;
+    --api-text-muted: #94a3b8;
+    --api-accent: #6366f1;
+    --api-accent-hover: #4f46e5;
+    --api-accent-light: rgba(99, 102, 241, 0.10);
+    --api-success: #16a34a;
+    --api-danger: #dc2626;
+    --api-table-bg: #f8fafc;
+    --api-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    --api-shadow-hover: 0 4px 14px rgba(15, 23, 42, 0.07);
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   DARK THEME
+   Covers common DevVault theme implementations
+========================================================= */
+
+html[data-theme="dark"] .api-tester-page,
+body[data-theme="dark"] .api-tester-page,
+html[data-bs-theme="dark"] .api-tester-page,
+body[data-bs-theme="dark"] .api-tester-page,
+html.dark .api-tester-page,
+body.dark .api-tester-page,
+html.dark-mode .api-tester-page,
+body.dark-mode .api-tester-page,
+html.dark-theme .api-tester-page,
+body.dark-theme .api-tester-page,
+html.theme-dark .api-tester-page,
+body.theme-dark .api-tester-page,
+.dark .api-tester-page,
+.dark-mode .api-tester-page,
+.dark-theme .api-tester-page {
+    --api-bg: #0f172a;
+    --api-card-bg: #151c2c;
+    --api-input-bg: #111827;
+    --api-code-bg: #0d1422;
+    --api-border: #273449;
+    --api-border-hover: #3b4a63;
+    --api-text: #f1f5f9;
+    --api-text-secondary: #94a3b8;
+    --api-text-muted: #64748b;
+    --api-accent: #818cf8;
+    --api-accent-hover: #6366f1;
+    --api-accent-light: rgba(129, 140, 248, 0.12);
+    --api-success: #4ade80;
+    --api-danger: #f87171;
+    --api-table-bg: #1a2333;
+    --api-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+    --api-shadow-hover: 0 6px 24px rgba(0, 0, 0, 0.30);
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.api-tester-header {
+    margin-bottom: 32px;
+}
+
+
+/* =========================================================
+   BREADCRUMB
+========================================================= */
+
+.api-tester-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+    .api-tester-breadcrumb a {
+        color: var(--api-text-secondary);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+        .api-tester-breadcrumb a:hover {
+            color: var(--api-accent);
+        }
+
+    .api-tester-breadcrumb i {
+        color: var(--api-text-muted);
+        font-size: 10px;
+    }
+
+    .api-tester-breadcrumb .active {
+        color: var(--api-text-secondary);
+        font-weight: 500;
+    }
+
+
+/* =========================================================
+   PAGE TITLE
+========================================================= */
+
+.api-tester-title-section {
+    display: flex;
+    align-items: flex-start;
+}
+
+    .api-tester-title-section h1 {
+        margin: 0;
+        color: var(--api-text);
+        font-size: 32px;
+        line-height: 1.2;
+        font-weight: 700;
+        letter-spacing: -0.4px;
+    }
+
+    .api-tester-title-section p {
+        margin: 8px 0 0;
+        color: var(--api-text-secondary);
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+
+/* =========================================================
+   COMMON CARD
+========================================================= */
+
+.api-request-card,
+.api-config-card,
+.api-result-card {
+    width: 100%;
+    background: var(--api-card-bg);
+    border: 1px solid var(--api-border);
+    border-radius: 12px;
+    box-shadow: var(--api-shadow);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+
+/* =========================================================
+   REQUEST CARD
+========================================================= */
+
+.api-request-card {
+    margin-bottom: 20px;
+    padding: 16px;
+}
+
+
+/* =========================================================
+   REQUEST BAR
+========================================================= */
+
+.api-request-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* =========================================================
+   HTTP METHOD
+========================================================= */
+
+.api-method-wrapper {
+    flex: 0 0 125px;
+}
+
+.api-method-select {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+    border: 1px solid var(--api-border);
+    border-radius: 8px;
+    background-color: var(--api-input-bg);
+    color: var(--api-text);
+    font-size: 14px;
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+    appearance: auto;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+    .api-method-select:hover {
+        border-color: var(--api-border-hover);
+    }
+
+    .api-method-select:focus {
+        border-color: var(--api-accent);
+        box-shadow: 0 0 0 3px var(--api-accent-light);
+    }
+
+
+/* =========================================================
+   URL INPUT
+========================================================= */
+
+.api-url-wrapper {
+    flex: 1;
+    min-width: 0;
+}
+
+.api-url-input {
+    width: 100%;
+    height: 48px;
+    padding: 0 16px;
+    border: 1px solid var(--api-border);
+    border-radius: 8px;
+    background-color: var(--api-input-bg);
+    color: var(--api-text);
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+    .api-url-input::placeholder {
+        color: var(--api-text-muted);
+    }
+
+    .api-url-input:hover {
+        border-color: var(--api-border-hover);
+    }
+
+    .api-url-input:focus {
+        border-color: var(--api-accent);
+        box-shadow: 0 0 0 3px var(--api-accent-light);
+    }
+
+
+/* =========================================================
+   SEND BUTTON
+========================================================= */
+
+.api-btn {
+    height: 48px;
+    padding: 0 21px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+    .api-btn:active {
+        transform: translateY(1px);
+    }
+
+.api-btn-primary {
+    min-width: 108px;
+    background-color: var(--api-accent);
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(99, 102, 241, 0.18);
+}
+
+    .api-btn-primary:hover {
+        background-color: var(--api-accent-hover);
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.24);
+    }
+
+
+/* =========================================================
+   CONFIGURATION CARD
+========================================================= */
+
+.api-config-card {
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   REQUEST TABS
+========================================================= */
+
+.api-tabs {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 8px 16px 0;
+    border-bottom: 1px solid var(--api-border);
+    background: var(--api-card-bg);
+}
+
+.api-tab {
+    position: relative;
+    height: 48px;
+    padding: 0 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    border: none;
+    background: transparent;
+    color: var(--api-text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+    .api-tab i {
+        font-size: 13px;
+    }
+
+    .api-tab:hover {
+        color: var(--api-text);
+    }
+
+    .api-tab.active {
+        color: var(--api-accent);
+        font-weight: 600;
+    }
+
+        .api-tab.active::after {
+            content: "";
+            position: absolute;
+            left: 10px;
+            right: 10px;
+            bottom: -1px;
+            height: 2px;
+            background: var(--api-accent);
+            border-radius: 2px 2px 0 0;
+        }
+
+
+/* =========================================================
+   TAB CONTENT
+========================================================= */
+
+.api-tab-content {
+    display: none;
+    padding: 24px;
+}
+
+    .api-tab-content.active {
+        display: block;
+    }
+
+
+/* =========================================================
+   CONFIGURATION HEADER
+========================================================= */
+
+.api-config-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 18px;
+}
+
+    .api-config-header h3 {
+        margin: 0;
+        color: var(--api-text);
+        font-size: 15px;
+        line-height: 1.4;
+        font-weight: 650;
+    }
+
+    .api-config-header p {
+        margin: 5px 0 0;
+        color: var(--api-text-secondary);
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+
+/* =========================================================
+   ADD PARAMETER / HEADER BUTTON
+========================================================= */
+
+.api-add-btn {
+    height: 38px;
+    padding: 0 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    border: 1px solid var(--api-border);
+    border-radius: 7px;
+    background: var(--api-input-bg);
+    color: var(--api-text);
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+    .api-add-btn:hover {
+        color: var(--api-accent);
+        border-color: var(--api-accent);
+        background: var(--api-accent-light);
+    }
+
+
+/* =========================================================
+   KEY VALUE TABLE
+========================================================= */
+
+.api-key-value-table {
+    width: 100%;
+    border: 1px solid var(--api-border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--api-card-bg);
+}
+
+
+/* =========================================================
+   KEY VALUE ROW
+========================================================= */
+
+.api-kv-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 48px;
+    gap: 10px;
+    padding: 10px;
+    border-top: 1px solid var(--api-border);
+}
+
+    .api-kv-row:first-child {
+        border-top: none;
+    }
+
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+.api-kv-header {
+    min-height: 40px;
+    padding: 0 12px;
+    align-items: center;
+    background: var(--api-table-bg);
+    color: var(--api-text-secondary);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+
+/* =========================================================
+   KEY VALUE INPUT
+========================================================= */
+
+.api-kv-input {
+    width: 100%;
+    min-width: 0;
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid var(--api-border);
+    border-radius: 7px;
+    background-color: var(--api-input-bg);
+    color: var(--api-text);
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+    .api-kv-input::placeholder {
+        color: var(--api-text-muted);
+    }
+
+    .api-kv-input:hover {
+        border-color: var(--api-border-hover);
+    }
+
+    .api-kv-input:focus {
+        border-color: var(--api-accent);
+        box-shadow: 0 0 0 3px var(--api-accent-light);
+    }
+
+
+/* =========================================================
+   REMOVE BUTTON
+========================================================= */
+
+.api-remove-btn {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--api-border);
+    border-radius: 7px;
+    background: var(--api-input-bg);
+    color: var(--api-text-muted);
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+    .api-remove-btn:hover {
+        color: var(--api-danger);
+        border-color: rgba(220, 38, 38, 0.35);
+        background: rgba(220, 38, 38, 0.07);
+    }
+
+
+/* =========================================================
+   BODY TYPE SELECT
+========================================================= */
+
+.api-body-type {
+    height: 38px;
+    padding: 0 12px;
+    border: 1px solid var(--api-border);
+    border-radius: 7px;
+    background: var(--api-input-bg);
+    color: var(--api-text);
+    font-size: 13px;
+    outline: none;
+    cursor: pointer;
+}
+
+    .api-body-type:focus {
+        border-color: var(--api-accent);
+        box-shadow: 0 0 0 3px var(--api-accent-light);
+    }
+
+
+/* =========================================================
+   BODY EDITOR
+========================================================= */
+
+.api-body-editor {
+    width: 100%;
+    min-height: 230px;
+    padding: 16px;
+    resize: vertical;
+    border: 1px solid var(--api-border);
+    border-radius: 8px;
+    background: var(--api-code-bg);
+    color: var(--api-text);
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    font-size: 13px;
+    line-height: 1.65;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .api-body-editor::placeholder {
+        color: var(--api-text-muted);
+    }
+
+    .api-body-editor:focus {
+        border-color: var(--api-accent);
+        box-shadow: 0 0 0 3px var(--api-accent-light);
+    }
+
+
+/* =========================================================
+   AUTH GRID
+========================================================= */
+
+.api-auth-grid {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    gap: 18px;
+}
+
+
+/* =========================================================
+   FORM GROUP
+========================================================= */
+
+.api-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+    .api-form-group label {
+        color: var(--api-text);
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+
+/* =========================================================
+   FORM INPUT
+========================================================= */
+
+.api-form-input {
+    width: 100%;
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid var(--api-border);
+    border-radius: 7px;
+    background: var(--api-input-bg);
+    color: var(--api-text);
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .api-form-input::placeholder {
+        color: var(--api-text-muted);
+    }
+
+    .api-form-input:hover {
+        border-color: var(--api-border-hover);
+    }
+
+    .api-form-input:focus {
+        border-color: var(--api-accent);
+        box-shadow: 0 0 0 3px var(--api-accent-light);
+    }
+
+
+/* =========================================================
+   RESULT CARD
+========================================================= */
+
+.api-result-card {
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   RESULT HEADER
+========================================================= */
+
+.api-result-header {
+    min-height: 72px;
+    padding: 15px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border-bottom: 1px solid var(--api-border);
+    background: var(--api-card-bg);
+}
+
+
+/* =========================================================
+   RESULT TITLE
+========================================================= */
+
+.api-result-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+
+/* =========================================================
+   RESULT ICON
+========================================================= */
+
+.api-result-icon {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: var(--api-accent-light);
+    color: var(--api-accent);
+    font-size: 15px;
+}
+
+.api-result-title h2 {
+    margin: 0;
+    color: var(--api-text);
+    font-size: 14px;
+    line-height: 1.3;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.api-result-title span {
+    display: block;
+    margin-top: 3px;
+    color: var(--api-text-secondary);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   COPY BUTTON
+========================================================= */
+
+.api-copy-btn {
+    height: 35px;
+    padding: 0 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    flex-shrink: 0;
+    border: 1px solid var(--api-border);
+    border-radius: 7px;
+    background: var(--api-input-bg);
+    color: var(--api-text-secondary);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+    .api-copy-btn:hover {
+        color: var(--api-accent);
+        border-color: var(--api-accent);
+        background: var(--api-accent-light);
+    }
+
+
+/* =========================================================
+   REQUEST PREVIEW
+========================================================= */
+
+.api-request-preview {
+    padding: 8px 20px 16px;
+}
+
+
+/* =========================================================
+   REQUEST PREVIEW ROW
+========================================================= */
+
+.api-request-preview-row {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid var(--api-border);
+}
+
+    .api-request-preview-row:last-child {
+        border-bottom: none;
+    }
+
+
+/* =========================================================
+   PREVIEW LABEL
+========================================================= */
+
+.api-preview-label {
+    width: 80px;
+    flex: 0 0 80px;
+    color: var(--api-text-secondary);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   METHOD BADGE
+========================================================= */
+
+.api-method-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 9px;
+    border-radius: 5px;
+    background: var(--api-accent-light);
+    color: var(--api-accent);
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   PREVIEW URL
+========================================================= */
+
+.api-preview-url {
+    min-width: 0;
+    color: var(--api-text);
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    font-size: 13px;
+    word-break: break-all;
+}
+
+
+/* =========================================================
+   RESPONSE META
+========================================================= */
+
+.api-response-meta {
+    min-height: 50px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border-bottom: 1px solid var(--api-border);
+}
+
+
+/* =========================================================
+   RESPONSE STATUS
+========================================================= */
+
+.api-response-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--api-success);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.api-status-dot {
+    width: 7px;
+    height: 7px;
+    flex: 0 0 7px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+
+/* =========================================================
+   RESPONSE INFORMATION
+========================================================= */
+
+.api-response-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--api-text-secondary);
+    font-size: 12px;
+}
+
+.api-meta-divider {
+    width: 1px;
+    height: 14px;
+    background: var(--api-border);
+}
+
+
+/* =========================================================
+   RESPONSE TABS
+========================================================= */
+
+.api-response-tabs {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 8px 18px 0;
+    border-bottom: 1px solid var(--api-border);
+    background: var(--api-card-bg);
+}
+
+.api-response-tab {
+    position: relative;
+    height: 42px;
+    padding: 0 14px;
+    border: none;
+    background: transparent;
+    color: var(--api-text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+    .api-response-tab:hover {
+        color: var(--api-text);
+    }
+
+    .api-response-tab.active {
+        color: var(--api-accent);
+        font-weight: 600;
+    }
+
+        .api-response-tab.active::after {
+            content: "";
+            position: absolute;
+            left: 7px;
+            right: 7px;
+            bottom: -1px;
+            height: 2px;
+            background: var(--api-accent);
+            border-radius: 2px 2px 0 0;
+        }
+
+
+/* =========================================================
+   RESPONSE CONTENT
+========================================================= */
+
+.api-response-content {
+    display: none;
+    padding: 18px;
+}
+
+    .api-response-content.active {
+        display: block;
+    }
+
+
+/* =========================================================
+   CODE CONTAINER
+========================================================= */
+
+.api-code-container {
+    width: 100%;
+    min-height: 180px;
+    max-height: 500px;
+    overflow: auto;
+    border: 1px solid var(--api-border);
+    border-radius: 8px;
+    background: var(--api-code-bg);
+}
+
+
+/* =========================================================
+   CODE
+========================================================= */
+
+.api-code {
+    margin: 0;
+    padding: 18px;
+    color: var(--api-text);
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+.api-code-container::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.api-code-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.api-code-container::-webkit-scrollbar-thumb {
+    background: var(--api-border-hover);
+    border-radius: 10px;
+}
+
+    .api-code-container::-webkit-scrollbar-thumb:hover {
+        background: var(--api-text-muted);
+    }
+
+
+/* =========================================================
+   SELECT OPTION COLORS
+========================================================= */
+
+.api-method-select option,
+.api-body-type option,
+.api-form-input option {
+    background: var(--api-input-bg);
+    color: var(--api-text);
+}
+
+
+/* =========================================================
+   TEXTAREA / INPUT AUTOFILL
+========================================================= */
+
+.api-tester-page input:-webkit-autofill,
+.api-tester-page input:-webkit-autofill:hover,
+.api-tester-page input:-webkit-autofill:focus,
+.api-tester-page textarea:-webkit-autofill,
+.api-tester-page textarea:-webkit-autofill:hover,
+.api-tester-page textarea:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--api-text);
+    -webkit-box-shadow: 0 0 0 1000px var(--api-input-bg) inset;
+    transition: background-color 9999s ease-in-out 0s;
+}
+
+
+/* =========================================================
+   FOCUS ACCESSIBILITY
+========================================================= */
+
+.api-tester-page button:focus-visible,
+.api-tester-page select:focus-visible,
+.api-tester-page input:focus-visible,
+.api-tester-page textarea:focus-visible {
+    outline: 2px solid var(--api-accent);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .api-tester-title-section h1 {
+        font-size: 30px;
+    }
+
+    .api-request-bar {
+        flex-wrap: wrap;
+    }
+
+    .api-method-wrapper {
+        flex: 0 0 120px;
+    }
+
+    .api-url-wrapper {
+        flex: 1 1 calc(100% - 130px);
+    }
+
+    .api-btn-primary {
+        width: 100%;
+    }
+
+    .api-auth-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .api-tester-header {
+        margin-bottom: 24px;
+    }
+
+    .api-tester-title-section h1 {
+        font-size: 26px;
+    }
+
+    .api-tester-title-section p {
+        font-size: 14px;
+    }
+
+
+    /* REQUEST */
+
+    .api-request-card {
+        padding: 12px;
+    }
+
+    .api-request-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .api-method-wrapper,
+    .api-url-wrapper {
+        width: 100%;
+        flex: none;
+    }
+
+
+    /* TABS */
+
+    .api-tabs {
+        overflow-x: auto;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .api-tab {
+        flex: 0 0 auto;
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+
+
+    /* CONTENT */
+
+    .api-tab-content {
+        padding: 18px;
+    }
+
+
+    /* CONFIG HEADER */
+
+    .api-config-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .api-add-btn {
+        width: 100%;
+    }
+
+
+    /* KEY VALUE */
+
+    .api-kv-header {
+        display: none;
+    }
+
+    .api-kv-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 12px;
+    }
+
+    .api-remove-btn {
+        width: 100%;
+    }
+
+
+    /* RESULT HEADER */
+
+    .api-result-header {
+        padding: 14px;
+        align-items: flex-start;
+    }
+
+
+    /* REQUEST PREVIEW */
+
+    .api-request-preview {
+        padding: 8px 16px 14px;
+    }
+
+    .api-request-preview-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+        padding: 11px 0;
+    }
+
+    .api-preview-label {
+        width: auto;
+        flex: none;
+    }
+
+
+    /* RESPONSE META */
+
+    .api-response-meta {
+        min-height: auto;
+        padding: 12px 16px;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+
+    /* RESPONSE TABS */
+
+    .api-response-tabs {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+
+    /* RESPONSE */
+
+    .api-response-content {
+        padding: 14px;
+    }
+
+    .api-code {
+        padding: 14px;
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .api-tester-title-section h1 {
+        font-size: 24px;
+    }
+
+    .api-tester-breadcrumb {
+        font-size: 13px;
+    }
+
+    .api-result-title {
+        gap: 9px;
+    }
+
+    .api-result-icon {
+        width: 34px;
+        height: 34px;
+        flex-basis: 34px;
+    }
+
+    .api-result-title h2 {
+        font-size: 13px;
+    }
+
+    .api-result-title span {
+        font-size: 11px;
+    }
+
+    .api-copy-btn {
+        padding: 0 9px;
+    }
+
+        .api-copy-btn i {
+            margin-right: 0;
+        }
+}

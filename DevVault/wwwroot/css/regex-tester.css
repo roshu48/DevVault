@@ -1,0 +1,824 @@
+﻿/* =========================================================
+   DEVVAULT
+   REGEX TESTER
+   ========================================================= */
+
+
+/* =========================================================
+   THEME VARIABLES
+   ========================================================= */
+
+/* -------------------------
+   LIGHT THEME
+   ------------------------- */
+
+/* =========================================================
+   LIGHT THEME
+========================================================= */
+
+:root,
+html[data-theme="light"],
+body.light-theme {
+    --regex-card-bg: #ffffff;
+    --regex-input-bg: #f8fafc;
+    --regex-text-primary: #0f172a;
+    --regex-text-secondary: #475569;
+    --regex-text-muted: #94a3b8;
+    /* Stronger borders */
+    --regex-border: #cbd5e1;
+    --regex-border-hover: #94a3b8;
+    --regex-accent: #6366f1;
+    --regex-accent-hover: #4f46e5;
+    --regex-accent-soft: rgba(99, 102, 241, 0.10);
+    --regex-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+    --regex-shadow-focus: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+
+/* =========================================================
+   DARK THEME
+========================================================= */
+
+html[data-theme="dark"],
+html.dark-theme,
+body.dark-theme {
+    --regex-card-bg: #111827;
+    --regex-input-bg: #0b1220;
+    --regex-text-primary: #f1f5f9;
+    --regex-text-secondary: #94a3b8;
+    --regex-text-muted: #64748b;
+    /* Much more visible dark-mode borders */
+    --regex-border: #334155;
+    --regex-border-hover: #475569;
+    --regex-accent: #818cf8;
+    --regex-accent-hover: #6366f1;
+    --regex-accent-soft: rgba(129, 140, 248, 0.12);
+    --regex-shadow: 0 8px 30px rgba(0, 0, 0, 0.20);
+    --regex-shadow-focus: 0 0 0 3px rgba(129, 140, 248, 0.14);
+}
+
+
+/* =========================================================
+   MAIN PAGE
+   ========================================================= */
+
+.regex-page {
+    width: 100%;
+    max-width: 1450px;
+    margin: 0 auto;
+    padding: 32px 34px 60px;
+    color: var(--regex-text-primary);
+}
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.regex-header {
+    margin-bottom: 32px;
+}
+
+
+/* -------------------------
+   BREADCRUMB
+   ------------------------- */
+
+.regex-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 13px;
+    font-size: 13px;
+    color: var(--regex-text-muted);
+}
+
+
+    .regex-breadcrumb i {
+        font-size: 10px;
+        color: var(--regex-text-muted);
+    }
+
+
+.regex-breadcrumb-link {
+    color: var(--regex-text-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+
+    .regex-breadcrumb-link:hover {
+        color: var(--regex-accent);
+    }
+
+
+.regex-breadcrumb .active {
+    color: var(--regex-text-primary);
+    font-weight: 500;
+}
+
+
+/* -------------------------
+   TITLE
+   ------------------------- */
+
+.regex-header h1 {
+    margin: 0 0 7px;
+    color: var(--regex-text-primary);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+
+.regex-header p {
+    margin: 0;
+    color: var(--regex-text-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   MAIN REGEX CARD
+   ========================================================= */
+
+.regex-card {
+    width: 100%;
+    padding: 28px;
+    background: var(--regex-card-bg);
+    border: 1px solid var(--regex-border);
+    border-radius: 12px;
+    box-shadow: var(--regex-shadow);
+}
+
+
+/* =========================================================
+   FORM SECTION
+   ========================================================= */
+
+.regex-section {
+    margin-bottom: 25px;
+}
+
+
+    .regex-section:last-child {
+        margin-bottom: 0;
+    }
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.regex-label {
+    display: block;
+    margin-bottom: 9px;
+    color: var(--regex-text-secondary);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   REGEX INPUT
+   ========================================================= */
+
+.regex-input-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 48px;
+    overflow: hidden;
+    background: var(--regex-input-bg);
+    border: 1px solid var(--regex-border) !important;
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.015);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .regex-input-wrapper:hover {
+        border-color: var(--regex-border-hover) !important;
+    }
+
+    .regex-input-wrapper:focus-within {
+        border-color: var(--regex-accent) !important;
+        box-shadow: 0 0 0 3px var(--regex-shadow-focus);
+    }
+
+
+/* -------------------------
+   SLASHES
+   ------------------------- */
+
+.regex-prefix,
+.regex-suffix {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    flex-shrink: 0;
+    color: var(--regex-accent);
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    font-size: 18px;
+    font-weight: 600;
+    user-select: none;
+}
+
+
+/* -------------------------
+   INPUT
+   ------------------------- */
+
+.regex-input {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--regex-text-primary);
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+    .regex-input::placeholder {
+        color: var(--regex-text-muted);
+    }
+
+
+/* =========================================================
+   FLAGS
+   ========================================================= */
+
+.regex-flags {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.regex-flag {
+    position: relative;
+    display: inline-flex;
+    cursor: pointer;
+}
+
+
+    .regex-flag input {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+
+    .regex-flag span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 34px;
+        background: var(--regex-input-bg);
+        border: 1px solid var(--regex-border) !important;
+        border-radius: 7px;
+        color: var(--regex-text-secondary);
+        font-family: "SFMono-Regular", Consolas, monospace;
+        font-size: 13px;
+        font-weight: 600;
+        transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .regex-flag:hover span {
+        border-color: var(--regex-border-hover) !important;
+    }
+
+    .regex-flag input:checked + span {
+        background: var(--regex-accent-soft);
+        border-color: var(--regex-accent) !important;
+        color: var(--regex-accent);
+    }
+
+    .regex-flag:active span {
+        transform: translateY(1px);
+    }
+
+
+/* =========================================================
+   TEST STRING
+   ========================================================= */
+
+.regex-textarea {
+    display: block;
+    width: 100%;
+    min-height: 170px;
+    padding: 14px 15px;
+    resize: vertical;
+    background: var(--regex-input-bg);
+    border: 1px solid var(--regex-border) !important;
+    border-radius: 8px;
+    outline: none;
+    color: var(--regex-text-primary);
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .regex-textarea:hover {
+        border-color: var(--regex-border-hover) !important;
+    }
+
+    .regex-textarea:focus {
+        border-color: var(--regex-accent) !important;
+        box-shadow: 0 0 0 3px var(--regex-shadow-focus);
+    }
+
+    .regex-textarea::placeholder {
+        color: var(--regex-text-muted);
+    }
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
+
+.regex-actions {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 2px;
+}
+
+
+.regex-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    height: 39px;
+    padding: 0 15px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+
+    .regex-btn i {
+        font-size: 13px;
+    }
+
+
+    .regex-btn:active {
+        transform: translateY(1px);
+    }
+
+
+/* -------------------------
+   PRIMARY
+   ------------------------- */
+
+.regex-btn-primary {
+    background: var(--regex-accent);
+    border: 1px solid var(--regex-accent);
+    color: #ffffff;
+    box-shadow: 0 2px 5px rgba(99, 102, 241, 0.18);
+}
+
+
+    .regex-btn-primary:hover {
+        background: var(--regex-accent-hover);
+        border-color: var(--regex-accent-hover);
+        box-shadow: 0 4px 10px rgba(99, 102, 241, 0.22);
+    }
+
+
+/* -------------------------
+   SECONDARY
+   ------------------------- */
+
+.regex-btn-secondary {
+    background: var(--regex-input-bg);
+    border: 1px solid var(--regex-border);
+    color: var(--regex-text-secondary);
+}
+
+
+    .regex-btn-secondary:hover {
+        background: var(--regex-card-bg);
+        border-color: var(--regex-border-hover);
+        color: var(--regex-text-primary);
+    }
+
+
+/* =========================================================
+   RESULT CARD
+   ========================================================= */
+
+.regex-result-card {
+    width: 100%;
+    margin-top: 22px;
+    padding: 25px 28px;
+    background: var(--regex-card-bg);
+    border: 1px solid var(--regex-border);
+    border-radius: 12px;
+    box-shadow: var(--regex-shadow);
+}
+
+
+/* =========================================================
+   RESULT HEADER
+   ========================================================= */
+
+.regex-result-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 22px;
+}
+
+
+/* -------------------------
+   RESULT TITLE
+   ------------------------- */
+
+.regex-result-title {
+    margin-bottom: 9px;
+    color: var(--regex-text-secondary);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.regex-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 22px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+.regex-status-dot {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+
+/* -------------------------
+   SUCCESS
+   ------------------------- */
+
+.regex-status-success {
+    color: var(--regex-success);
+}
+
+
+/* -------------------------
+   WARNING
+   ------------------------- */
+
+.regex-status-warning {
+    color: var(--regex-warning);
+}
+
+
+/* -------------------------
+   ERROR
+   ------------------------- */
+
+.regex-status-error {
+    color: var(--regex-error);
+}
+
+
+/* =========================================================
+   MATCH COUNT
+   ========================================================= */
+
+.regex-match-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 10px;
+    background: var(--regex-input-bg);
+    border: 1px solid var(--regex-border);
+    border-radius: 6px;
+    color: var(--regex-text-secondary);
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+
+    .regex-match-count strong {
+        color: var(--regex-text-primary);
+        font-size: 13px;
+    }
+
+
+/* =========================================================
+   MATCHES AREA
+   ========================================================= */
+
+.regex-matches-container {
+    padding-top: 20px;
+    border-top: 1px solid var(--regex-border);
+}
+
+
+.regex-matches-title {
+    margin-bottom: 10px;
+    color: var(--regex-text-muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+
+.regex-matches {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+/* =========================================================
+   MATCH ITEM
+   ========================================================= */
+
+.regex-match-item {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-height: 48px;
+    padding: 8px 11px;
+    background: var(--regex-input-bg);
+    border: 1px solid var(--regex-border) !important;
+    border-radius: 7px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+    .regex-match-item:hover {
+        border-color: var(--regex-border-hover) !important;
+    }
+
+/* -------------------------
+   MATCH NUMBER
+   ------------------------- */
+
+.regex-match-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0;
+    background: var(--regex-accent-soft);
+    border-radius: 5px;
+    color: var(--regex-accent);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* -------------------------
+   MATCH VALUE
+   ------------------------- */
+
+.regex-match-value {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    color: var(--regex-text-primary);
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* -------------------------
+   MATCH LABEL
+   ------------------------- */
+
+.regex-match-label {
+    flex-shrink: 0;
+    padding: 4px 8px;
+    background: var(--regex-success-bg);
+    border: 1px solid var(--regex-success-border);
+    border-radius: 5px;
+    color: var(--regex-success);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.regex-empty-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 82px;
+    padding: 20px;
+    background: var(--regex-input-bg);
+    border: 1px dashed var(--regex-border);
+    border-radius: 8px;
+    color: var(--regex-text-muted);
+    font-size: 13px;
+    text-align: center;
+}
+
+
+    .regex-empty-state i {
+        font-size: 15px;
+    }
+
+
+/* =========================================================
+   ERROR STATE
+   ========================================================= */
+
+.regex-error-state {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+    background: var(--regex-error-bg);
+    border: 1px solid var(--regex-error-border);
+    border-radius: 8px;
+    color: var(--regex-error);
+}
+
+
+    .regex-error-state > i {
+        flex-shrink: 0;
+        margin-top: 1px;
+        font-size: 17px;
+    }
+
+
+    .regex-error-state div {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+
+    .regex-error-state strong {
+        color: var(--regex-error);
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+
+    .regex-error-state span {
+        color: var(--regex-text-secondary);
+        font-family: "SFMono-Regular", Consolas, monospace;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .regex-page {
+        padding: 28px 22px 50px;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .regex-page {
+        padding: 24px 18px 45px;
+    }
+
+
+    .regex-header {
+        margin-bottom: 25px;
+    }
+
+
+        .regex-header h1 {
+            font-size: 27px;
+        }
+
+
+    .regex-card,
+    .regex-result-card {
+        padding: 21px;
+    }
+
+
+    .regex-result-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+
+    .regex-match-count {
+        align-self: flex-start;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .regex-page {
+        padding: 20px 14px 40px;
+    }
+
+
+    .regex-header h1 {
+        font-size: 24px;
+    }
+
+
+    .regex-header p {
+        font-size: 13px;
+    }
+
+
+    .regex-card,
+    .regex-result-card {
+        padding: 17px;
+    }
+
+
+    .regex-input {
+        font-size: 12px;
+    }
+
+
+    .regex-prefix,
+    .regex-suffix {
+        width: 30px;
+    }
+
+
+    .regex-textarea {
+        min-height: 140px;
+    }
+
+
+    .regex-actions {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+
+    .regex-btn {
+        width: 100%;
+    }
+
+
+    .regex-match-item {
+        gap: 8px;
+    }
+
+
+    .regex-match-label {
+        display: none;
+    }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.regex-btn:focus-visible,
+.regex-flag input:focus-visible + span {
+    outline: 2px solid var(--regex-accent);
+    outline-offset: 2px;
+}
