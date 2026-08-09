@@ -1,0 +1,308 @@
+@{
+    ViewData["Title"] = "UUID Generator";
+}
+
+@model DevVault.Models.UUIDViewModel
+<div class="tool-page">
+
+    <!-- Breadcrumb -->
+    <div class="tool-breadcrumb">
+        <a href="/">Developer Tools</a>
+        <i class="bi bi-chevron-right"></i>
+         <span>UUID Generator</span>
+    </div>
+  
+    <!-- Header -->
+    <div class="tool-header">
+        <h1>UUID Generator</h1>
+        <p>Generate unique identifiers for your applications.</p>
+    </div>
+
+
+    <!-- Generator Card -->
+    <div class="uuid-generator-card">
+        <form asp-controller="UUID" asp-action="Index" method="post">
+            <!-- UUID Version -->
+            <div class="uuid-field">
+
+                <label for="uuidVersion">
+                    UUID Version
+                </label>
+
+                <select id="uuidVersion" asp-for="UUIDVersion" class="uuid-select">
+                    <option value="v7">UUID v7</option>
+                    <option value="v4">UUID v4</option>
+                    <option value="v1">UUID v1</option>
+                </select>
+
+            </div>
+
+
+            <!-- Quantity -->
+            <div class="uuid-field">
+
+                <label for="uuidQuantity">
+                    Quantity
+                </label>
+
+                <input type="number"
+                       asp-for="UUIDQty"
+                       id="uuidQuantity"
+                       class="uuid-input"
+                       min="1"
+                       max="100" />
+
+            </div>
+
+
+            <!-- Generate Button -->
+            <div class="uuid-generate-wrapper">
+
+                <button type="submit"
+                        id="generateUuidBtn"
+                        class="uuid-generate-btn">
+
+                    <span class="uuid-btn-icon">⟳</span>
+                    Generate UUIDs
+
+                </button>
+
+            </div>
+        </form>
+
+    </div>
+
+
+    <!-- Generated UUIDs -->
+    <div class="uuid-results-card">
+
+        <div class="uuid-results-header">
+
+            <div>
+                <h2>Generated UUIDs</h2>
+                @if (Model.UUIDLst != null && Model.UUIDLst.Any())
+                {
+                    <p id="uuidCountText">@Model.UUIDLst.Count UUid Generate</p>
+                }
+                else{
+                    <p id="uuidCountText">0</p>
+                }
+
+            </div>
+
+            <button type="button"
+                    id="copyAllUuidBtn"
+                    class="uuid-copy-all-btn"
+                    @(Model.UUIDLst.Count == 0 ? "disabled" : "")>
+                <span>⧉</span>
+                Copy All
+            </button>
+
+        </div>
+
+
+        <!-- UUID List -->
+        <div id="uuidResults"
+             class="uuid-results">
+
+            
+
+                @if(Model.UUIDLst.Count != 0)
+                {
+                    @for(int i=0; i<Model.UUIDLst.Count; i++)
+                    {
+                        <div class="uuid-row">
+                            <div class="uuid-number">
+                                @(i+1)
+                            </div>
+
+                            <div class="uuid-value">
+                                @Model.UUIDLst[i]
+                            </div>
+
+                            <button type="button"
+                                class="uuid-copy-btn"
+                                    data-uuid="@Model.UUIDLst[i]">
+
+                            <span>⧉</span>
+                                Copy
+                            </button>
+                        </div>                    
+                    }
+                }
+                else
+                {
+                    <div class="uuid-empty-state">
+                        <div class="uuid-empty-icon">
+                            ⟐
+                        </div>
+
+                        <h3>No UUIDs generated</h3>
+
+                        <p>
+                            Choose the quantity and click
+                            <strong>Generate UUIDs</strong>.
+                        </p>
+                    </div>
+                }
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+
+    <script>     
+
+        /*
+         * Copy UUID
+         */
+        
+        document
+        .querySelectorAll(".uuid-copy-btn")
+        .forEach(button => {
+
+            button.addEventListener("click", function () {
+
+                const uuid = this.dataset.uuid;
+
+                copyToClipboard(
+                    uuid,
+                    this
+                );
+
+            });
+
+        });
+
+        async function copyToClipboard(text, button) {
+
+            try {
+
+                await navigator.clipboard.writeText(text);
+
+                const originalHTML = button.innerHTML;
+
+                button.innerHTML = `
+                    <span>✓</span>
+                    Copied
+                `;
+
+                button.classList.add("copied");
+
+                setTimeout(() => {
+
+                    button.innerHTML = originalHTML;
+                    button.classList.remove("copied");
+
+                }, 1500);
+
+            }
+            catch (error) {
+
+                console.error(
+                    "Unable to copy UUID:",
+                    error
+                );
+
+            }
+
+        }
+
+        const copyAllUuidBtn = document.getElementById("copyAllUuidBtn");
+
+        copyAllUuidBtn.addEventListener(
+            "click",
+            async function()
+            {
+                const uuids = @Html.Raw(
+                            System.Text.Json.JsonSerializer.Serialize(Model.UUIDLst)
+                );
+
+                const textToCopy = uuids.join("\n");
+                try {
+                    await navigator.clipboard.writeText(textToCopy);
+                     const originalHTML = this.innerHTML;
+                    this.innerHTML = `
+                         <span>✓</span>
+                         Copied All
+                        `;
+                    this.classList.add("copied");
+
+                    setTimeout(() => {
+                        this.innerHTML =
+                            originalHTML;
+
+                        this.classList.remove(
+                            "copied"
+                        );
+
+                    }, 1500);
+
+                    console.log("All UUIDs copied!");
+
+                } catch (error) {
+                    console.error("Failed to copy UUIDs:", error);
+                }
+            }
+        )
+
+
+        /*
+         * Copy All
+         */
+
+        // copyAllUuidBtn.addEventListener(
+        //     "click",
+        //     async function () {
+
+        //         if (generatedUUIDs.length === 0) {
+        //             return;
+        //         }
+
+        //         const text =
+        //             generatedUUIDs.join("\n");
+
+        //         try {
+
+        //             await navigator.clipboard.writeText(text);
+
+        //             const originalHTML =
+        //                 this.innerHTML;
+
+        //             this.innerHTML = `
+        //                 <span>✓</span>
+        //                 Copied All
+        //             `;
+
+        //             this.classList.add("copied");
+
+        //             setTimeout(() => {
+
+        //                 this.innerHTML =
+        //                     originalHTML;
+
+        //                 this.classList.remove(
+        //                     "copied"
+        //                 );
+
+        //             }, 1500);
+
+        //         }
+        //         catch (error) {
+
+        //             console.error(
+        //                 "Unable to copy UUIDs:",
+        //                 error
+        //             );
+
+        //         }
+
+        //     }
+        // );        
+
+    </script>
+
+}

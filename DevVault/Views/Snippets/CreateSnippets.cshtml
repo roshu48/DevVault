@@ -1,0 +1,216 @@
+@{
+    ViewData["Title"] = "Create Snippet";
+}
+
+<div class="snippets-page">
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <div class="snippets-breadcrumb">
+        <a href="/">Developer Tools</a>
+        <i class="bi bi-chevron-right"></i>
+        <a href="/Snippets">Snippets</a>
+        <i class="bi bi-chevron-right"></i>
+        <span>Create Snippet</span>
+    </div>
+
+    <div class="snippets-header">
+        <div>
+            <h1 class="snippets-title">Create Snippet</h1>
+            <p class="snippets-subtitle">
+                Save and reuse your frequently used code.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- =====================================================
+         CREATE SNIPPET CARD
+    ====================================================== -->
+
+    <div class="snippet-create-card">
+
+        <form method="post" asp-action="Create">
+
+
+            <!-- TITLE -->
+
+            <div class="snippet-form-group">
+
+                <label for="Title">
+                    Title
+                </label>
+
+                <input type="text"
+                       id="Title"
+                       name="Title"
+                       class="snippet-form-input"
+                       placeholder="Enter snippet title"
+                       value="ASP.NET JWT Authentication"
+                       required />
+            </div>
+
+
+            <!-- LANGUAGE -->
+
+            <div class="snippet-form-group">
+
+                <label for="Language">
+                    Language
+                </label>
+
+                <select id="snippetLanguage"
+                        name="Language"
+                        class="snippet-form-select"
+                        required>
+
+                    <option value="CSharp">C#</option>
+                    <option value="Java">Java</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="SQL">SQL</option>
+                    <option value="React">React</option>
+                    <option value="CSS">CSS</option>
+                    <option value="Html">HTML</option>
+                    <option value="Python">Python</option>
+                </select>
+
+            </div>
+
+
+            <!-- =================================================
+                 TAGS
+            ================================================== -->
+
+            <div class="snippet-form-group">
+
+                <label for="snippetTagInput">
+                    Tags
+                </label>
+
+                <div class="snippet-tag-input-wrapper"
+                     id="snippetTagWrapper">
+
+                    <!-- TAGS WILL APPEAR HERE -->
+
+                    <div id="snippetTagsContainer"
+                         class="snippet-create-tags">
+                    </div>
+
+
+                    <!-- TAG INPUT -->
+
+                    <input type="text"
+                           id="snippetTagInput"
+                           class="snippet-tag-input"
+                           placeholder="Type a tag and press Enter"
+                           autocomplete="off" />
+
+                </div>
+              
+                <div id="snippetHiddenTags"></div>
+
+            </div>
+
+
+            <!-- DESCRIPTION -->
+
+            <div class="snippet-form-group">
+
+                <label for="Description">
+                    Description
+                </label>
+
+                <textarea id="Description"
+                          name="Description"
+                          class="snippet-form-textarea"
+                          rows="3"
+                          placeholder="Describe what this snippet does...">JWT authentication configuration for ASP.NET Core.</textarea>
+
+            </div>
+
+
+            <!-- CODE -->
+            <!-- =====================================================
+     CODE EDITOR
+====================================================== -->
+
+            <div class="snippet-form-group">
+
+                <label for="Code">
+                    Code
+                </label>
+
+                <div class="snippet-code-editor">
+
+                    <!-- EDITOR HEADER -->
+
+                    <div class="snippet-code-editor-header">
+
+                        <div class="snippet-code-language">
+                            <i class="bi bi-braces"></i>
+                            <span id="selectedValue"></span>
+                        </div>
+
+                        <div class="snippet-code-editor-title">
+                            Code
+                        </div>
+
+                    </div>
+
+
+                    <!-- EDITOR BODY -->
+
+                    <div class="snippet-code-editor-body">
+                        
+                        <div class="create-snippet-code-editor">
+                            <div id="monacoEditor"></div>
+                        </div>
+
+                        <input type="hidden" id="snippetCode" name="Code" />
+
+                    </div>                   
+                </div>
+
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <div class="snippet-create-actions">
+
+                <a href="/Snippets"
+                   class="snippet-cancel-btn">
+                    Cancel
+                </a>
+
+                <button type="submit"
+                        class="snippet-save-btn">
+                    <i class="bi bi-check2"></i>
+                    Save Snippet
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     TAG JAVASCRIPT
+========================================================= -->
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs/loader.min.js"></script>
+    @* <script src=""></scirpt> *@
+
+    <script src="~/js/CreateSnipt.js">
+    
+        
+
+    
+    </script>
+}

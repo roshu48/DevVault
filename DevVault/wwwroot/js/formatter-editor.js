@@ -357,7 +357,7 @@ require(["vs/editor/editor.main"], function () {
 
         language: getMonacoLanguage(formatterType),
 
-        theme: "vs-dark",
+        theme: localStorage.getItem("devvault-theme") === "light" ? "vs" : "vs-dark" ,
 
         automaticLayout: true,
 
@@ -371,6 +371,42 @@ require(["vs/editor/editor.main"], function () {
 
         scrollBeyondLastLine: false
     });
+
+    observeThemeChanges();
+
+    function observeThemeChanges() {
+
+        const observer = new MutationObserver(function () {
+
+            if (!snippetEditor) {
+                return;
+            }
+
+            const theme =
+                getMonacoTheme();
+
+            monaco.editor.setTheme(theme);
+
+        });
+
+
+        observer.observe(
+            document.body,
+            {
+                attributes: true,
+                attributeFilter: ["class"]
+            }
+        );
+
+
+        observer.observe(
+            document.documentElement,
+            {
+                attributes: true,
+                attributeFilter: ["data-theme", "class"]
+            }
+        );
+    }
     initializeButtons();
 
     const themeToggle = document.getElementById("themeToggle");

@@ -1,0 +1,1310 @@
+﻿
+/* =========================================================
+   DEVVAULT - BASE64 TOOL
+   Light + Dark Theme
+========================================================= */
+/* =========================================================
+   LIGHT THEME VARIABLES
+========================================================= */
+.base64-tool-page {
+    --base64-card-bg: #ffffff;
+    --base64-panel-bg: #ffffff;
+    --base64-input-bg: #ffffff;
+    --base64-border: #e2e8f0;
+    --base64-border-hover: #cbd5e1;
+    --base64-text: #1e293b;
+    --base64-text-secondary: #64748b;
+    --base64-text-muted: #94a3b8;
+    --base64-accent: #6366f1;
+    --base64-accent-hover: #4f46e5;
+    --base64-accent-soft: rgba(99, 102, 241, 0.10);
+    --base64-success: #16a34a;
+    --base64-danger: #dc2626;
+    --base64-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    --base64-shadow-hover: 0 5px 18px rgba(15, 23, 42, 0.07);
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   DARK THEME VARIABLES
+========================================================= */
+
+html[data-theme="dark"] .base64-tool-page,
+body[data-theme="dark"] .base64-tool-page,
+html[data-bs-theme="dark"] .base64-tool-page,
+body[data-bs-theme="dark"] .base64-tool-page,
+html.dark .base64-tool-page,
+body.dark .base64-tool-page,
+html.dark-mode .base64-tool-page,
+body.dark-mode .base64-tool-page,
+html.dark-theme .base64-tool-page,
+body.dark-theme .base64-tool-page,
+.dark .base64-tool-page,
+.dark-mode .base64-tool-page,
+.dark-theme .base64-tool-page {
+    --base64-card-bg: #151c2c;
+    --base64-panel-bg: #151c2c;
+    --base64-input-bg: #111827;
+    --base64-border: #273449;
+    --base64-border-hover: #3b4a63;
+    --base64-text: #f1f5f9;
+    --base64-text-secondary: #94a3b8;
+    --base64-text-muted: #64748b;
+    --base64-accent: #818cf8;
+    --base64-accent-hover: #6366f1;
+    --base64-accent-soft: rgba(129, 140, 248, 0.12);
+    --base64-success: #4ade80;
+    --base64-danger: #f87171;
+    --base64-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+    --base64-shadow-hover: 0 6px 24px rgba(0, 0, 0, 0.30);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.base64-tool-header {
+    margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   BREADCRUMB
+========================================================= */
+
+.base64-tool-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+    .base64-tool-breadcrumb a {
+        color: var(--base64-text-secondary);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+        .base64-tool-breadcrumb a:hover {
+            color: var(--base64-accent);
+        }
+
+    .base64-tool-breadcrumb i {
+        color: var(--base64-text-muted);
+        font-size: 10px;
+    }
+
+    .base64-tool-breadcrumb span {
+        color: var(--base64-text-secondary);
+        font-weight: 500;
+    }
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.base64-tool-title-section h1 {
+    margin: 0;
+    color: var(--base64-text);
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+}
+
+.base64-tool-title-section p {
+    margin: 8px 0 0;
+    color: var(--base64-text-secondary);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   MAIN TOOL CARD
+========================================================= */
+
+.base64-tool-container {
+    width: 100%;
+    padding: 24px;
+    background: var(--base64-card-bg);
+    border: 1px solid var(--base64-border);
+    border-radius: 12px;
+    box-shadow: var(--base64-shadow);
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+/* =========================================================
+   MODE TABS
+========================================================= */
+
+.base64-mode-tabs {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    margin-bottom: 24px;
+    border: 1px solid var(--base64-border);
+    border-radius: 9px;
+    overflow: hidden;
+    background: var(--base64-card-bg);
+}
+
+
+/* =========================================================
+   MODE TAB
+========================================================= */
+
+.base64-mode-tab {
+    position: relative;
+    flex: 1;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 16px;
+    border: none;
+    border-right: 1px solid var(--base64-border);
+    background: transparent;
+    color: var(--base64-text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+    .base64-mode-tab:last-child {
+        border-right: none;
+    }
+
+    .base64-mode-tab:hover {
+        background: var(--base64-accent-soft);
+        color: var(--base64-accent);
+    }
+
+    .base64-mode-tab.active {
+        background: var(--base64-accent-soft);
+        color: var(--base64-accent);
+        font-weight: 600;
+    }
+
+
+        /* =========================================================
+   ACTIVE TAB INDICATOR
+========================================================= */
+
+        .base64-mode-tab.active::after {
+            content: "";
+            position: absolute;
+            left: 20px;
+            right: 20px;
+            bottom: 0;
+            height: 2px;
+            border-radius: 2px 2px 0 0;
+            background: var(--base64-accent);
+        }
+
+
+    /* =========================================================
+   TAB ICON
+========================================================= */
+
+    .base64-mode-tab i {
+        font-size: 14px;
+    }
+
+
+/* =========================================================
+   CONVERTER WORKSPACE
+========================================================= */
+
+.base64-workspace {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+/* =========================================================
+   INPUT / OUTPUT SECTION
+========================================================= */
+
+.base64-section {
+    width: 100%;
+}
+
+
+/* =========================================================
+   SECTION HEADER
+========================================================= */
+
+.base64-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 9px;
+}
+
+.base64-section-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--base64-text-secondary);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+    .base64-section-label i {
+        color: var(--base64-accent);
+        font-size: 13px;
+    }
+
+
+/* =========================================================
+   CHARACTER COUNT
+========================================================= */
+
+.base64-character-count {
+    color: var(--base64-text-muted);
+    font-size: 11px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+
+/* =========================================================
+   TEXTAREA WRAPPER
+========================================================= */
+
+.base64-editor-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+
+.base64-editor {
+    display: block;
+    width: 100%;
+    min-height: 190px;
+    padding: 15px;
+    resize: vertical;
+    border: 1px solid var(--base64-border);
+    border-radius: 8px;
+    outline: none;
+    background: var(--base64-input-bg);
+    color: var(--base64-text);
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+    .base64-editor:hover {
+        border-color: var(--base64-border-hover);
+    }
+
+    .base64-editor:focus {
+        border-color: var(--base64-accent);
+        box-shadow: 0 0 0 3px var(--base64-accent-soft);
+    }
+
+    .base64-editor::placeholder {
+        color: var(--base64-text-muted);
+    }
+
+
+/* =========================================================
+   OUTPUT EDITOR
+========================================================= */
+
+.base64-output-editor {
+    background: var(--base64-input-bg);
+}
+
+
+/* =========================================================
+   CONVERT AREA
+========================================================= */
+
+.base64-convert-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 22px 0;
+}
+
+
+/* =========================================================
+   CONVERT BUTTON
+========================================================= */
+
+.base64-convert-btn {
+    min-width: 125px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 18px;
+    border: 1px solid var(--base64-accent);
+    border-radius: 7px;
+    background: var(--base64-accent);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(99, 102, 241, 0.18);
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+    .base64-convert-btn:hover {
+        background: var(--base64-accent-hover);
+        border-color: var(--base64-accent-hover);
+        box-shadow: 0 5px 14px rgba(99, 102, 241, 0.24);
+    }
+
+    .base64-convert-btn:active {
+        transform: translateY(1px);
+    }
+
+    .base64-convert-btn i {
+        font-size: 12px;
+    }
+
+
+/* =========================================================
+   ACTION BAR
+========================================================= */
+
+.base64-action-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 9px;
+    margin-top: 12px;
+}
+
+
+/* =========================================================
+   ACTION BUTTON
+========================================================= */
+
+.base64-action-btn {
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 0 13px;
+    border: 1px solid var(--base64-border);
+    border-radius: 7px;
+    background: var(--base64-card-bg);
+    color: var(--base64-text-secondary);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, transform 0.15s ease;
+}
+
+    .base64-action-btn:hover {
+        border-color: var(--base64-accent);
+        background: var(--base64-accent-soft);
+        color: var(--base64-accent);
+    }
+
+    .base64-action-btn:active {
+        transform: translateY(1px);
+    }
+
+    .base64-action-btn i {
+        font-size: 12px;
+    }
+
+
+/* =========================================================
+   PRIMARY COPY BUTTON
+========================================================= */
+
+.base64-copy-btn {
+    color: var(--base64-text);
+}
+
+
+/* =========================================================
+   CLEAR BUTTON
+========================================================= */
+
+.base64-clear-btn {
+    color: var(--base64-text-secondary);
+}
+
+
+/* =========================================================
+   COPY SUCCESS STATE
+========================================================= */
+
+.base64-copy-btn.copied {
+    border-color: rgba(22, 163, 74, 0.35);
+    background: rgba(22, 163, 74, 0.08);
+    color: var(--base64-success);
+}
+
+
+/* =========================================================
+   ERROR MESSAGE
+========================================================= */
+
+.base64-error {
+    display: none;
+    margin-top: 9px;
+    padding: 9px 11px;
+    border: 1px solid rgba(220, 38, 38, 0.25);
+    border-radius: 7px;
+    background: rgba(220, 38, 38, 0.08);
+    color: var(--base64-danger);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+    .base64-error.show {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+    }
+
+    .base64-error i {
+        font-size: 12px;
+    }
+
+
+/* =========================================================
+   STATUS MESSAGE
+========================================================= */
+
+.base64-status {
+    min-height: 17px;
+    margin-top: 8px;
+    color: var(--base64-text-muted);
+    font-size: 11px;
+    text-align: right;
+}
+
+
+/* =========================================================
+   FILE INPUT AREA
+   Optional - for future Base64 file support
+========================================================= */
+
+.base64-file-area {
+    display: none;
+    margin-top: 18px;
+    padding: 18px;
+    border: 1px dashed var(--base64-border);
+    border-radius: 9px;
+    background: var(--base64-input-bg);
+    text-align: center;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+    .base64-file-area:hover {
+        border-color: var(--base64-accent);
+        background: var(--base64-accent-soft);
+    }
+
+    .base64-file-area.active {
+        display: block;
+    }
+
+.base64-file-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    border-radius: 8px;
+    background: var(--base64-accent-soft);
+    color: var(--base64-accent);
+    font-size: 17px;
+}
+
+.base64-file-area h3 {
+    margin: 0 0 5px;
+    color: var(--base64-text);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.base64-file-area p {
+    margin: 0;
+    color: var(--base64-text-secondary);
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   FILE INPUT BUTTON
+========================================================= */
+
+.base64-file-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 12px;
+    padding: 8px 13px;
+    border: 1px solid var(--base64-border);
+    border-radius: 7px;
+    background: var(--base64-card-bg);
+    color: var(--base64-text-secondary);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+    .base64-file-btn:hover {
+        border-color: var(--base64-accent);
+        background: var(--base64-accent-soft);
+        color: var(--base64-accent);
+    }
+
+
+/* =========================================================
+   DISABLED STATE
+========================================================= */
+
+.base64-convert-btn:disabled,
+.base64-action-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.base64-editor:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .base64-tool-container {
+        padding: 20px;
+    }
+
+    .base64-editor {
+        min-height: 180px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .base64-tool-title-section h1 {
+        font-size: 26px;
+    }
+
+    .base64-tool-title-section p {
+        font-size: 14px;
+    }
+
+    .base64-tool-container {
+        padding: 16px;
+        border-radius: 10px;
+    }
+
+    .base64-mode-tabs {
+        margin-bottom: 20px;
+        border-radius: 8px;
+    }
+
+    .base64-mode-tab {
+        min-height: 46px;
+        padding: 0 12px;
+        font-size: 12px;
+    }
+
+        .base64-mode-tab.active::after {
+            left: 15px;
+            right: 15px;
+        }
+
+    .base64-editor {
+        min-height: 165px;
+        padding: 13px;
+        font-size: 12px;
+    }
+
+    .base64-convert-area {
+        padding: 18px 0;
+    }
+
+    .base64-convert-btn {
+        width: 100%;
+    }
+
+    .base64-action-bar {
+        justify-content: stretch;
+    }
+
+    .base64-action-btn {
+        flex: 1;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .base64-tool-breadcrumb {
+        font-size: 12px;
+    }
+
+    .base64-tool-title-section h1 {
+        font-size: 24px;
+    }
+
+    .base64-tool-title-section p {
+        font-size: 13px;
+    }
+
+    .base64-tool-container {
+        padding: 14px;
+    }
+
+    .base64-mode-tab {
+        min-height: 44px;
+        gap: 6px;
+        padding: 0 9px;
+        font-size: 11px;
+    }
+
+        .base64-mode-tab i {
+            font-size: 12px;
+        }
+
+    .base64-editor {
+        min-height: 150px;
+        padding: 11px;
+        font-size: 11px;
+    }
+
+    .base64-section-label {
+        font-size: 11px;
+    }
+
+    .base64-character-count {
+        font-size: 10px;
+    }
+
+    .base64-action-btn {
+        height: 40px;
+        padding: 0 10px;
+    }
+
+        .base64-action-btn span {
+            display: none;
+        }
+
+        .base64-action-btn i {
+            font-size: 13px;
+        }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 330px) {
+
+    .base64-tool-container {
+        padding: 12px;
+    }
+
+    .base64-mode-tab {
+        padding: 0 7px;
+    }
+
+        .base64-mode-tab i {
+            display: none;
+        }
+}
+
+```css
+/* =========================================================
+   INPUT TYPE TABS
+   Text / File
+========================================================= */
+
+.base64-input-type-tabs {
+    display: flex;
+    align-items: stretch;
+
+    width: 100%;
+
+    margin-bottom: 14px;
+
+    border: 1px solid var(--base64-border);
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    background: var(--base64-card-bg);
+}
+
+
+/* =========================================================
+   INPUT TYPE TAB
+========================================================= */
+
+.base64-input-type-tab {
+    position: relative;
+
+    flex: 1;
+
+    min-height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 0 13px;
+
+    border: none;
+    border-right: 1px solid var(--base64-border);
+
+    background: transparent;
+
+    color: var(--base64-text-secondary);
+
+    font-size: 12px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.base64-input-type-tab:last-child {
+    border-right: none;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.base64-input-type-tab:hover {
+    background: var(--base64-accent-soft);
+    color: var(--base64-accent);
+}
+
+
+/* =========================================================
+   ACTIVE
+========================================================= */
+
+.base64-input-type-tab.active {
+    background: var(--base64-accent-soft);
+
+    color: var(--base64-accent);
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   ACTIVE INDICATOR
+========================================================= */
+
+.base64-input-type-tab.active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 18px;
+    right: 18px;
+    bottom: 0;
+
+    height: 2px;
+
+    border-radius: 2px 2px 0 0;
+
+    background: var(--base64-accent);
+}
+
+
+/* =========================================================
+   INPUT TYPE ICON
+========================================================= */
+
+.base64-input-type-tab i {
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   FILE AREA
+========================================================= */
+
+.base64-file-area {
+    display: none;
+
+    width: 100%;
+
+    min-height: 190px;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    padding: 25px;
+
+    border: 1px dashed var(--base64-border);
+
+    border-radius: 8px;
+
+    background: var(--base64-input-bg);
+
+    text-align: center;
+
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* =========================================================
+   FILE AREA ACTIVE
+========================================================= */
+
+.base64-file-area.active {
+    display: flex;
+}
+
+
+/* =========================================================
+   FILE AREA HOVER
+========================================================= */
+
+.base64-file-area:hover {
+    border-color: var(--base64-accent);
+
+    background: var(--base64-accent-soft);
+}
+
+
+/* =========================================================
+   FILE ICON
+========================================================= */
+
+.base64-file-icon {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 11px;
+
+    border-radius: 9px;
+
+    background: var(--base64-accent-soft);
+
+    color: var(--base64-accent);
+
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   FILE TITLE
+========================================================= */
+
+.base64-file-area h3 {
+    margin: 0 0 5px;
+
+    color: var(--base64-text);
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   FILE DESCRIPTION
+========================================================= */
+
+.base64-file-area p {
+    max-width: 420px;
+
+    margin: 0;
+
+    color: var(--base64-text-secondary);
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   CHOOSE FILE BUTTON
+========================================================= */
+
+.base64-file-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-top: 13px;
+
+    min-height: 37px;
+
+    padding: 0 13px;
+
+    border: 1px solid var(--base64-border);
+
+    border-radius: 7px;
+
+    background: var(--base64-card-bg);
+
+    color: var(--base64-text-secondary);
+
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        transform 0.15s ease;
+}
+
+
+/* =========================================================
+   CHOOSE FILE HOVER
+========================================================= */
+
+.base64-file-btn:hover {
+    border-color: var(--base64-accent);
+
+    background: var(--base64-accent-soft);
+
+    color: var(--base64-accent);
+}
+
+
+/* =========================================================
+   CHOOSE FILE ACTIVE
+========================================================= */
+
+.base64-file-btn:active {
+    transform: translateY(1px);
+}
+
+
+/* =========================================================
+   SELECTED FILE
+========================================================= */
+
+.base64-selected-file {
+    display: none;
+
+    width: 100%;
+    max-width: 500px;
+
+    margin-top: 14px;
+
+    padding: 10px 12px;
+
+    border: 1px solid var(--base64-border);
+
+    border-radius: 7px;
+
+    background: var(--base64-card-bg);
+
+    color: var(--base64-text);
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        Menlo,
+        monospace;
+
+    font-size: 11px;
+
+    text-align: left;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   SELECTED FILE ACTIVE
+========================================================= */
+
+.base64-selected-file.show {
+    display: block;
+}
+
+
+/* =========================================================
+   FILE DRAG OVER
+========================================================= */
+
+.base64-file-area.drag-over {
+    border-color: var(--base64-accent);
+
+    background: var(--base64-accent-soft);
+
+    box-shadow:
+        0 0 0 3px var(--base64-accent-soft);
+}
+
+
+/* =========================================================
+   FILE INFORMATION
+========================================================= */
+
+.base64-file-info {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 8px;
+
+    color: var(--base64-text-secondary);
+
+    font-size: 10px;
+}
+
+.base64-file-info i {
+    color: var(--base64-accent);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   FILE NAME
+========================================================= */
+
+.base64-file-name {
+    max-width: 280px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    color: var(--base64-text);
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   FILE SIZE
+========================================================= */
+
+.base64-file-size {
+    color: var(--base64-text-muted);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .base64-input-type-tabs {
+        border-radius: 7px;
+    }
+
+    .base64-input-type-tab {
+        min-height: 40px;
+
+        font-size: 11px;
+    }
+
+    .base64-input-type-tab.active::after {
+        left: 15px;
+        right: 15px;
+    }
+
+    .base64-file-area {
+        min-height: 165px;
+
+        padding: 20px 15px;
+    }
+
+    .base64-file-icon {
+        width: 42px;
+        height: 42px;
+
+        font-size: 16px;
+    }
+
+    .base64-file-area h3 {
+        font-size: 13px;
+    }
+
+    .base64-file-area p {
+        font-size: 10px;
+    }
+
+    .base64-selected-file {
+        max-width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .base64-input-type-tab {
+        min-height: 38px;
+
+        gap: 5px;
+
+        padding: 0 9px;
+
+        font-size: 10px;
+    }
+
+    .base64-input-type-tab i {
+        font-size: 11px;
+    }
+
+    .base64-file-area {
+        min-height: 150px;
+
+        padding: 17px 12px;
+    }
+
+    .base64-file-icon {
+        width: 38px;
+        height: 38px;
+
+        margin-bottom: 8px;
+
+        font-size: 15px;
+    }
+
+    .base64-file-btn {
+        min-height: 35px;
+
+        padding: 0 11px;
+
+        font-size: 10px;
+    }
+
+}
+
+.base64-input-type-tabs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    margin-bottom: 14px;
+    border: 1px solid var(--base64-border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+
+.base64-input-type-tab {
+    position: relative;
+    width: 100%;
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    border: none;
+    border-right: 1px solid var(--base64-border);
+    background: transparent;
+    color: var(--base64-text-secondary);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+
+    .base64-input-type-tab:last-child {
+        border-right: none;
+    }
+
+
+    .base64-input-type-tab:hover,
+    .base64-input-type-tab.active {
+        background: var(--base64-accent-soft);
+        color: var(--base64-accent);
+    }
+
+
+    .base64-input-type-tab.active {
+        font-weight: 600;
+    }
+
+
+        .base64-input-type-tab.active::after {
+            content: "";
+            position: absolute;
+            left: 18px;
+            right: 18px;
+            bottom: 0;
+            height: 2px;
+            border-radius: 2px 2px 0 0;
+            background: var(--base64-accent);
+        }

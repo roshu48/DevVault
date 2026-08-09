@@ -1,0 +1,610 @@
+/* =========================================================
+   UUID GENERATOR
+   ========================================================= */
+
+.tool-page {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0px 0px 0px;
+}
+
+
+/* =========================================================
+   BREADCRUMB
+   ========================================================= */
+
+.tool-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 22px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--uuid-text-muted);
+}
+
+.breadcrumb-separator {
+    font-size: 18px;
+    color: var(--uuid-text-muted);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.tool-header {
+    margin-bottom: 28px;
+}
+
+    .tool-header h1 {
+        margin: 0 0 8px;
+        font-size: 30px;
+        line-height: 1.2;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        color: var(--uuid-text-primary);
+    }
+
+    .tool-header p {
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.6;
+        color: var(--uuid-text-secondary);
+    }
+
+
+/* =========================================================
+   GENERATOR CARD
+   ========================================================= */
+
+.uuid-generator-card,
+.uuid-results-card {
+    background: var(--uuid-card-bg);
+    border: 1px solid var(--uuid-border);
+    border-radius: 12px;
+    box-shadow: var(--uuid-shadow);
+}
+
+
+/* =========================================================
+   GENERATOR CARD
+   ========================================================= */
+
+.uuid-generator-card {
+    padding: 30px;
+    margin-bottom: 22px;
+}
+
+
+/* =========================================================
+   FIELD
+   ========================================================= */
+
+.uuid-field {
+    margin-bottom: 24px;
+}
+
+    .uuid-field label {
+        display: block;
+        margin-bottom: 9px;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--uuid-text-primary);
+    }
+
+
+/* =========================================================
+   SELECT
+   ========================================================= */
+
+.uuid-select {
+    width: 100%;
+    height: 44px;
+    padding: 0 42px 0 13px;
+    border: 1px solid var(--uuid-input-border);
+    border-radius: 8px;
+    background-color: var(--uuid-input-bg);
+    color: var(--uuid-text-primary);
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+    .uuid-select:hover {
+        border-color: var(--uuid-border-hover);
+    }
+
+    .uuid-select:focus {
+        border-color: var(--uuid-primary);
+        box-shadow: 0 0 0 3px var(--uuid-primary-soft);
+    }
+
+
+/* =========================================================
+   NUMBER INPUT
+   ========================================================= */
+
+.uuid-input {
+    width: 100%;
+    height: 44px;
+    padding: 0 13px;
+    border: 1px solid var(--uuid-input-border);
+    border-radius: 8px;
+    background-color: var(--uuid-input-bg);
+    color: var(--uuid-text-primary);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+    .uuid-input:hover {
+        border-color: var(--uuid-border-hover);
+    }
+
+    .uuid-input:focus {
+        border-color: var(--uuid-primary);
+        box-shadow: 0 0 0 3px var(--uuid-primary-soft);
+    }
+
+
+    /* Remove browser number arrows */
+
+    .uuid-input::-webkit-inner-spin-button,
+    .uuid-input::-webkit-outer-spin-button {
+        opacity: 1;
+    }
+
+
+/* =========================================================
+   GENERATE BUTTON
+   ========================================================= */
+
+.uuid-generate-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 4px;
+}
+
+.uuid-generate-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 180px;
+    height: 44px;
+    padding: 0 20px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--uuid-primary);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+    .uuid-generate-btn:hover {
+        background: var(--uuid-primary-hover);
+        box-shadow: 0 5px 14px var(--uuid-primary-shadow);
+    }
+
+    .uuid-generate-btn:active {
+        transform: translateY(1px);
+    }
+
+.uuid-btn-icon {
+    font-size: 17px;
+    line-height: 1;
+}
+
+
+/* =========================================================
+   RESULTS CARD
+   ========================================================= */
+
+.uuid-results-card {
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   RESULTS HEADER
+   ========================================================= */
+
+.uuid-results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px 24px;
+    border-bottom: 1px solid var(--uuid-border);
+}
+
+    .uuid-results-header h2 {
+        margin: 0 0 4px;
+        font-size: 17px;
+        font-weight: 650;
+        color: var(--uuid-text-primary);
+    }
+
+    .uuid-results-header p {
+        margin: 0;
+        font-size: 12px;
+        color: var(--uuid-text-muted);
+    }
+
+
+/* =========================================================
+   COPY ALL BUTTON
+   ========================================================= */
+
+.uuid-copy-all-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    height: 38px;
+    padding: 0 14px;
+    border: 1px solid var(--uuid-border);
+    border-radius: 7px;
+    background: var(--uuid-secondary-btn-bg);
+    color: var(--uuid-text-secondary);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+    .uuid-copy-all-btn:hover:not(:disabled) {
+        background: var(--uuid-secondary-btn-hover);
+        color: var(--uuid-text-primary);
+        border-color: var(--uuid-border-hover);
+    }
+
+    .uuid-copy-all-btn:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+    }
+
+
+/* =========================================================
+   UUID RESULTS
+   ========================================================= */
+
+.uuid-results {
+    width: 100%;
+}
+
+
+/* =========================================================
+   UUID ROW
+   ========================================================= */
+
+.uuid-row {
+    display: flex;
+    align-items: center;
+    min-height: 58px;
+    padding: 9px 24px;
+    border-bottom: 1px solid var(--uuid-border);
+    gap: 14px;
+    transition: background 0.15s ease;
+}
+
+    .uuid-row:last-child {
+        border-bottom: 0;
+    }
+
+    .uuid-row:hover {
+        background: var(--uuid-row-hover);
+    }
+
+
+/* =========================================================
+   NUMBER
+   ========================================================= */
+
+.uuid-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: var(--uuid-number-bg);
+    color: var(--uuid-text-muted);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   UUID VALUE
+   ========================================================= */
+
+.uuid-value {
+    flex: 1;
+    min-width: 0;
+    overflow-x: auto;
+    padding: 8px 0;
+    color: var(--uuid-code-text);
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 13px;
+    white-space: nowrap;
+    scrollbar-width: thin;
+}
+
+
+/* =========================================================
+   COPY BUTTON
+   ========================================================= */
+
+.uuid-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex-shrink: 0;
+    height: 34px;
+    padding: 0 11px;
+    border: 1px solid var(--uuid-border);
+    border-radius: 7px;
+    background: var(--uuid-secondary-btn-bg);
+    color: var(--uuid-text-secondary);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+    .uuid-copy-btn:hover {
+        background: var(--uuid-secondary-btn-hover);
+        color: var(--uuid-text-primary);
+        border-color: var(--uuid-border-hover);
+    }
+
+    .uuid-copy-btn.copied,
+    .uuid-copy-all-btn.copied {
+        color: var(--uuid-success);
+        border-color: var(--uuid-success-border);
+        background: var(--uuid-success-bg);
+    }
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.uuid-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 220px;
+    padding: 30px;
+    text-align: center;
+}
+
+.uuid-empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 14px;
+    border-radius: 10px;
+    background: var(--uuid-number-bg);
+    color: var(--uuid-primary);
+    font-size: 24px;
+}
+
+.uuid-empty-state h3 {
+    margin: 0 0 6px;
+    font-size: 15px;
+    font-weight: 650;
+    color: var(--uuid-text-primary);
+}
+
+.uuid-empty-state p {
+    margin: 0;
+    max-width: 350px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--uuid-text-muted);
+}
+
+.uuid-empty-state strong {
+    color: var(--uuid-text-secondary);
+}
+
+
+/* =========================================================
+   UUID LIGHT THEME
+   ========================================================= */
+
+:root {
+    --uuid-primary: #6366f1;
+    --uuid-primary-hover: #4f46e5;
+    --uuid-primary-soft: rgba(99, 102, 241, 0.14);
+    --uuid-primary-shadow: rgba(99, 102, 241, 0.20);
+    --uuid-card-bg: #ffffff;
+    --uuid-input-bg: #ffffff;
+    --uuid-border: #e5e7eb;
+    --uuid-input-border: #d1d5db;
+    --uuid-border-hover: #b8bec8;
+    --uuid-text-primary: #111827;
+    --uuid-text-secondary: #4b5563;
+    --uuid-text-muted: #6b7280;
+    --uuid-code-text: #374151;
+    --uuid-secondary-btn-bg: #ffffff;
+    --uuid-secondary-btn-hover: #f3f4f6;
+    --uuid-row-hover: #f9fafb;
+    --uuid-number-bg: #f3f4f6;
+    --uuid-success: #16a34a;
+    --uuid-success-bg: #f0fdf4;
+    --uuid-success-border: #bbf7d0;
+    --uuid-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+
+/* =========================================================
+   UUID DARK THEME
+   ========================================================= */
+
+/*
+   Add/remove selectors according to your existing
+   DevVault theme implementation.
+*/
+
+[data-theme="dark"],
+.dark-theme,
+.dark-mode,
+body.dark,
+body.dark-mode,
+html.dark,
+html.dark-mode,
+[data-bs-theme="dark"] {
+    --uuid-primary: #818cf8;
+    --uuid-primary-hover: #6366f1;
+    --uuid-primary-soft: rgba(129, 140, 248, 0.16);
+    --uuid-primary-shadow: rgba(129, 140, 248, 0.18);
+    --uuid-card-bg: #151b2b;
+    --uuid-input-bg: #111827;
+    --uuid-border: #29344a;
+    --uuid-input-border: #354158;
+    --uuid-border-hover: #46536d;
+    --uuid-text-primary: #f1f5f9;
+    --uuid-text-secondary: #aab6ca;
+    --uuid-text-muted: #71809a;
+    --uuid-code-text: #dbe4f0;
+    --uuid-secondary-btn-bg: #182234;
+    --uuid-secondary-btn-hover: #202d43;
+    --uuid-row-hover: #192538;
+    --uuid-number-bg: #202c40;
+    --uuid-success: #4ade80;
+    --uuid-success-bg: rgba(34, 197, 94, 0.10);
+    --uuid-success-border: rgba(74, 222, 128, 0.25);
+    --uuid-shadow: 0 1px 2px rgba(0, 0, 0, 0.30), 0 8px 24px rgba(0, 0, 0, 0.20);
+}
+
+
+
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .tool-page {
+        padding: 24px 16px 45px;
+    }
+
+    .tool-header h1 {
+        font-size: 26px;
+    }
+
+    .uuid-generator-card {
+        padding: 22px;
+    }
+
+    .uuid-results-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .uuid-copy-all-btn {
+        width: 100%;
+    }
+
+    .uuid-row {
+        padding: 10px 16px;
+        gap: 10px;
+    }
+
+    .uuid-number {
+        display: none;
+    }
+
+    .uuid-copy-btn {
+        width: 34px;
+        padding: 0;
+    }
+
+        .uuid-copy-btn span {
+            font-size: 14px;
+        }
+
+    .uuid-copy-btn {
+        font-size: 0;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .tool-page {
+        padding-left: 12px;
+        padding-right: 12px;
+    }:root {
+
+    --uuid-primary: #6366f1;
+    --uuid-primary-hover: #4f46e5;
+    --uuid-primary-soft: rgba(99, 102, 241, 0.14);
+    --uuid-primary-shadow: rgba(99, 102, 241, 0.20);
+
+    --uuid-card-bg: #ffffff;
+
+    --uuid-input-bg: #ffffff;
+
+    --uuid-border: #e5e7eb;
+    --uuid-input-border: #d1d5db;
+    --uuid-border-hover: #b8bec8;
+
+    --uuid-text-primary: #111827;
+    --uuid-text-secondary: #4b5563;
+    --uuid-text-muted: #6b7280;
+
+    --uuid-code-text: #374151;
+
+    --uuid-secondary-btn-bg: #ffffff;
+    --uuid-secondary-btn-hover: #f3f4f6;
+
+    --uuid-row-hover: #f9fafb;
+
+    --uuid-number-bg: #f3f4f6;
+
+    --uuid-success: #16a34a;
+    --uuid-success-bg: #f0fdf4;
+    --uuid-success-border: #bbf7d0;
+
+    --uuid-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.04),
+        0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+
+[data-theme="dark"] {
+    ...
+}
+
+    .uuid-generator-card {
+        padding: 18px;
+    }
+
+    .uuid-results-header {
+        padding: 18px;
+    }
+
+    .uuid-row {
+        padding: 9px 12px;
+    }
+
+    .uuid-value {
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,1403 @@
+﻿@{
+    ViewData["Title"] = "Base64";
+}
+
+<div class="base64-tool-page">
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <div class="base64-tool-header">
+
+        <!-- Breadcrumb -->
+        <div class="base64-tool-breadcrumb">
+
+            <a href="/">
+                Developer Tools
+            </a>
+
+            <i class="bi bi-chevron-right"></i>
+
+            <span>
+                Base64
+            </span>
+
+        </div>
+
+
+        <!-- Title -->
+        <div class="base64-tool-title-section">
+
+            <h1>
+                Base64 Encoder / Decoder
+            </h1>
+
+            <p>
+                Encode text and files to Base64 or decode Base64 data.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         MAIN BASE64 TOOL
+    ====================================================== -->
+
+    <div class="base64-tool-container">
+
+
+        <!-- =================================================
+             ENCODE / DECODE TABS
+        ================================================== -->
+
+        <div class="base64-mode-tabs">
+
+            <button type="button"
+                    class="base64-mode-tab active"
+                    id="base64EncodeTab"
+                    data-mode="encode">
+
+                <i class="bi bi-lock"></i>
+
+                <span>
+                    Encode
+                </span>
+
+            </button>
+
+
+            <button type="button"
+                    class="base64-mode-tab"
+                    id="base64DecodeTab"
+                    data-mode="decode">
+
+                <i class="bi bi-unlock"></i>
+
+                <span>
+                    Decode
+                </span>
+
+            </button>
+
+        </div>
+
+        <div class="base64-mode-tabs">
+
+            <button type="button"
+                    class="base64-mode-tab active"
+                    id="base64TextTab"
+                    data-input-type="text">
+
+                <i class="bi bi-fonts"></i>
+
+                <span>Text</span>
+
+            </button>
+
+
+            <button type="button"
+                    class="base64-mode-tab"
+                    id="base64FileTab"
+                    data-input-type="file">
+
+                <i class="bi bi-file-earmark"></i>
+
+                <span>File</span>
+
+            </button>
+
+        </div>
+        
+        <!-- =================================================
+             WORKSPACE
+        ================================================== -->
+
+        <div class="base64-workspace">
+
+
+            <!-- =================================================
+                 INPUT SECTION
+            ================================================== -->
+
+            <div class="base64-section">
+
+
+                <!-- Section Header -->
+
+                <div class="base64-section-header">
+
+                    <div class="base64-section-label">
+
+                        <i class="bi bi-box-arrow-in-right"></i>
+
+                        <span>
+                            Input
+                        </span>
+
+                    </div>
+
+
+                    <span class="base64-character-count"
+                          id="base64InputCount">
+
+                        0 characters
+
+                    </span>
+
+                </div>
+
+
+                <!-- Input Editor -->
+
+                <div class="base64-editor-wrapper" id="base64TextInputWrapper">
+
+                    <textarea id="base64Input"
+                              class="base64-editor"
+                              placeholder="Enter text or Base64 data..."
+                              spellcheck="false"></textarea>
+
+
+                </div>
+
+                <div class="base64-file-area"
+                        id="base64FileArea">
+
+                    <div class="base64-file-icon">
+                        <i class="bi bi-file-earmark-arrow-up"></i>
+                    </div>
+
+                    <h3>
+                        Select a file
+                    </h3>
+
+                    <p>
+                        Choose a file to encode it as Base64.
+                    </p>
+
+                    <input type="file"
+                            id="base64FileInput"
+                            hidden />
+
+                    <button type="button"
+                            class="base64-file-btn"
+                            id="base64ChooseFileBtn">
+
+                        <i class="bi bi-folder2-open"></i>
+
+                        <span>
+                            Choose File
+                        </span>
+
+                    </button>
+
+                    <div class="base64-selected-file"
+                            id="base64SelectedFile">
+                    </div>
+
+                </div>
+
+
+                <!-- Error -->
+
+                <div class="base64-error"
+                     id="base64Error">
+
+                    <i class="bi bi-exclamation-circle"></i>
+
+                    <span id="base64ErrorText">
+                        Invalid Base64 data.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 CONVERT BUTTON
+            ================================================== -->
+
+            <div class="base64-convert-area">
+
+                <button type="button"
+                        class="base64-convert-btn"
+                        id="base64ConvertBtn">
+
+                    <i class="bi bi-arrow-repeat"></i>
+
+                    <span>
+                        Convert
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <!-- =================================================
+                 OUTPUT SECTION
+            ================================================== -->
+
+            <div class="base64-section">
+
+
+                <!-- Section Header -->
+
+                <div class="base64-section-header">
+
+                    <div class="base64-section-label">
+
+                        <i class="bi bi-box-arrow-right"></i>
+
+                        <span>
+                            Output
+                        </span>
+
+                    </div>
+
+
+                    <span class="base64-character-count"
+                          id="base64OutputCount">
+
+                        0 characters
+
+                    </span>
+
+                </div>
+
+
+                <!-- Output Editor -->
+
+                <div class="base64-editor-wrapper">
+
+                    <textarea id="base64Output"
+                              class="base64-editor base64-output-editor"
+                              placeholder="Converted result will appear here..."
+                              spellcheck="false"
+                              readonly></textarea>
+
+                </div>
+
+
+                <!-- Status -->
+
+                <div class="base64-status"
+                     id="base64Status">
+                </div>
+
+
+                <!-- Action Buttons -->
+
+                <div class="base64-action-bar">
+
+
+                    <!-- Copy -->
+
+                    <button type="button"
+                            class="base64-action-btn base64-copy-btn"
+                            id="base64CopyBtn">
+
+                        <i class="bi bi-copy"></i>
+
+                        <span>
+                            Copy Output
+                        </span>
+
+                    </button>
+
+
+                    <!-- Clear -->
+
+                    <button type="button"
+                            class="base64-action-btn base64-clear-btn"
+                            id="base64ClearBtn">
+
+                        <i class="bi bi-arrow-counterclockwise"></i>
+
+                        <span>
+                            Clear
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts{
+    <script>
+
+ 
+        // ENCODE / DECODE ELEMENTS 
+        const base64EncodeTab =
+            document.getElementById("base64EncodeTab");
+
+        const base64DecodeTab =
+            document.getElementById("base64DecodeTab");
+
+
+        
+ 
+        // TEXT / FILE ELEMENTS 
+        const base64TextTab =
+            document.getElementById("base64TextTab");
+
+        const base64FileTab =
+            document.getElementById("base64FileTab");
+
+        const base64TextInputWrapper =
+            document.getElementById("base64TextInputWrapper");
+
+        const base64FileArea =
+            document.getElementById("base64FileArea");
+
+        const base64FileInput =
+            document.getElementById("base64FileInput");
+
+        const base64ChooseFileBtn =
+            document.getElementById("base64ChooseFileBtn");
+
+        const base64SelectedFile =
+            document.getElementById("base64SelectedFile");
+
+
+ 
+        // TEXT TAB
+ 
+
+        base64TextTab.addEventListener("click", function () {
+
+            // Active tab
+            base64TextTab.classList.add("active");
+
+            // Remove active from File
+            base64FileTab.classList.remove("active");
+
+
+            // Show text input
+            base64TextInputWrapper.style.display = "block";
+
+            // Hide file section
+            base64FileArea.classList.remove("active");
+
+        });
+
+
+ 
+        // FILE TAB
+ 
+
+        base64FileTab.addEventListener("click", function () {
+
+            // Active tab
+            base64FileTab.classList.add("active");
+
+            // Remove active from Text
+            base64TextTab.classList.remove("active");
+
+
+            // Hide text input
+            base64TextInputWrapper.style.display = "none";
+
+            // Show file section
+            base64FileArea.classList.add("active");
+
+        });
+
+
+ 
+        // CHOOSE FILE BUTTON
+ 
+
+        base64ChooseFileBtn.addEventListener("click", function () {
+
+            base64FileInput.click();
+
+        });
+
+
+ 
+        // FILE SELECTED
+ 
+
+        base64FileInput.addEventListener("change", function () {
+
+            const file = this.files[0];
+
+            if (!file) {
+
+                base64SelectedFile.textContent = "";
+
+                base64SelectedFile.classList.remove("show");
+
+                return;
+            }
+
+
+            // Show file name
+            base64SelectedFile.textContent =
+                file.name + " (" + formatFileSize(file.size) + ")";
+
+            base64SelectedFile.classList.add("show");
+
+        });
+
+
+ 
+        // FILE SIZE
+ 
+
+        function formatFileSize(bytes) {
+
+            if (bytes === 0) {
+                return "0 Bytes";
+            }
+
+            const units = [
+                "Bytes",
+                "KB",
+                "MB",
+                "GB"
+            ];
+
+            const i =
+                Math.floor(
+                    Math.log(bytes) / Math.log(1024)
+                );
+
+            return (
+                (bytes / Math.pow(1024, i))
+                    .toFixed(2)
+                + " "
+                + units[i]
+            );
+
+        }
+
+         
+        // BASE64 TEXT CONVERSION ELEMENTS
+ 
+
+        const base64Input =
+            document.getElementById("base64Input");
+
+        const base64Output =
+            document.getElementById("base64Output");
+
+        const base64ConvertBtn =
+            document.getElementById("base64ConvertBtn");
+
+        const base64InputCount =
+            document.getElementById("base64InputCount");
+
+        const base64OutputCount =
+            document.getElementById("base64OutputCount");
+
+        const base64Error =
+            document.getElementById("base64Error");
+
+        const base64ErrorText =
+            document.getElementById("base64ErrorText");
+
+        const base64Status =
+            document.getElementById("base64Status");
+
+
+ 
+        // CURRENT MODE
+ 
+
+        let base64Mode = "encode";
+
+
+ 
+        // UPDATE ENCODE / DECODE MODE
+ 
+
+        base64EncodeTab.addEventListener("click", function () {
+
+            base64Mode = "encode";
+
+            base64EncodeTab.classList.add("active");
+            base64DecodeTab.classList.remove("active");
+
+            updateBase64Placeholder();
+
+            clearBase64Error();
+        });
+
+
+        base64DecodeTab.addEventListener("click", function () {
+
+            base64Mode = "decode";
+
+            base64DecodeTab.classList.add("active");
+            base64EncodeTab.classList.remove("active");
+
+            updateBase64Placeholder();
+
+            clearBase64Error();
+        });
+
+
+ 
+        // PLACEHOLDER
+ 
+
+        function updateBase64Placeholder() {
+
+            if (base64Mode === "encode") {
+
+                base64Input.placeholder =
+                    "Enter text to encode...";
+
+            }
+            else {
+
+                base64Input.placeholder =
+                    "Enter Base64 data to decode...";
+
+            }
+
+        }
+
+
+ 
+        // CONVERT BUTTON
+ 
+
+        base64ConvertBtn.addEventListener("click", function () {
+
+            // Clear previous messages
+            clearBase64Error();
+
+            base64Status.textContent = "";
+
+            const input =
+                base64Input.value;
+
+
+            // =====================================================
+            // EMPTY INPUT
+            // =====================================================
+
+            if (input.trim() === "") {
+
+                showBase64Error(
+                    "Please enter some text first."
+                );
+
+                return;
+            }
+
+
+            // =====================================================
+            // ENCODE
+            // =====================================================
+
+            if (base64Mode === "encode") {
+
+                encodeBase64Text(input);
+
+            }
+
+
+            // =====================================================
+            // DECODE
+            // =====================================================
+
+            else {
+
+                decodeBase64Text(input);
+
+            }
+
+        });
+
+
+ 
+        // ENCODE TEXT
+ 
+
+        function encodeBase64Text(text) {
+
+            try {
+
+                /*
+                 * TextEncoder converts JavaScript text
+                 * into UTF-8 bytes.
+                 *
+                 * This makes encoding work correctly
+                 * with characters such as:
+                 *
+                 * Hello
+                 * नमस्ते
+                 * 日本語
+                 * 😀
+                 */
+
+                const bytes =
+                    new TextEncoder().encode(text);
+
+
+                /*
+                 * Convert bytes into binary string
+                 */
+
+                let binary = "";
+
+                const chunkSize = 0x8000;
+
+                for (
+                    let i = 0;
+                    i < bytes.length;
+                    i += chunkSize
+                ) {
+
+                    binary += String.fromCharCode(
+                        ...bytes.subarray(
+                            i,
+                            i + chunkSize
+                        )
+                    );
+
+                }
+
+
+                /*
+                 * Convert binary string to Base64
+                 */
+
+                const result =
+                    btoa(binary);
+
+
+                // Put result into output
+                base64Output.value = result;
+
+
+                // Update character counts
+                updateBase64Counts();
+
+
+                // Success message
+                base64Status.textContent =
+                    "Text encoded successfully.";
+
+
+            }
+            catch (error) {
+
+                showBase64Error(
+                    "Unable to encode the text."
+                );
+
+            }
+
+        }
+
+
+ 
+        // DECODE TEXT
+ 
+
+                // =========================================================
+        // DECODE TEXT / FILE DATA
+        // =========================================================
+
+        function decodeBase64Text(base64) {
+
+            try {
+
+                const input =
+                    base64.trim();
+
+
+                // =====================================================
+                // DATA URL
+                // =====================================================
+
+                if (input.startsWith("data:")) {
+
+                    decodeBase64DataUrl(input);
+
+                    return;
+
+                }
+
+
+                // =====================================================
+                // NORMAL TEXT BASE64
+                // =====================================================
+
+                const cleanedBase64 =
+                    input.replace(/\s/g, "");
+
+
+                // Validate Base64
+
+                if (
+                    !/^[A-Za-z0-9+/]*={0,2}$/.test(cleanedBase64)
+                ) {
+
+                    throw new Error(
+                        "Invalid Base64 format."
+                    );
+
+                }
+
+
+                // Decode Base64
+
+                const binary =
+                    atob(cleanedBase64);
+
+
+                // Convert binary to bytes
+
+                const bytes =
+                    Uint8Array.from(
+                        binary,
+                        char => char.charCodeAt(0)
+                    );
+
+
+                // Convert UTF-8 bytes to text
+
+                const result =
+                    new TextDecoder("utf-8", {
+                        fatal: true
+                    }).decode(bytes);
+
+
+                // Put result into output
+
+                base64Output.value =
+                    result;
+
+
+                // Update counts
+
+                updateBase64Counts();
+
+
+                // Success
+
+                base64Status.textContent =
+                    "Base64 decoded successfully.";
+
+            }
+            catch (error) {
+
+                showBase64Error(
+                    "Invalid Base64 data or the data is not valid UTF-8 text."
+                );
+
+            }
+
+        }
+
+                // =========================================================
+        // DECODE DATA URL
+        // =========================================================
+
+        function decodeBase64DataUrl(dataUrl) {
+
+            try {
+
+                /*
+                 * Example:
+                 *
+                 * data:image/png;base64,iVBORw0KGgo...
+                 *
+                 */
+
+
+                // Split header and Base64 data
+
+                const parts =
+                    dataUrl.split(",");
+
+
+                if (parts.length !== 2) {
+
+                    throw new Error(
+                        "Invalid Data URL."
+                    );
+
+                }
+
+
+                const header =
+                    parts[0];
+
+                const base64Data =
+                    parts[1];
+
+
+                // =====================================================
+                // GET MIME TYPE
+                // =====================================================
+
+                const mimeMatch =
+                    header.match(
+                        /^data:(.*?);base64$/
+                    );
+
+
+                if (!mimeMatch) {
+
+                    throw new Error(
+                        "Invalid Data URL format."
+                    );
+
+                }
+
+
+                const mimeType =
+                    mimeMatch[1];
+
+
+                // =====================================================
+                // DECODE BASE64
+                // =====================================================
+
+                const binary =
+                    atob(base64Data);
+
+
+                const bytes =
+                    new Uint8Array(binary.length);
+
+
+                for (
+                    let i = 0;
+                    i < binary.length;
+                    i++
+                ) {
+
+                    bytes[i] =
+                        binary.charCodeAt(i);
+
+                }
+
+
+                // =====================================================
+                // CREATE BLOB
+                // =====================================================
+
+                const blob =
+                    new Blob(
+                        [bytes],
+                        {
+                            type: mimeType
+                        }
+                    );
+
+
+                // =====================================================
+                // CREATE DOWNLOAD URL
+                // =====================================================
+
+                const downloadUrl =
+                    URL.createObjectURL(blob);
+
+
+                // =====================================================
+                // CREATE DOWNLOAD BUTTON
+                // =====================================================
+
+                const downloadLink =
+                    document.createElement("a");
+
+
+                downloadLink.href =
+                    downloadUrl;
+
+
+                downloadLink.download =
+                    getDecodedFileName(mimeType);
+
+
+                downloadLink.innerHTML =
+                    '<i class="bi bi-download"></i> Download File';
+
+
+                downloadLink.className =
+                    "base64-download-btn";
+
+
+                // =====================================================
+                // SHOW STATUS
+                // =====================================================
+
+                base64Status.innerHTML = "";
+
+
+                base64Status.appendChild(
+                    downloadLink
+                );
+
+
+                base64Status.classList.add("show");
+
+
+                // =====================================================
+                // OUTPUT COUNT
+                // =====================================================
+
+                base64OutputCount.textContent =
+                    base64Data.length + " characters";
+
+
+            }
+            catch (error) {
+
+                showBase64Error(
+                    "Invalid Base64 file data."
+                );
+
+            }
+
+        }
+
+                // =========================================================
+        // GET FILE NAME FROM MIME TYPE
+        // =========================================================
+
+        function getDecodedFileName(mimeType) {
+
+            const mimeExtensions = {
+
+                "image/png": "png",
+
+                "image/jpeg": "jpg",
+
+                "image/gif": "gif",
+
+                "image/webp": "webp",
+
+                "image/svg+xml": "svg",
+
+                "application/pdf": "pdf",
+
+                "application/zip": "zip",
+
+                "application/json": "json",
+
+                "text/plain": "txt",
+
+                "text/html": "html",
+
+                "text/css": "css",
+
+                "text/javascript": "js",
+
+                "application/javascript": "js",
+
+                "application/xml": "xml",
+
+                "audio/mpeg": "mp3",
+
+                "audio/wav": "wav",
+
+                "video/mp4": "mp4"
+
+            };
+
+
+            const extension =
+                mimeExtensions[mimeType]
+                || "bin";
+
+
+            return "decoded-file." + extension;
+
+        }
+
+
+ 
+        // INPUT CHARACTER COUNT
+ 
+
+        base64Input.addEventListener("input", function () {
+
+            updateBase64Counts();
+
+            clearBase64Error();
+
+        });
+
+
+ 
+        // OUTPUT CHARACTER COUNT
+ 
+
+        function updateBase64Counts() {
+
+            const inputLength =
+                base64Input.value.length;
+
+            const outputLength =
+                base64Output.value.length;
+
+
+            base64InputCount.textContent =
+                inputLength +
+                (inputLength === 1
+                    ? " character"
+                    : " characters");
+
+
+            base64OutputCount.textContent =
+                outputLength +
+                (outputLength === 1
+                    ? " character"
+                    : " characters");
+
+        }
+
+
+ 
+        // ERROR
+ 
+
+        function showBase64Error(message) {
+
+            base64ErrorText.textContent =
+                message;
+
+            base64Error.classList.add("show");
+
+            base64Status.textContent = "";
+
+        }
+
+
+ 
+        // CLEAR ERROR
+ 
+
+        function clearBase64Error() {
+
+            base64Error.classList.remove("show");
+
+        }
+
+
+ 
+        // CLEAR BUTTON
+ 
+
+        const base64ClearBtn =
+            document.getElementById("base64ClearBtn");
+
+
+        base64ClearBtn.addEventListener("click", function () {
+
+            // Clear input
+            base64Input.value = "";
+
+            // Clear output
+            base64Output.value = "";
+
+            // Clear selected file
+            base64FileInput.value = "";
+
+            base64SelectedFile.textContent = "";
+            base64SelectedFile.classList.remove("show");
+
+            // Clear status
+            base64Status.textContent = "";
+
+            // Clear error
+            clearBase64Error();
+
+            // Update counts
+            updateBase64Counts();
+
+        });
+
+         
+        // COPY OUTPUT
+ 
+
+        base64CopyBtn =
+            document.getElementById("base64CopyBtn");
+
+        base64CopyBtn.addEventListener("click", async function () {
+
+            const output =
+                base64Output.value;
+
+            if (output === "") {
+
+                return;
+
+            }
+
+            try {
+
+                await navigator.clipboard.writeText(output);
+
+                base64Status.textContent =
+                    "Output copied to clipboard.";
+
+            }
+            catch (error) {
+
+                showBase64Error(
+                    "Unable to copy output."
+                );
+
+            }
+
+        });
+
+
+        // =========================================================
+        // BASE64 FILE CONVERSION
+        // =========================================================
+
+        // const base64ConvertBtn =
+        //     document.getElementById("base64ConvertBtn");
+
+        // const base64Output =
+        //     document.getElementById("base64Output");
+
+        // const base64OutputCount =
+        //     document.getElementById("base64OutputCount");
+
+        // const base64Status =
+        //     document.getElementById("base64Status");
+
+        // const base64InputCount =
+        //     document.getElementById("base64InputCount");
+
+
+                    // =========================================================
+        // FILE ENCODE
+        // =========================================================
+
+                // =========================================================
+        // FILE ENCODE
+        // =========================================================
+
+        function encodeFileToBase64(file) {
+
+            const reader = new FileReader();
+
+
+            reader.onload = function (event) {
+
+                const dataUrl = event.target.result;
+
+
+                // Keep the complete Data URL.
+                //
+                // Example:
+                //
+                // data:image/png;base64,iVBORw0KGgo...
+                //
+                // This preserves the MIME type.
+
+                base64Output.value = dataUrl;
+
+
+                // Update output count
+
+                updateBase64Counts();
+
+
+                // Status
+
+                base64Status.textContent =
+                    "File encoded successfully.";
+
+            };
+
+
+            reader.onerror = function () {
+
+                base64Output.value = "";
+
+                updateBase64Counts();
+
+                base64Status.textContent =
+                    "Unable to read the selected file.";
+
+            };
+
+
+            reader.readAsDataURL(file);
+
+        }
+
+                // =========================================================
+        // CONVERT BUTTON
+        // =========================================================
+
+        base64ConvertBtn.addEventListener("click", function () {
+
+            // =====================================================
+            // FILE MODE
+            // =====================================================
+
+            if (base64FileTab.classList.contains("active")) {
+
+                const file =
+                    base64FileInput.files[0];
+
+
+                // No file selected
+                if (!file) {
+
+                    base64Status.textContent =
+                        "Please select a file first.";
+
+                    base64Status.classList.add("show");
+
+                    return;
+                }
+
+
+                // Encode mode
+                if (base64EncodeTab.classList.contains("active")) {
+
+                    encodeFileToBase64(file);
+
+                    return;
+                }
+
+
+                // Decode mode
+                if (base64DecodeTab.classList.contains("active")) {
+
+                    decodeBase64File(file);
+
+                    return;
+                }
+
+            }
+
+        });
+
+                // =========================================================
+        // BASE64 FILE DECODE
+        // =========================================================
+
+        function decodeBase64File(file) {
+
+            const reader = new FileReader();
+
+
+            reader.onload = function (event) {
+
+                try {
+
+                    const base64Data =
+                        event.target.result.trim();
+
+
+                    // Decode Base64
+                    const binaryString =
+                        atob(base64Data);
+
+
+                    // Convert binary string to bytes
+                    const bytes =
+                        new Uint8Array(binaryString.length);
+
+
+                    for (let i = 0; i < binaryString.length; i++) {
+
+                        bytes[i] =
+                            binaryString.charCodeAt(i);
+
+                    }
+
+
+                    // Create downloadable file
+                    const blob =
+                        new Blob([bytes]);
+
+
+                    const downloadUrl =
+                        URL.createObjectURL(blob);
+
+
+                    // Create download link
+                    const downloadLink =
+                        document.createElement("a");
+
+
+                    downloadLink.href =
+                        downloadUrl;
+
+
+                    downloadLink.download =
+                        "decoded-file";
+
+
+                    downloadLink.textContent =
+                        "Download Decoded File";
+
+
+                    // Clear previous status
+                    base64Status.innerHTML = "";
+
+
+                    // Add download link
+                    base64Status.appendChild(downloadLink);
+
+
+                    base64Status.classList.add("show");
+
+
+                    // Clean URL later
+                    setTimeout(function () {
+
+                        URL.revokeObjectURL(downloadUrl);
+
+                    }, 1000);
+
+                }
+                catch (error) {
+
+                    base64Status.textContent =
+                        "Invalid Base64 file.";
+
+                    base64Status.classList.add("show");
+
+                }
+
+            };
+
+
+            reader.onerror = function () {
+
+                base64Status.textContent =
+                    "Unable to read the selected file.";
+
+                base64Status.classList.add("show");
+
+            };
+
+
+            reader.readAsText(file);
+
+        }
+    </script>
+}

@@ -1,0 +1,740 @@
+﻿@{
+    ViewData["Title"] = "Hash Generator";
+}
+
+<div class="hash-tool-page">
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <div class="hash-tool-header">
+
+        <!-- Breadcrumb -->
+        <div class="hash-tool-breadcrumb">
+
+            <a href="/">
+                Developer Tools
+            </a>
+
+            <i class="bi bi-chevron-right"></i>
+
+            <span>Hash</span>
+
+        </div>
+
+
+        <!-- Title -->
+        <div class="hash-tool-title-section">
+
+            <h1>Hash Generator</h1>
+
+            <p>
+                Generate cryptographic hashes and checksums from text or files.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MAIN HASH WORKSPACE
+    ====================================================== -->
+
+    <div class="hash-workspace">
+
+
+        <!-- =================================================
+             ALGORITHM
+        ================================================== -->
+
+        <div class="hash-section">
+
+            <div class="hash-section-label">
+
+                <span>
+                    Algorithm
+                </span>
+
+            </div>
+
+
+            <div class="hash-select-wrapper">
+
+                <select id="hashAlgorithm"
+                        class="hash-select">
+
+                    <option value="SHA-256" selected>
+                        SHA-256
+                    </option>
+
+                    <option value="MD5">
+                        MD5
+                    </option>
+
+                    <option value="SHA-1">
+                        SHA-1
+                    </option>
+
+                    <option value="SHA-384">
+                        SHA-384
+                    </option>
+
+                    <option value="SHA-512">
+                        SHA-512
+                    </option>
+
+                    <option value="SHA3-256">
+                        SHA3-256
+                    </option>
+
+                    <option value="SHA3-384">
+                        SHA3-384
+                    </option>
+
+                    <option value="SHA3-512">
+                        SHA3-512
+                    </option>
+
+                </select>
+
+                <i class="bi bi-chevron-down"></i>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             INPUT
+        ================================================== -->
+
+        <div class="hash-section">
+
+            <div class="hash-section-heading">
+
+                <div>
+
+                    <div class="hash-section-label">
+                        Input
+                    </div>
+
+                    <span class="hash-section-description">
+                        Enter text or select a file to generate its hash.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Input Tabs -->
+
+            <div class="hash-input-tabs">
+
+                <button type="button"
+                        class="hash-input-tab active"
+                        data-input-type="text">
+
+                    <i class="bi bi-fonts"></i>
+
+                    <span>Text</span>
+
+                </button>
+
+
+                <button type="button"
+                        class="hash-input-tab"
+                        data-input-type="file">
+
+                    <i class="bi bi-file-earmark"></i>
+
+                    <span>File</span>
+
+                </button>
+
+            </div>
+
+
+            <!-- =================================================
+                 TEXT INPUT
+            ================================================== -->
+
+            <div id="hashTextInput"
+                 class="hash-input-panel active">
+
+                <textarea id="hashText"
+                          class="hash-textarea"
+                          placeholder="Enter text to hash...">Hello DevVault</textarea>
+
+                <div class="hash-input-footer">
+
+                    <span id="hashCharCount">
+                        14 characters
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 FILE INPUT
+            ================================================== -->
+
+            <div id="hashFileInput"
+                 class="hash-input-panel">
+
+                <label for="hashFile"
+                       class="hash-file-dropzone">
+
+                    <input type="file"
+                           id="hashFile"
+                           hidden />
+
+                    <div class="hash-file-icon">
+                        <i class="bi bi-box-arrow-in-right"></i>
+                    </div>
+
+                    <div class="hash-file-title">
+                        Choose a file
+                    </div>
+
+                    <div class="hash-file-description">
+                        Click to browse and select a file
+                    </div>
+
+                    @* <div id="hashFileName"
+                         class="hash-file-name">
+
+                    </div> *@
+
+                </label>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             GENERATE BUTTON
+        ================================================== -->
+
+        <div class="hash-generate-section">
+
+            <button type="button"
+                    id="generateHashBtn"
+                    class="hash-primary-btn">
+
+                <i class="bi bi-lightning-fill"></i>
+
+                <span>
+                    Generate Hash
+                </span>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             HASH OUTPUT
+        ================================================== -->
+
+        <div class="hash-section hash-output-section">
+
+            <div class="hash-section-heading">
+
+                <div>
+
+                    <div class="hash-section-label">
+                        Hash
+                    </div>
+
+                    <span class="hash-section-description">
+                        Generated hash value for the selected input.
+                    </span>
+
+                </div>
+
+                <span id="hashAlgorithmBadge"
+                      class="hash-algorithm-badge">
+
+                    SHA-256
+
+                </span>
+
+            </div>
+
+
+            <!-- Hash Result -->
+
+            <div class="hash-output-wrapper">
+
+                <textarea id="hashOutput"
+                          class="hash-output"
+                          readonly
+                          placeholder="Generated hash will appear here..."></textarea>
+
+            </div>
+
+
+            <!-- Actions -->
+
+            <div class="hash-actions">
+
+                <button type="button"
+                        id="copyHashBtn"
+                        class="hash-action-btn">
+
+                    <i class="bi bi-copy"></i>
+
+                    <span>
+                        Copy Hash
+                    </span>
+
+                </button>
+
+
+                <button type="button"
+                        id="clearHashBtn"
+                        class="hash-action-btn">
+
+                    <i class="bi bi-arrow-counterclockwise"></i>
+
+                    <span>
+                        Clear
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             STATUS
+        ================================================== -->
+
+        <div id="hashStatus"
+             class="hash-status">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     HASH TOOL JAVASCRIPT
+========================================================= -->
+<script src="https://cdn.jsdelivr.net/npm/js-sha3@0.12.0/src/sha3.min.js"></script>
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const algorithmSelect =
+            document.getElementById("hashAlgorithm");
+
+        const algorithmBadge =
+            document.getElementById("hashAlgorithmBadge");
+
+        const textTab =
+            document.querySelector('[data-input-type="text"]');
+
+        const fileTab =
+            document.querySelector('[data-input-type="file"]');
+
+        const textPanel =
+            document.getElementById("hashTextInput");
+
+        const filePanel =
+            document.getElementById("hashFileInput");
+
+        const textInput =
+            document.getElementById("hashText");
+
+        const fileInput =
+            document.getElementById("hashFile");
+
+        const fileName =
+            document.getElementById("hashFileName");
+
+        const output =
+            document.getElementById("hashOutput");
+
+        const generateBtn =
+            document.getElementById("generateHashBtn");
+
+        const copyBtn =
+            document.getElementById("copyHashBtn");
+
+        const clearBtn =
+            document.getElementById("clearHashBtn");
+
+        const charCount =
+            document.getElementById("hashCharCount");
+
+        const status =
+            document.getElementById("hashStatus");
+
+
+        let inputType = "text";
+
+
+        /* =====================================================
+           INPUT TAB
+        ====================================================== */
+
+        textTab.addEventListener("click", function () {
+
+            inputType = "text";
+
+            textTab.classList.add("active");
+            fileTab.classList.remove("active");
+
+            textPanel.classList.add("active");
+            filePanel.classList.remove("active");
+
+            clearStatus();
+
+        });
+
+
+        fileTab.addEventListener("click", function () {
+
+            inputType = "file";
+
+            fileTab.classList.add("active");
+            textTab.classList.remove("active");
+
+            filePanel.classList.add("active");
+            textPanel.classList.remove("active");
+
+            clearStatus();
+
+        });
+
+
+        /* =====================================================
+           ALGORITHM
+        ====================================================== */
+
+        algorithmSelect.addEventListener("change", function () {
+            algorithmBadge.textContent =
+                algorithmSelect.value;
+        });
+
+        /* =====================================================
+           CHARACTER COUNT
+        ====================================================== */
+
+        function updateCharacterCount() {
+            const length =
+                textInput.value.length;
+
+            charCount.textContent =
+                length + (length === 1 ? " character" : " characters");
+        }
+
+
+        textInput.addEventListener(
+            "input",
+            updateCharacterCount
+        );
+
+
+        updateCharacterCount();
+
+
+        /* =====================================================
+           FILE SELECT
+        ====================================================== */
+
+        fileInput.addEventListener("change", function () {
+
+            if (fileInput.files.length === 0) {
+
+                fileName.textContent = "";
+
+                return;
+            }
+
+            const file =
+                fileInput.files[0];
+
+            fileName.innerHTML =
+                '<i class="fa-solid fa-file"></i> ' +
+                escapeHtml(file.name);
+
+            clearStatus();
+
+        });
+
+
+        /* =====================================================
+           GENERATE HASH
+        ====================================================== */
+
+        generateBtn.addEventListener("click", async function () {
+
+            clearStatus();
+
+            const algorithm =
+                algorithmSelect.value;
+
+
+            try {
+
+                let data;
+
+
+                /* =============================================
+                   TEXT
+                ============================================== */
+
+                if (inputType === "text") {
+
+                    const text =
+                        textInput.value;
+
+                    if (!text) {
+
+                        showStatus(
+                            "Please enter some text.",
+                            "error"
+                        );
+
+                        return;
+                    }
+
+                    data =
+                        new TextEncoder().encode(text);
+
+                }
+
+
+                /* =============================================
+                   FILE
+                ============================================== */
+
+                else {
+
+                    if (fileInput.files.length === 0) {
+
+                        showStatus(
+                            "Please select a file.",
+                            "error"
+                        );
+
+                        return;
+                    }
+
+                    data =
+                        await fileInput.files[0].arrayBuffer();
+
+                }
+
+
+                /* =============================================
+                   WEB CRYPTO HASH
+                ============================================== */
+
+                if (
+                    algorithm === "SHA-1" ||
+                    algorithm === "SHA-256" ||
+                    algorithm === "SHA-384" ||
+                    algorithm === "SHA-512"
+                ) {
+
+                    const hashBuffer =
+                        await crypto.subtle.digest(
+                            algorithm,
+                            data
+                        );
+
+                    const hashArray =
+                        Array.from(
+                            new Uint8Array(hashBuffer)
+                        );
+
+                    const hashHex =
+                        hashArray
+                            .map(
+                                byte =>
+                                    byte
+                                        .toString(16)
+                                        .padStart(2, "0")
+                            )
+                            .join("");
+
+                    output.value =
+                        hashHex;
+
+                    showStatus(
+                        "Hash generated successfully.",
+                        "success"
+                    );
+
+                }
+                else if(algorithm === "SHA3-256"){
+                    output.value = sha3_256(data);
+                }
+                else if(algorithm === "SHA3-384"){
+                    output.value = sha3_384(data);
+                }
+                else if(algorithm === "SHA3-512"){
+                    output.value = sha3_512(data);
+                }
+                else {
+
+                    showStatus(
+                        algorithm +
+                        " requires an additional hashing library.",
+                        "error"
+                    );
+
+                }
+
+            }
+            catch (error) {
+
+                console.error(error);
+
+                showStatus(
+                    "Unable to generate hash.",
+                    "error"
+                );
+
+            }
+
+        });
+
+
+        /* =====================================================
+           COPY HASH
+        ====================================================== */
+
+        copyBtn.addEventListener("click", async function () {
+
+            if (!output.value) {
+
+                showStatus(
+                    "There is no hash to copy.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            try {
+
+                await navigator.clipboard.writeText(
+                    output.value
+                );
+
+                const original =
+                    copyBtn.innerHTML;
+
+                copyBtn.innerHTML =
+                    '<i class="fa-solid fa-check"></i>' +
+                    '<span>Copied</span>';
+
+                copyBtn.classList.add("success");
+
+
+                setTimeout(function () {
+
+                    copyBtn.innerHTML =
+                        original;
+
+                    copyBtn.classList.remove("success");
+
+                }, 1500);
+
+            }
+            catch (error) {
+
+                showStatus(
+                    "Unable to copy hash.",
+                    "error"
+                );
+
+            }
+
+        });
+
+
+        /* =====================================================
+           CLEAR
+        ====================================================== */
+
+        clearBtn.addEventListener("click", function () {
+
+            textInput.value = "";
+
+            fileInput.value = "";
+
+            fileName.textContent = "";
+
+            output.value = "";
+
+            updateCharacterCount();
+
+            clearStatus();
+
+        });
+
+
+        /* =====================================================
+           STATUS
+        ====================================================== */
+
+        function showStatus(message, type) {
+
+            status.textContent =
+                message;
+
+            status.className =
+                "hash-status " +
+                type;
+
+        }
+
+
+        function clearStatus() {
+
+            status.textContent = "";
+
+            status.className =
+                "hash-status";
+
+        }
+
+
+        /* =====================================================
+           HTML ESCAPE
+        ====================================================== */
+
+        function escapeHtml(value) {
+
+            return value
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
+    });
+
+</script>

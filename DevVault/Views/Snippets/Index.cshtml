@@ -1,0 +1,500 @@
+﻿@{
+    ViewData["Title"] = "Snippets";
+}
+
+<div class="snippets-page">
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+    <div class="snippets-header">
+
+        <div class="snippets-breadcrumb mb-2">
+            <a href="/" class="text-decoration-none">
+                Developer Tools
+            </a>
+
+            <i class="bi bi-chevron-right mx-2"></i>
+
+            <span>Snippets</span>
+        </div>
+
+        <div class="d-flex flex-column flex-md-row
+            justify-content-between align-items-md-center gap-3">
+
+            <div>
+                <h1 class="snippets-title mb-1">
+                    Code Snippets
+                </h1>
+
+                <p class="snippets-subtitle mb-0">
+                    Save and reuse your frequently used code.
+                </p>
+            </div>
+
+            <a href="/Snippets/CreateSnippets">
+                <button type="button"
+                        class="btn btn-primary snippets-new-btn"
+                        id="newSnippetBtn">
+
+                    <i class="bi bi-plus-lg me-2"></i>
+                    New Snippet
+                </button>
+            </a>
+
+        </div>
+    </div>
+
+
+    <!-- =========================
+         TOOLBAR
+    ========================== -->
+    <div class="card snippets-toolbar shadow-sm mb-4">
+
+        <div class="card-body">
+
+            <div class="row g-3 align-items-center">
+
+                <!-- SEARCH -->
+                <div class="col-12 col-lg-7">
+
+                    <div class="input-group snippets-search">
+
+                        <span class="input-group-text">
+                            <i class="bi bi-search"></i>
+                        </span>
+
+                        <input type="text"
+                               id="snippetSearch"
+                               class="form-control"
+                               placeholder="Search snippets..."
+                               autocomplete="off" />
+
+                    </div>
+
+                </div>
+
+
+                <!-- SORT -->
+                <div class="col-12 col-sm-6 col-lg-3">
+
+                    <select class="form-select snippets-sort"
+                            id="snippetSort">
+
+                        <option value="recent">
+                            Recently Added
+                        </option>
+
+                        <option value="oldest">
+                            Oldest
+                        </option>
+
+                        <option value="name">
+                            Name
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- VIEW -->
+                <div class="col-12 col-sm-6 col-lg-2">
+
+                    <div class="btn-group w-100"
+                         role="group">
+
+                        <button type="button"
+                                class="btn btn-outline-secondary active"
+                                id="gridViewBtn"
+                                title="Grid View">
+
+                            <i class="bi bi-grid-3x3-gap"></i>
+
+                        </button>
+
+                        <button type="button"
+                                class="btn btn-outline-secondary"
+                                id="listViewBtn"
+                                title="List View">
+
+                            <i class="bi bi-list"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- =========================
+         CATEGORY FILTER
+    ========================== -->
+    <div class="snippets-categories">
+
+        <div class="d-flex align-items-center
+            gap-2 flex-wrap">
+
+            <span class="category-label">
+                Categories:
+            </span>
+
+            <button class="btn btn-sm category-btn active"
+                    data-category="all">
+                All
+            </button>
+
+            <button class="btn btn-sm category-btn"
+                    data-category="C#">
+                C#
+            </button>
+
+            <button class="btn btn-sm category-btn"
+                    data-category="Java">
+                Java
+            </button>
+
+            <button class="btn btn-sm category-btn"
+                    data-category="JavaScript">
+                JavaScript
+            </button>
+
+            <button class="btn btn-sm category-btn"
+                    data-category="SQL">
+                SQL
+            </button>
+
+            <button class="btn btn-sm category-btn"
+                    data-category="React">
+                React
+            </button>
+
+            <button class="btn btn-sm category-btn"
+                    data-category="CSS">
+                CSS
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         SNIPPETS GRID
+    ========================== -->
+    <div id="snippetsContainer"
+         class="row g-4">
+
+
+        <!-- SNIPPET CARD -->
+        <div class="col-12 col-md-6 col-xl-4 snippet-item"
+             data-category="C#"
+             data-name="ASP.NET JWT Authentication">
+
+            <div class="card snippet-card h-100">
+
+                <div class="card-body d-flex flex-column">
+
+                    <div class="d-flex justify-content-between
+                        align-items-start gap-3 mb-3">
+
+                        <div>
+                            <h5 class="snippet-name mb-1">
+                                ASP.NET JWT Authentication
+                            </h5>
+
+                            <span class="badge snippet-language">
+                                C#
+                            </span>
+                        </div>
+
+                        <button class="btn btn-sm snippet-menu-btn"
+                                title="More options">
+
+                            <i class="bi bi-three-dots-vertical"></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="snippet-tags mb-3">
+
+                        <span class="badge snippet-tag">
+                            #aspnet
+                        </span>
+
+                        <span class="badge snippet-tag">
+                            #jwt
+                        </span>
+
+                        <span class="badge snippet-tag">
+                            #auth
+                        </span>
+
+                    </div>
+
+
+                    <div class="snippet-preview mb-3">
+
+                        <pre><code>var token = new JwtSecurityToken(
+    claims: claims,
+    expires: DateTime.UtcNow.AddHours(1)
+);</code></pre>
+
+                    </div>
+
+
+                    <div class="snippet-footer mt-auto">
+
+                        <div class="snippet-date mb-3">
+                            <i class="bi bi-clock me-1"></i>
+                            2 days ago
+                        </div>
+
+                        <div class="d-flex gap-2">
+
+                            <button class="btn btn-sm btn-primary flex-fill">
+                                <i class="bi bi-box-arrow-up-right me-1"></i>
+                                Open
+                            </button>
+
+                            <button class="btn btn-sm btn-outline-secondary
+                                flex-fill copy-snippet">
+
+                                <i class="bi bi-copy me-1"></i>
+                                Copy
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- SNIPPET CARD -->
+        <div class="col-12 col-md-6 col-xl-4 snippet-item"
+             data-category="SQL"
+             data-name="SQL Pagination">
+
+            <div class="card snippet-card h-100">
+
+                <div class="card-body d-flex flex-column">
+
+                    <div class="d-flex justify-content-between
+                        align-items-start gap-3 mb-3">
+
+                        <div>
+                            <h5 class="snippet-name mb-1">
+                                SQL Pagination
+                            </h5>
+
+                            <span class="badge snippet-language">
+                                SQL
+                            </span>
+                        </div>
+
+                        <button class="btn btn-sm snippet-menu-btn">
+
+                            <i class="bi bi-three-dots-vertical"></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="snippet-tags mb-3">
+
+                        <span class="badge snippet-tag">
+                            #sql
+                        </span>
+
+                        <span class="badge snippet-tag">
+                            #pagination
+                        </span>
+
+                    </div>
+
+
+                    <div class="snippet-preview mb-3">
+
+                        <pre><code>
+                            ```SELECT *
+                            FROM users
+                            ORDER BY id
+                            OFFSET Offset ROWS
+                            FETCH NEXT Limit ROWS ONLY```;
+                        </code></pre>
+
+                    </div>
+
+
+                    <div class="snippet-footer mt-auto">
+
+                        <div class="snippet-date mb-3">
+
+                            <i class="bi bi-clock me-1"></i>
+                            5 days ago
+
+                        </div>
+
+
+                        <div class="d-flex gap-2">
+
+                            <button class="btn btn-sm btn-primary flex-fill">
+                                <i class="bi bi-box-arrow-up-right me-1"></i>
+                                Open
+                            </button>
+
+                            <button class="btn btn-sm btn-outline-secondary
+                                flex-fill copy-snippet">
+
+                                <i class="bi bi-copy me-1"></i>
+                                Copy
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SNIPPET CARD -->
+        <div class="col-12 col-md-6 col-xl-4 snippet-item"
+             data-category="JavaScript"
+             data-name="Debounce Function">
+
+            <div class="card snippet-card h-100">
+
+                <div class="card-body d-flex flex-column">
+
+                    <div class="d-flex justify-content-between
+                        align-items-start gap-3 mb-3">
+
+                        <div>
+                            <h5 class="snippet-name mb-1">
+                                Debounce Function
+                            </h5>
+
+                            <span class="badge snippet-language">
+                                JavaScript
+                            </span>
+                        </div>
+
+                        <button class="btn btn-sm snippet-menu-btn">
+
+                            <i class="bi bi-three-dots-vertical"></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="snippet-tags mb-3">
+
+                        <span class="badge snippet-tag">
+                            #javascript
+                        </span>
+
+                        <span class="badge snippet-tag">
+                            #utility
+                        </span>
+
+                    </div>
+
+
+                    <div class="snippet-preview mb-3">
+
+                        <pre><code>function debounce(fn, delay) {
+    let timer;
+
+    return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(
+            () => fn(...args),
+            delay
+        );
+    };
+}</code></pre>
+
+                    </div>
+
+
+                    <div class="snippet-footer mt-auto">
+
+                        <div class="snippet-date mb-3">
+
+                            <i class="bi bi-clock me-1"></i>
+                            1 week ago
+
+                        </div>
+
+
+                        <div class="d-flex gap-2">
+
+                            <button class="btn btn-sm btn-primary flex-fill">
+                                <i class="bi bi-box-arrow-up-right me-1"></i>
+                                Open
+                            </button>
+
+                            <button class="btn btn-sm btn-outline-secondary
+                                flex-fill copy-snippet">
+
+                                <i class="bi bi-copy me-1"></i>
+                                Copy
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- EMPTY STATE -->
+        <div id="noSnippets"
+             class="col-12 d-none">
+
+            <div class="snippets-empty text-center py-5">
+
+                <div class="empty-icon mb-3">
+                    <i class="bi bi-code-slash"></i>
+                </div>
+
+                <h5>
+                    No snippets found
+                </h5>
+
+                <p class="mb-0">
+                    Try another search or create a new snippet.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+

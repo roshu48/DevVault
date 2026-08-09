@@ -1,0 +1,774 @@
+﻿/* =========================================================
+   DEVVAULT - HASH TOOL
+   Light + Dark Theme
+========================================================= */
+
+
+/* =========================================================
+   LIGHT THEME VARIABLES
+========================================================= */
+
+.hash-tool-page {
+    --hash-card-bg: #ffffff;
+    --hash-panel-bg: #ffffff;
+    --hash-input-bg: #ffffff;
+    --hash-page-bg: #ffffff;
+    --hash-border: #e2e8f0;
+    --hash-border-hover: #cbd5e1;
+    --hash-text: #1e293b;
+    --hash-text-secondary: #64748b;
+    --hash-text-muted: #94a3b8;
+    --hash-accent: #6366f1;
+    --hash-accent-hover: #4f46e5;
+    --hash-accent-soft: rgba(99, 102, 241, 0.10);
+    --hash-success: #16a34a;
+    --hash-success-soft: rgba(22, 163, 74, 0.08);
+    --hash-danger: #dc2626;
+    --hash-danger-soft: rgba(220, 38, 38, 0.08);
+    --hash-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    --hash-shadow-hover: 0 5px 18px rgba(15, 23, 42, 0.07);
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   DARK THEME VARIABLES
+========================================================= */
+
+html[data-theme="dark"] .hash-tool-page,
+body[data-theme="dark"] .hash-tool-page,
+html[data-bs-theme="dark"] .hash-tool-page,
+body[data-bs-theme="dark"] .hash-tool-page,
+html.dark .hash-tool-page,
+body.dark .hash-tool-page,
+html.dark-mode .hash-tool-page,
+body.dark-mode .hash-tool-page,
+html.dark-theme .hash-tool-page,
+body.dark-theme .hash-tool-page,
+.dark .hash-tool-page,
+.dark-mode .hash-tool-page,
+.dark-theme .hash-tool-page {
+    --hash-card-bg: #151c2c;
+    --hash-panel-bg: #151c2c;
+    --hash-input-bg: #111827;
+    --hash-page-bg: #151c2c;
+    --hash-border: #273449;
+    --hash-border-hover: #3b4a63;
+    --hash-text: #f1f5f9;
+    --hash-text-secondary: #94a3b8;
+    --hash-text-muted: #64748b;
+    --hash-accent: #818cf8;
+    --hash-accent-hover: #6366f1;
+    --hash-accent-soft: rgba(129, 140, 248, 0.12);
+    --hash-success: #4ade80;
+    --hash-success-soft: rgba(74, 222, 128, 0.08);
+    --hash-danger: #f87171;
+    --hash-danger-soft: rgba(248, 113, 113, 0.08);
+    --hash-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+    --hash-shadow-hover: 0 6px 24px rgba(0, 0, 0, 0.30);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.hash-tool-header {
+    margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   BREADCRUMB
+========================================================= */
+
+.hash-tool-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+
+    .hash-tool-breadcrumb a {
+        color: var(--hash-text-secondary);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+
+        .hash-tool-breadcrumb a:hover {
+            color: var(--hash-accent);
+        }
+
+
+    .hash-tool-breadcrumb i {
+        color: var(--hash-text-muted);
+        font-size: 10px;
+    }
+
+
+    .hash-tool-breadcrumb span {
+        color: var(--hash-text-secondary);
+        font-weight: 500;
+    }
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.hash-tool-title-section h1 {
+    margin: 0;
+    color: var(--hash-text);
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+}
+
+
+.hash-tool-title-section p {
+    margin: 8px 0 0;
+    color: var(--hash-text-secondary);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   MAIN WORKSPACE
+========================================================= */
+
+.hash-workspace {
+    width: 100%;
+    padding: 28px;
+    background: var(--hash-card-bg);
+    border: 1px solid var(--hash-border);
+    border-radius: 12px;
+    box-shadow: var(--hash-shadow);
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.hash-section {
+    margin-bottom: 25px;
+}
+
+
+    .hash-section:last-child {
+        margin-bottom: 0;
+    }
+
+
+/* =========================================================
+   SECTION LABEL
+========================================================= */
+
+.hash-section-label {
+    color: var(--hash-text);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+
+.hash-section-description {
+    display: block;
+    margin-top: 4px;
+    color: var(--hash-text-secondary);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   ALGORITHM SELECT
+========================================================= */
+
+.hash-select-wrapper {
+    position: relative;
+    width: 100%;
+    margin-top: 9px;
+}
+
+
+.hash-select {
+    width: 100%;
+    height: 44px;
+    padding: 0 42px 0 12px;
+    border: 1px solid var(--hash-border);
+    border-radius: 7px;
+    outline: none;
+    background: var(--hash-input-bg);
+    color: var(--hash-text);
+    font-size: 13px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+
+    .hash-select:hover {
+        border-color: var(--hash-border-hover);
+    }
+
+
+    .hash-select:focus {
+        border-color: var(--hash-accent);
+        box-shadow: 0 0 0 3px var(--hash-accent-soft);
+    }
+
+
+.hash-select-wrapper > i {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--hash-text-secondary);
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   INPUT HEADING
+========================================================= */
+
+.hash-section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+
+/* =========================================================
+   INPUT TABS
+========================================================= */
+
+.hash-input-tabs {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    border: 1px solid var(--hash-border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--hash-card-bg);
+    margin-bottom: 12px;
+}
+
+
+.hash-input-tab {
+    position: relative;
+    flex: 1;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 0 15px;
+    border: none;
+    border-right: 1px solid var(--hash-border);
+    background: transparent;
+    color: var(--hash-text-secondary);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+
+    .hash-input-tab:last-child {
+        border-right: none;
+    }
+
+
+    .hash-input-tab:hover {
+        background: var(--hash-accent-soft);
+        color: var(--hash-accent);
+    }
+
+
+    .hash-input-tab.active {
+        background: var(--hash-accent-soft);
+        color: var(--hash-accent);
+        font-weight: 600;
+    }
+
+
+        .hash-input-tab.active::after {
+            content: "";
+            position: absolute;
+            left: 18px;
+            right: 18px;
+            bottom: 0;
+            height: 2px;
+            border-radius: 2px 2px 0 0;
+            background: var(--hash-accent);
+        }
+
+
+    .hash-input-tab i {
+        font-size: 12px;
+    }
+
+
+/* =========================================================
+   INPUT PANEL
+========================================================= */
+
+.hash-input-panel {
+    display: none;
+}
+
+
+    .hash-input-panel.active {
+        display: block;
+    }
+
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+
+.hash-textarea {
+    width: 100%;
+    min-height: 190px;
+    display: block;
+    padding: 14px;
+    resize: vertical;
+    border: 1px solid var(--hash-border);
+    border-radius: 8px;
+    outline: none;
+    background: var(--hash-input-bg);
+    color: var(--hash-text);
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+
+    .hash-textarea::placeholder {
+        color: var(--hash-text-muted);
+    }
+
+
+    .hash-textarea:hover {
+        border-color: var(--hash-border-hover);
+    }
+
+
+    .hash-textarea:focus {
+        border-color: var(--hash-accent);
+        box-shadow: 0 0 0 3px var(--hash-accent-soft);
+    }
+
+
+/* =========================================================
+   TEXT INPUT FOOTER
+========================================================= */
+
+.hash-input-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 7px;
+    color: var(--hash-text-muted);
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   FILE DROPZONE
+========================================================= */
+
+.hash-file-dropzone {
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border: 1px dashed var(--hash-border-hover);
+    border-radius: 8px;
+    background: var(--hash-input-bg);
+    cursor: pointer;
+    text-align: center;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+
+    .hash-file-dropzone:hover {
+        border-color: var(--hash-accent);
+        background: var(--hash-accent-soft);
+    }
+
+
+.hash-file-icon {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    border-radius: 9px;
+    background: var(--hash-accent-soft);
+    color: var(--hash-accent);
+    font-size: 19px;
+}
+
+
+.hash-file-title {
+    color: var(--hash-text);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+.hash-file-description {
+    margin-top: 5px;
+    color: var(--hash-text-secondary);
+    font-size: 12px;
+}
+
+
+.hash-file-name {
+    margin-top: 12px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: var(--hash-accent-soft);
+    color: var(--hash-accent);
+    font-family: monospace;
+    font-size: 11px;
+    word-break: break-all;
+}
+
+
+/* =========================================================
+   GENERATE SECTION
+========================================================= */
+
+.hash-generate-section {
+    display: flex;
+    justify-content: center;
+    padding: 2px 0 26px;
+}
+
+
+/* =========================================================
+   PRIMARY BUTTON
+========================================================= */
+
+.hash-primary-btn {
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 18px;
+    border: 1px solid var(--hash-accent);
+    border-radius: 7px;
+    background: var(--hash-accent);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+
+    .hash-primary-btn:hover {
+        background: var(--hash-accent-hover);
+        border-color: var(--hash-accent-hover);
+        box-shadow: 0 4px 12px var(--hash-accent-soft);
+    }
+
+
+    .hash-primary-btn:active {
+        transform: translateY(1px);
+    }
+
+
+    .hash-primary-btn i {
+        font-size: 12px;
+    }
+
+
+/* =========================================================
+   OUTPUT SECTION
+========================================================= */
+
+.hash-output-section {
+    padding-top: 25px;
+    border-top: 1px solid var(--hash-border);
+}
+
+
+/* =========================================================
+   ALGORITHM BADGE
+========================================================= */
+
+.hash-algorithm-badge {
+    flex-shrink: 0;
+    padding: 5px 10px;
+    border: 1px solid var(--hash-accent);
+    border-radius: 999px;
+    background: var(--hash-accent-soft);
+    color: var(--hash-accent);
+    font-family: monospace;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   OUTPUT WRAPPER
+========================================================= */
+
+.hash-output-wrapper {
+    width: 100%;
+}
+
+
+/* =========================================================
+   HASH OUTPUT
+========================================================= */
+
+.hash-output {
+    width: 100%;
+    min-height: 80px;
+    display: block;
+    padding: 13px;
+    resize: vertical;
+    border: 1px solid var(--hash-border);
+    border-radius: 8px;
+    outline: none;
+    background: var(--hash-input-bg);
+    color: var(--hash-text);
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    word-break: break-all;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+
+    .hash-output::placeholder {
+        color: var(--hash-text-muted);
+    }
+
+
+    .hash-output:focus {
+        border-color: var(--hash-accent);
+        box-shadow: 0 0 0 3px var(--hash-accent-soft);
+    }
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.hash-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 9px;
+    margin-top: 12px;
+}
+
+
+/* =========================================================
+   ACTION BUTTON
+========================================================= */
+
+.hash-action-btn {
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 0 13px;
+    border: 1px solid var(--hash-border);
+    border-radius: 7px;
+    background: var(--hash-panel-bg);
+    color: var(--hash-text-secondary);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+
+    .hash-action-btn:hover {
+        border-color: var(--hash-accent);
+        background: var(--hash-accent-soft);
+        color: var(--hash-accent);
+    }
+
+
+    .hash-action-btn:active {
+        transform: translateY(1px);
+    }
+
+
+    .hash-action-btn.success {
+        border-color: var(--hash-success);
+        background: var(--hash-success-soft);
+        color: var(--hash-success);
+    }
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.hash-status {
+    min-height: 18px;
+    margin-top: 5px;
+    font-size: 12px;
+    text-align: center;
+    transition: color 0.2s ease;
+}
+
+
+    .hash-status.success {
+        color: var(--hash-success);
+    }
+
+
+    .hash-status.error {
+        color: var(--hash-danger);
+    }
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .hash-workspace {
+        padding: 22px;
+    }
+
+    .hash-generate-section {
+        justify-content: stretch;
+    }
+
+    .hash-primary-btn {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .hash-tool-title-section h1 {
+        font-size: 26px;
+    }
+
+
+    .hash-tool-title-section p {
+        font-size: 14px;
+    }
+
+
+    .hash-workspace {
+        padding: 18px;
+        border-radius: 10px;
+    }
+
+
+    .hash-section {
+        margin-bottom: 22px;
+    }
+
+
+    .hash-section-heading {
+        align-items: flex-start;
+    }
+
+
+    .hash-input-tab {
+        min-height: 46px;
+    }
+
+
+    .hash-textarea,
+    .hash-file-dropzone {
+        min-height: 170px;
+    }
+
+
+    .hash-actions {
+        width: 100%;
+    }
+
+
+    .hash-action-btn {
+        flex: 1;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .hash-tool-breadcrumb {
+        font-size: 12px;
+    }
+
+
+    .hash-tool-title-section h1 {
+        font-size: 24px;
+    }
+
+
+    .hash-workspace {
+        padding: 15px;
+    }
+
+
+    .hash-input-tab {
+        padding: 0 10px;
+    }
+
+
+        .hash-input-tab span {
+            font-size: 11px;
+        }
+
+
+    .hash-textarea,
+    .hash-output {
+        font-size: 12px;
+    }
+
+
+    .hash-algorithm-badge {
+        font-size: 9px;
+        padding: 4px 8px;
+    }
+
+
+    .hash-action-btn span {
+        display: inline;
+    }
+}

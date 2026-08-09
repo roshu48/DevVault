@@ -288,9 +288,12 @@
 
     </div>    
 
-    <!-- Monaco AMD loader: ONLY ONCE -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs/loader.min.js"></script>
-        
+   
     <!-- Your module -->
-    <script type="module" src="~/js/formatter-editor.js"></script>
+    @section Scripts {
+        <script type="module" src="~/js/formatter-editor.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs/loader.min.js"></script>    
+    }
+
+
 </div>

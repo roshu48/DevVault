@@ -1,0 +1,897 @@
+﻿@{
+    ViewData["Title"] = "Color Tool";
+}
+
+<div class="color-tool-page">
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <div class="color-tool-header">
+
+        <div class="color-tool-breadcrumb">
+
+            <a href="/">
+                Developer Tools
+            </a>
+
+            <i class="bi bi-chevron-right"></i>
+
+            <span>
+                Color Tool
+            </span>
+
+        </div>
+
+
+        <div class="color-tool-title-section">
+
+            <div>
+
+                <h1>
+                    Color Tool
+                </h1>
+
+                <p>
+                    Pick, convert, generate, and analyze colors
+                    for your projects.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MAIN COLOR WORKSPACE
+    ====================================================== -->
+
+    <section class="color-tool-workspace">
+
+
+        <!-- =================================================
+             COLOR PICKER
+        ================================================== -->
+
+        <div class="color-picker-panel">
+
+            <div class="color-panel-header">
+
+                <div class="color-panel-title">
+
+                    <div class="color-panel-icon">
+                        <i class="bi bi-eyedropper"></i>
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            COLOR PICKER
+                        </h2>
+
+                        <span>
+                            Select and customize your color
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="color-picker-content">
+
+
+                <!-- COLOR PREVIEW -->
+
+                <div class="color-preview-wrapper">
+
+                    <input type="color"
+                           id="colorPicker"
+                           value="#6366F1"
+                           class="color-native-input" />
+
+                    <div id="colorPreview"
+                         class="color-preview">
+
+                        <div class="color-preview-inner">
+
+                            <i class="bi bi-eyedropper"></i>
+
+                            <span>
+                                COLOR
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HUE -->
+
+                <div class="color-slider-group">
+
+                    <div class="color-slider-label">
+
+                        <span>
+                            Hue
+                        </span>
+
+                        <span id="hueValue">
+                            239°
+                        </span>
+
+                    </div>
+
+                    <input type="range"
+                           id="hueSlider"
+                           class="color-slider"
+                           min="0"
+                           max="360"
+                           value="239" />
+
+                </div>
+
+
+                <!-- SATURATION -->
+
+                <div class="color-slider-group">
+
+                    <div class="color-slider-label">
+
+                        <span>
+                            Saturation
+                        </span>
+
+                        <span id="saturationValue">
+                            84%
+                        </span>
+
+                    </div>
+
+                    <input type="range"
+                           id="saturationSlider"
+                           class="color-slider"
+                           min="0"
+                           max="100"
+                           value="84" />
+
+                </div>
+
+
+                <!-- LIGHTNESS -->
+
+                <div class="color-slider-group">
+
+                    <div class="color-slider-label">
+
+                        <span>
+                            Lightness
+                        </span>
+
+                        <span id="lightnessValue">
+                            67%
+                        </span>
+
+                    </div>
+
+                    <input type="range"
+                           id="lightnessSlider"
+                           class="color-slider"
+                           min="0"
+                           max="100"
+                           value="67" />
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             DIVIDER
+        ================================================== -->
+
+        <div class="color-workspace-divider"></div>
+
+
+        <!-- =================================================
+             COLOR VALUES
+        ================================================== -->
+
+        <div class="color-values-panel">
+
+            <div class="color-panel-header">
+
+                <div class="color-panel-title">
+
+                    <div class="color-panel-icon">
+
+                        <i class="bi bi-brush"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            COLOR VALUES
+                        </h2>
+
+                        <span>
+                            Color formats and values
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="color-values-content">
+
+
+                <!-- HEX -->
+
+                <div class="color-value-group">
+
+                    <div class="color-value-label">
+                        HEX
+                    </div>
+
+                    <div class="color-value-row">
+
+                        <input type="text"
+                               id="hexValue"
+                               class="color-value-input"
+                               value="#6366F1"
+                               spellcheck="false" />
+
+                        <button type="button"
+                                class="color-copy-btn"
+                                data-copy-target="hexValue">
+
+                            <i class="bi bi-copy"></i>
+
+                            <span>
+                                Copy
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RGB -->
+
+                <div class="color-value-group">
+
+                    <div class="color-value-label">
+                        RGB
+                    </div>
+
+                    <div class="color-value-row">
+
+                        <input type="text"
+                               id="rgbValue"
+                               class="color-value-input"
+                               value="rgb(99, 102, 241)"
+                               readonly />
+
+                        <button type="button"
+                                class="color-copy-btn"
+                                data-copy-target="rgbValue">
+
+                            <i class="bi bi-copy"></i>
+
+                            <span>
+                                Copy
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HSL -->
+
+                <div class="color-value-group">
+
+                    <div class="color-value-label">
+                        HSL
+                    </div>
+
+                    <div class="color-value-row">
+
+                        <input type="text"
+                               id="hslValue"
+                               class="color-value-input"
+                               value="hsl(239, 84%, 67%)"
+                               readonly />
+
+                        <button type="button"
+                                class="color-copy-btn"
+                                data-copy-target="hslValue">
+
+                            <i class="bi bi-copy"></i>
+
+                            <span>
+                                Copy
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         COLOR TOOL TABS
+    ====================================================== -->
+
+    <div class="color-tool-tabs">
+
+        <button type="button"
+                class="color-tool-tab active"
+                data-tab="formats">
+
+            <i class="bi bi-palette"></i>
+
+            <span>
+                Color Formats
+            </span>
+
+        </button>
+
+
+        <button type="button"
+                class="color-tool-tab"
+                data-tab="palette">
+
+            <i class="bi bi-grid"></i>
+
+            <span>
+                Palette
+            </span>
+
+        </button>
+
+
+        <button type="button"
+                class="color-tool-tab"
+                data-tab="contrast">
+
+            <i class="bi bi-circle-half"></i>
+
+            <span>
+                Contrast
+            </span>
+
+        </button>
+
+
+        <button type="button"
+                class="color-tool-tab"
+                data-tab="shades">
+
+            <i class="bi bi-layers"></i>
+
+            <span>
+                Shades
+            </span>
+
+        </button>
+
+        <button type="button"
+                class="color-tool-tab"
+                data-tab="harmony">
+
+            <i class="fa-solid fa-palette"></i>
+
+            <span>Harmony</span>
+
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         TAB CONTENT
+    ====================================================== -->
+    <!-- =====================================================
+     COLOR TOOL TAB CONTENT
+====================================================== -->
+
+    <div class="color-tab-content">
+
+
+        <!-- =================================================
+         COLOR FORMATS
+    ================================================== -->
+
+        <div id="formatsTab"
+             class="color-tab-panel active">
+
+            <div class="color-formats-grid">
+
+
+                <!-- HEX -->
+
+                <div class="color-format-card">
+
+                    <div class="color-format-header">
+
+                        <div class="color-format-icon">
+                            <i class="bi bi-hash"></i>
+                        </div>
+
+                        <div>
+                            <h3>HEX</h3>
+                            <span>Hexadecimal color</span>
+                        </div>
+
+                    </div>
+
+                    <div class="color-format-value"
+                         id="formatHex">
+                        #6366F1
+                    </div>
+
+                </div>
+
+
+                <!-- RGB -->
+
+                <div class="color-format-card">
+
+                    <div class="color-format-header">
+
+                        <div class="color-format-icon">
+                            <i class="bi bi-braces"></i>
+                        </div>
+
+                        <div>
+                            <h3>RGB</h3>
+                            <span>Red Green Blue</span>
+                        </div>
+
+                    </div>
+
+                    <div class="color-format-value"
+                         id="formatRgb">
+                        rgb(99, 102, 241)
+                    </div>
+
+                </div>
+
+
+                <!-- HSL -->
+
+                <div class="color-format-card">
+
+                    <div class="color-format-header">
+
+                        <div class="color-format-icon">
+                            <i class="bi bi-sliders"></i>
+                        </div>
+
+                        <div>
+                            <h3>HSL</h3>
+                            <span>Hue Saturation Lightness</span>
+                        </div>
+
+                    </div>
+
+                    <div class="color-format-value"
+                         id="formatHsl">
+                        hsl(239, 84%, 67%)
+                    </div>
+
+                </div>
+
+
+                <!-- HSV -->
+
+                <div class="color-format-card">
+
+                    <div class="color-format-header">
+
+                        <div class="color-format-icon">
+                            <i class="bi bi-circle-half"></i>
+                        </div>
+
+                        <div>
+                            <h3>HSV</h3>
+                            <span>Hue Saturation Value</span>
+                        </div>
+
+                    </div>
+
+                    <div class="color-format-value"
+                         id="formatHsv">
+                        hsv(239, 59%, 95%)
+                    </div>
+
+                </div>
+
+
+                <!-- CMYK -->
+
+                <div class="color-format-card">
+
+                    <div class="color-format-header">
+
+                        <div class="color-format-icon">
+                            <i class="bi bi-printer"></i>
+                        </div>
+
+                        <div>
+                            <h3>CMYK</h3>
+                            <span>Cyan Magenta Yellow Key</span>
+                        </div>
+
+                    </div>
+
+                    <div class="color-format-value"
+                         id="formatCmyk">
+                        cmyk(59%, 58%, 0%, 5%)
+                    </div>
+
+                </div>
+
+
+                <!-- OKLCH -->
+
+                <div class="color-format-card">
+
+                    <div class="color-format-header">
+
+                        <div class="color-format-icon">
+                            <i class="bi bi-palette"></i>
+                        </div>
+
+                        <div>
+                            <h3>OKLCH</h3>
+                            <span>Perceptual color space</span>
+                        </div>
+
+                    </div>
+
+                    <div class="color-format-value"
+                         id="formatOklch">
+                        oklch(...)
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+         PALETTE
+    ================================================== -->
+
+        <div id="paletteTab"
+             class="color-tab-panel">
+
+            <div class="palette-content">
+
+                <div class="palette-header">
+
+                    <div>
+
+                        <h3>
+                            Generated Palette
+                        </h3>
+
+                        <p>
+                            Color relationships based on your
+                            selected color.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="palette-grid"
+                     id="paletteGrid">
+
+                    <!-- Generated by JavaScript -->
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+         CONTRAST
+    ================================================== -->
+
+        <div id="contrastTab"
+             class="color-tab-panel">
+
+            <div class="contrast-content">
+
+
+                <!-- FOREGROUND -->
+
+                <div class="contrast-color-card">
+
+                    <div class="contrast-color-label">
+                        Foreground
+                    </div>
+
+                    <div class="contrast-color-row">
+
+                        <div id="contrastForegroundPreview"
+                             class="contrast-color-preview">
+                        </div>
+
+                        <span id="contrastForeground">
+                            #6366F1
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BACKGROUND -->
+
+                <div class="contrast-color-card">
+
+                    <div class="contrast-color-label">
+                        Background
+                    </div>
+
+                    <div class="contrast-color-row">
+
+                        <div id="contrastBackgroundPreview"
+                             class="contrast-color-preview">
+                        </div>
+
+                        <span id="contrastBackground">
+                            #FFFFFF
+                        </span>
+
+                    </div>
+
+                </div>
+               
+                <!-- RATIO -->
+
+                <div class="contrast-result-card">
+
+                    <span>
+                        Contrast Ratio
+                    </span>
+
+                    <strong id="contrastRatio">
+                        4.20 : 1
+                    </strong>
+
+                    <div id="contrastRating"
+                         class="contrast-rating">
+                        AA
+                    </div>
+
+                </div>
+
+
+                <!-- WCAG -->
+
+                <div class="contrast-wcag-grid">
+
+                    <div id="normalTextResult"
+                         class="wcag-result">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Normal Text — AA</span>
+                    </div>
+
+                    <div id="largeTextResult"
+                         class="wcag-result">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Large Text — AA</span>
+                    </div>
+
+                    <div id="aaaTextResult"
+                         class="wcag-result">
+                        <i class="bi bi-x-circle-fill"></i>
+                        <span>Normal Text — AAA</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+         SHADES
+    ================================================== -->
+
+        <div id="shadesTab"
+             class="color-tab-panel">
+
+            <div class="shades-content">
+
+                <div class="shades-header">
+
+                    <div>
+
+                        <h3>
+                            Shades & Tints
+                        </h3>
+
+                        <p>
+                            Generated variations of your
+                            selected color.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="shades-grid"
+                     id="shadesGrid">
+
+                    <!-- Generated by JavaScript -->
+
+                </div>
+
+            </div>
+
+        </div>
+
+<!-- =====================================================
+     COLOR HARMONY
+====================================================== -->
+
+<div id="harmonyTab"
+     class="color-tab-panel">
+
+    <div class="harmony-content">
+
+        <!-- HEADER -->
+
+        <div class="harmony-header">
+
+            <div>
+
+                <h3>
+                    Color Harmony
+                </h3>
+
+                <p>
+                    Generate professional color combinations
+                    from your selected color.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- HARMONY SELECTOR -->
+
+        <div class="harmony-selector">
+
+            <div class="harmony-selector-label">
+
+                <i class="fa-solid fa-sliders"></i>
+
+                <span>
+                    Harmony Type
+                </span>
+
+            </div>
+
+
+            <select id="harmonyType"
+                    class="harmony-select">
+
+                <option value="complementary">
+                    Complementary
+                </option>
+
+                <option value="analogous">
+                    Analogous
+                </option>
+
+                <option value="triadic">
+                    Triadic
+                </option>
+
+                <option value="split">
+                    Split Complementary
+                </option>
+
+                <option value="tetradic">
+                    Tetradic
+                </option>
+
+                <option value="square">
+                    Square
+                </option>
+
+                <option value="monochromatic">
+                    Monochromatic
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- HARMONY DESCRIPTION -->
+
+        <div id="harmonyDescription"
+             class="harmony-description">
+
+            Colors positioned opposite each other
+            on the color wheel.
+
+        </div>
+
+
+        <!-- COLORS -->
+
+        <div id="harmonyColors"
+             class="harmony-colors">
+
+            <!-- Generated by JavaScript -->
+
+        </div>
+
+
+        <!-- COPY PALETTE -->
+
+        <div class="harmony-actions">
+
+            <button type="button"
+                    id="copyHarmonyBtn"
+                    class="color-action-btn">
+
+                <i class="fa-regular fa-copy"></i>
+
+                <span>
+                    Copy Palette
+                </span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+    </div>
+
+</div>
+<script src="~/js/color-tool.js"></script>
