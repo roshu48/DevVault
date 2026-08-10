@@ -28,39 +28,38 @@
     <!-- DevVault CSS -->
 
     <link rel="stylesheet"
-          href="~/css/site.css" />
+          href="~/css/site.css" asp-append-version="true" />
 
     <link rel="stylesheet"
-          href="~/css/formatters.css" />
+          href="~/css/formatters.css" asp-append-version="true"  />
 
     <link rel="stylesheet"
           href="~/css/jwt.css" />
 
     <link rel="stylesheet"
-          href="~/css/regex-tester.css" />
+          href="~/css/regex-tester.css" asp-append-version="true" />
 
     <link rel="stylesheet"
-          href="~/css/api-tester.css" />
+          href="~/css/api-tester.css" asp-append-version="true" />
 
     <link rel="stylesheet"
-          href="~/css/markdown-preview.css" />
+          href="~/css/markdown-preview.css" asp-append-version="true" />
 
     <link rel="stylesheet"
-          href="~/css/color-tool.css" />
+          href="~/css/color-tool.css" asp-append-version="true"  />
 
     <link rel="stylesheet"
-          href="~/css/snippets.css" />
+          href="~/css/snippets.css" asp-append-version="true" />
 
     <link rel="stylesheet"
-          href="~/css/uuid-generator.css" />
+          href="~/css/uuid-generator.css" asp-append-version="true" />
 
     <link rel="stylesheet"
-          href="~/css/base64_des.css" />
+          href="~/css/base64_des.css" asp-append-version="true" />
 
     <link rel="stylesheet"
-          href="~/css/hash_file.css" />
+          href="~/css/hash_file.css" asp-append-version="true" />
     
-
     @RenderSection("Styles", required: false)
 </head>
 
@@ -214,7 +213,8 @@
 
 
                 <a class="sidebar-link"
-                   href="/Snippets">
+                   asp-controller="Snippets"
+                   asp-action="Index">
 
                     <i class="bi bi-code-square"></i>
 
@@ -226,7 +226,9 @@
 
 
                 <a class="sidebar-link"
-                   href="/Formatter">
+                   asp-controller="Formatter"
+                   asp-action="Index">
+                   @* href="/Formatter"> *@
 
                     <i class="bi bi-braces"></i>
 
@@ -255,7 +257,9 @@
 
 
                 <a class="sidebar-link"
-                   href="/UUID">
+                   asp-controller="UUID"
+                   asp-action="Index">
+                   @* href="/UUID"> *@
 
                     <i class="bi bi-fingerprint"></i>
 
@@ -267,7 +271,9 @@
 
 
                 <a class="sidebar-link"
-                   href="/Base64Tool">
+                   asp-controller="Base64Tool"
+                   asp-action="Index">
+                   @* href="/Base64Tool"> *@
 
                     <i class="bi bi-file-lock"></i>
 
@@ -279,7 +285,9 @@
 
 
                 <a class="sidebar-link"
-                   href="/Hash">
+                   asp-controller="Hash"
+                   asp-action="Index">
+                   @* href="/Hash"> *@
 
                     <i class="bi bi-hash"></i>
 
@@ -424,7 +432,9 @@
 
 
                 <a class="sidebar-link"
-                   href="/Snippets">
+                   asp-controller="Snippets"
+                   asp-action="Index">
+                   @* href="/Snippets"> *@
 
                     <i class="bi bi-code-square"></i>
 
@@ -436,7 +446,9 @@
 
 
                 <a class="sidebar-link"
-                   href="/Formatter">
+               asp-controller="Formatter"
+               asp-action="Index">
+                   @* href="/Formatter"> *@
 
                     <i class="bi bi-braces"></i>
 
@@ -459,7 +471,9 @@
 
 
                 <a class="sidebar-link"
-                   href="/UUID">
+                   asp-controller="UUID"
+                   asp-action="Index">
+                   @* href="/UUID"> *@
 
                     <i class="bi bi-fingerprint"></i>
 
@@ -471,7 +485,9 @@
 
 
                 <a class="sidebar-link"
-                   href="/Base64Tool">
+               asp-controller="Base64Tool"
+               asp-action="Index">
+                   @* href="/Base64Tool"> *@
 
                     <i class="bi bi-file-lock"></i>
 
@@ -483,7 +499,9 @@
 
 
                 <a class="sidebar-link"
-                   href="/Hash">
+               asp-controller="Hash"
+               asp-action="Index">
+                   @* href="/Hash"> *@
 
                     <i class="bi bi-hash"></i>
 

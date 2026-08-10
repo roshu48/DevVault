@@ -10,7 +10,10 @@
     <div class="snippets-header">
 
         <div class="snippets-breadcrumb mb-2">
-            <a href="/" class="text-decoration-none">
+            <a asp-controller="Home"
+               asp-action="Index"
+                @* href="/"  *@
+                class="text-decoration-none">
                 Developer Tools
             </a>
 
@@ -32,7 +35,10 @@
                 </p>
             </div>
 
-            <a href="/Snippets/CreateSnippets">
+            <a asp-controller="Snippets"
+               asp-action="CreateSnippets"
+                @* href="/Snippets/CreateSnippets" *@
+            >
                 <button type="button"
                         class="btn btn-primary snippets-new-btn"
                         id="newSnippetBtn">

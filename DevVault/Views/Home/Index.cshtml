@@ -67,7 +67,10 @@
                  JSON FORMATTER
             ================================== -->
 
-            <a href="/Formatter"
+            <a 
+                @* href="/Formatter" *@
+               asp-controller="Formatter"
+               asp-action="Index"
                class="tool-card">
 
                 <div class="tool-card-top">
@@ -125,8 +128,12 @@
                  JWT TOOL
             ================================== -->
 
-            <a href="/JWT"
-               class="tool-card">
+            <a 
+                @* href="/JWT" *@
+               class="tool-card"
+                asp-controller="JWT"
+               asp-action="Index">
+                
 
                 <div class="tool-card-top">
 
@@ -165,7 +172,10 @@
                  REGEX TESTER
             ================================== -->
 
-            <a href="/RegEx"
+            <a 
+                @* href="/RegEx" *@
+               asp-controller="RegEx"
+               asp-action="Index"
                class="tool-card">
 
                 <div class="tool-card-top">
@@ -205,7 +215,10 @@
                  API TESTER
             ================================== -->
 
-            <a href="/APITester"
+            <a
+                @* href="/APITester" *@
+                asp-controller="APITester"
+                asp-action="Index"
                class="tool-card">
 
                 <div class="tool-card-top">
@@ -245,7 +258,9 @@
                  MARKDOWN PREVIEW
             ================================== -->
 
-            <a href="/MarkdownPreview"
+            <a asp-controller="MarkdownPreview"
+               asp-action="Index"
+                @* href="/MarkdownPreview" *@
                class="tool-card">
 
                 <div class="tool-card-top">
@@ -285,7 +300,9 @@
                  COLOR TOOL
             ================================== -->
 
-            <a href="/ColorTool"
+            <a asp-controller="ColorTool"
+               asp-action="Index"
+                @* href="/ColorTool" *@
                class="tool-card">
 
                 <div class="tool-card-top">

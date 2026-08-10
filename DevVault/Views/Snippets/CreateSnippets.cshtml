@@ -9,9 +9,13 @@
     ====================================================== -->
 
     <div class="snippets-breadcrumb">
-        <a href="/">Developer Tools</a>
+        <a asp-controller="Home"
+           asp-action="Index">Developer Tools</a>
         <i class="bi bi-chevron-right"></i>
-        <a href="/Snippets">Snippets</a>
+        <a asp-controller="Snippets"
+           asp-action="Index"></a>
+            @* href="/Snippets"> *@
+            Snippets</a> 
         <i class="bi bi-chevron-right"></i>
         <span>Create Snippet</span>
     </div>
@@ -180,7 +184,9 @@
 
             <div class="snippet-create-actions">
 
-                <a href="/Snippets"
+                <a asp-controller="Snippets"
+                   asp-action="Index"
+                    @* href="/Snippets" *@
                    class="snippet-cancel-btn">
                     Cancel
                 </a>

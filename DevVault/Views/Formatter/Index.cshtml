@@ -12,7 +12,10 @@
 
         <div>
             <div class="formatter-breadcrumb">
-                <a style="color:gray; cursor:pointer; text-decoration:none" href="/">Developer Tools</a>
+                <a style="color:gray; cursor:pointer; text-decoration:none" 
+                   asp-controller="Home"
+                   asp-action="Index">
+                Developer Tools</a>
                 <i class="bi bi-chevron-right"></i>
                 <span class="active">Formatters</span>
             </div>
@@ -59,7 +62,10 @@
 
             <!-- JSON -->
 
-            <a href="/Formatter/Tool?type=json"
+            <a asp-controller="Formatter"
+               asp-action="Tool"
+               asp-route-type="json"
+                @* href="/Formatter/Tool?type=json" *@
                class="formatter-card active">
 
                 <div class="formatter-card-icon json-formatter-icon">
@@ -85,7 +91,10 @@
 
             <!-- SQL -->
 
-            <a href="/Formatter/Tool?type=sql"
+            <a asp-controller="Formatter"
+               asp-action="Tool"
+               asp-route-type="sql"
+                @* href="/Formatter/Tool?type=sql" *@
                class="formatter-card">
 
                 <div class="formatter-card-icon sql-formatter-icon">
@@ -111,7 +120,10 @@
 
             <!-- JavaScript -->
 
-            <a href="/Formatter/Tool?type=javascript"
+            <a asp-controller="Formatter"
+               asp-action="Tool"
+               asp-route-type="javascript"
+                @* href="/Formatter/Tool?type=javascript" *@
                class="formatter-card">
 
                 <div class="formatter-card-icon javascript-formatter-icon">
@@ -137,7 +149,10 @@
 
             <!-- HTML -->
 
-            <a href="/Formatter/Tool?type=html"
+            <a asp-controller="Formatter"
+               asp-action="Tool"
+               asp-route-type="html"
+                @* href="/Formatter/Tool?type=html" *@
                class="formatter-card">
 
                 <div class="formatter-card-icon html-formatter-icon">
@@ -163,7 +178,10 @@
 
             <!-- CSS -->
 
-            <a href="/Formatter/Tool?type=css"
+            <a asp-controller="Formatter"
+               asp-action="Tool"
+               asp-route-type="css"
+                @* href="/Formatter/Tool?type=css" *@
                class="formatter-card">
 
                 <div class="formatter-card-icon css-formatter-icon">
@@ -189,7 +207,10 @@
 
             <!-- XML -->
 
-            <a href="/Formatter/Tool?type=xml"
+            <a asp-controller="Formatter"
+               asp-action="Tool"
+               asp-route-type="xml"
+                @* href="/Formatter/Tool?type=xml" *@
                class="formatter-card">
 
                 <div class="formatter-card-icon xml-formatter-icon">
@@ -215,7 +236,10 @@
 
             <!-- C# -->
 
-            <a href="/Formatter/Tool?type=csharp"
+            <a asp-controller="Formatter"
+               asp-action="Tool"
+               asp-route-type="csharp"
+                @* href="/Formatter/Tool?type=csharp" *@
                class="formatter-card">
 
                 <div class="formatter-card-icon csharp-formatter-icon">
@@ -241,7 +265,10 @@
 
             <!-- Java -->
 
-            <a href="/Formatter/Tool?type=java"
+            <a asp-controller="Formatter"
+               asp-action="Tool"
+               asp-route-type="java"
+                @* href="/Formatter/Tool?type=java" *@
                class="formatter-card">
 
                 <div class="formatter-card-icon java-formatter-icon">

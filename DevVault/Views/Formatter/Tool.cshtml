@@ -51,8 +51,22 @@
     <div class="formatter-tool-header">
 
         <div class="formatter-tool-title">
-
-            <a href="/Formatter"
+            <div class="formatter-breadcrumb">
+                <a style="color:gray; cursor:pointer; text-decoration:none"
+                   asp-controller="Home"
+                   asp-action="Index">
+                    Developer Tools
+                </a>
+                <i class="bi bi-chevron-right"></i>
+                <a style="color:gray; cursor:pointer; text-decoration:none"
+                   asp-controller="Formatter"
+                   asp-action="Index">
+                    Formatters
+                </a>
+                <i class="bi bi-chevron-right"></i>
+                <span class="active">Tool</span>
+            </div>
+            @* <a href="/Formatter"
                class="back-to-formatters">
 
                 <i class="bi bi-arrow-left"></i>
@@ -61,7 +75,7 @@
                     Formatters
                 </span>
 
-            </a>
+            </a> *@
 
 
             <div class="formatter-title-row">
