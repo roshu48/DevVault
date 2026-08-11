@@ -55,7 +55,7 @@
     <!-- =========================
          TOOLBAR
     ========================== -->
-    <div class="card snippets-toolbar shadow-sm mb-4">
+    @* <div class="card snippets-toolbar shadow-sm mb-4">
 
         <div class="card-body">
 
@@ -187,14 +187,13 @@
 
         </div>
 
-    </div>
+    </div> *@
 
 
     <!-- =========================
          SNIPPETS GRID
     ========================== -->
-    <div id="snippetsContainer"
-         class="row g-4">
+@*     <div id="snippetsContainer" class="row g-4">
 
 
         <!-- SNIPPET CARD -->
@@ -334,12 +333,11 @@
 
                     <div class="snippet-preview mb-3">
 
-                        <pre><code>
-                            ```SELECT *
-                            FROM users
-                            ORDER BY id
-                            OFFSET Offset ROWS
-                            FETCH NEXT Limit ROWS ONLY```;
+                        <pre><code>SELECT *
+FROM users
+ORDER BY id
+OFFSET Offset ROWS
+FETCH NEXT Limit ROWS ONLY;
                         </code></pre>
 
                     </div>
@@ -500,7 +498,27 @@
 
         </div>
 
+    </div> *@
+
+    <div id="snippetsContainer" class="row g-4">
+        <div id="noSnippets" class="col-12 d-none">
+            <div class="snippets-empty text-center py-5">
+                <div class="empty-icon mb-3">
+                    <i class="bi bi-code-slash"></i>
+                </div>
+
+                <h5>No snippets found</h5>
+
+                <p class="mb-0">
+                    Try another search or create a new snippet.
+                </p>
+            </div>
+        </div>
     </div>
 
 </div>
 
+
+@section Scripts {
+    <script src="~/js/SnippetsFile.js"></script>
+}

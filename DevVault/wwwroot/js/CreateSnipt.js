@@ -132,34 +132,73 @@ require(["vs/editor/editor.main"], function () {
         }
     }
 
-    const form =
-        languageSelect.closest("form");
+    // =========================================================
+    // SAVE SNIPPET
+    // =========================================================
 
-    if (form) {
+    // const form = document.querySelector(".snippet-create-card form");
 
-        form.addEventListener(
-            "submit",
-            function () {
+    // form.addEventListener("submit", function (event) {
 
-                const hiddenCode =
-                    document.getElementById(
-                        "snippetCode"
-                    );
+    //     STOP PAGE REFRESH
+    //     event.preventDefault();
 
-                if (hiddenCode && snippetEditor) {
+    //     Get values
+    //     const title =
+    //         document.getElementById("Title").value.trim();
 
-                    hiddenCode.value =
-                        snippetEditor.getValue();
+    //     const language =
+    //         document.getElementById("snippetLanguage").value;
 
-                }
+    //     const description =
+    //         document.getElementById("Description").value.trim();
 
-            }
-        );
-
-    }
+    //     const code =
+    //         snippetEditor.getValue();
 
 
-    console.log(monacoEditor)
+    //     Create snippet
+    //     const snippet = {
+
+    //         id: crypto.randomUUID(),
+
+    //         title: title,
+
+    //         language: language,
+
+    //         tags: [...tags],
+
+    //         description: description,
+
+    //         code: code,
+
+    //         createdAt: new Date().toISOString()
+
+    //     };
+
+
+    //     Get old snippets
+    //     const snippets =
+    //         JSON.parse(
+    //             localStorage.getItem("snippets")
+    //         ) || [];
+
+
+    //     Add new snippet
+    //     snippets.push(snippet);
+
+
+    //     Save
+    //     localStorage.setItem(
+    //         "snippets",
+    //         JSON.stringify(snippets)
+    //     );
+
+
+    //     console.log("Snippet saved!");
+    //     console.log(snippet);
+
+    // });
 
 });
 
@@ -211,80 +250,79 @@ function getDefaultCode(language) {
         case "csharp":
 
             return `using System;
-
-        class Program
-        {
-        static void Main()
-        {
+class Program
+{
+    static void Main()
+    {
         Console.WriteLine("Hello World!");
-        }
-        }`;
+    }
+}`;
 
 
         case "java":
 
             return `public class Main
-        {
-        public static void main(String[] args)
-        {
+{
+    public static void main(String[] args)
+    {
         System.out.println("Hello World!");
-        }
-        }`;
+    }
+}`;
 
 
         case "javascript":
 
             return `function hello() {
-        console.log("Hello World");
-        }
+    console.log("Hello World");
+}
 
-        hello();`;
+hello();`;
 
 
         case "react":
 
             return `import React from "react";
-        function App() {
-        return (
+function App() {
+    return (
         <div>
-        <h1>Hello World</h1>
+            <h1>Hello World</h1>
         </div>
-        );
-        }
+    );
+}
 
-        export default App;`;
+export default App;`;
 
 
         case "python":
 
             return `def hello():
-        print("Hello World")
+    print("Hello World")
 
-        hello()`;
+hello()`;
 
 
         case "sql":
 
             return `SELECT *
-        FROM Users
-        WHERE IsActive = 1
-        ORDER BY Id DESC;`;
+FROM Users
+WHERE IsActive = 1
+ORDER BY Id DESC;`;
 
 
         case "html":
 
             return `<div class="container">
-        <h1>Hello World</h1>
-        </div>`;
+    <h1>Hello World</h1>
+</div>`;
 
 
         case "css":
 
             return `.container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        }`;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}`;
 
 
         default:
@@ -508,3 +546,31 @@ function escapeHtml(value) {
 
     return div.innerHTML;
 }
+
+
+const form = document.getElementById('formid');
+
+form.addEventListener('submit', function (event) {
+    // Prevent the page from refreshing
+    event.preventDefault();
+
+    // 3. Gather all form data automatically
+    const formData = new FormData(form);
+
+    // 4. Convert it into a clean JavaScript object
+    const data = Object.fromEntries(formData.entries());
+
+    // Use your data here
+    let SnipData = null;
+    if (localStorage.getItem("snipData")) {
+        SnipData = JSON.parse(localStorage.getItem("snipData"));
+
+        SnipData = [...SnipData, { ...data, Tags: [...tags], Code: snippetEditor.getValue(), SnipId: crypto.randomUUID(), createdAt: new Date() }];
+    }
+    else {
+        SnipData = [{ ...data, Tags: [...tags], Code: snippetEditor.getValue(), SnipId: crypto.randomUUID(), createdAt: new Date() }];
+    }
+
+    localStorage.setItem("snipData", JSON.stringify(SnipData));
+    window.location.href = "/Snippets/Index";    
+});

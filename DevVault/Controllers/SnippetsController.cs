@@ -8,8 +8,13 @@ namespace DevVault.Controllers
         {
             return View();
         }
-
+       
         public IActionResult CreateSnippets()
+        {
+            return View();
+        }
+
+        public IActionResult ViewSnippet()
         {
             return View();
         }

@@ -469,6 +469,10 @@ body.dark-theme .snippets-page,
    CODE PREVIEW
 ========================================================= */
 
+/* =========================================================
+   CODE PREVIEW
+========================================================= */
+
 .snippet-preview {
     margin: 0 0 12px 0 !important;
     padding: 0 !important;
@@ -478,23 +482,29 @@ body.dark-theme .snippets-page,
     overflow: hidden !important;
 }
 
+    /* Fixed preview height */
     .snippet-preview pre {
         height: 110px !important;
         margin: 0 !important;
         padding: 12px !important;
+        box-sizing: border-box !important;
         background: var(--snippet-code-bg) !important;
-        overflow: hidden !important;
-        white-space: pre-wrap !important;
+        /* Enable scrolling */
+        overflow: auto !important;
+        /* Keep code formatting */
+        white-space: pre !important;
+        /* Optional: smooth scrolling */
+        scroll-behavior: smooth;
     }
 
+    /* Code */
     .snippet-preview code {
         color: var(--snippet-text) !important;
         font-family: "Cascadia Code", "Fira Code", Consolas, monospace !important;
         font-size: 11px !important;
         line-height: 1.5 !important;
-        white-space: pre-wrap !important;
+        white-space: pre !important;
     }
-
 
 /* =========================================================
    DATE
@@ -1812,4 +1822,460 @@ body.dark .snippet-code-editor {
 
 [data-theme="light"] .create-snippet-code-editor {
     background: #ffffff;
+}
+
+/* =========================================================
+   SNIPPET VIEW
+   Compact Layout
+   Light + Dark Theme
+========================================================= */
+
+.snippet-view {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    color: var(--snippet-text, #1e293b);
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.snippet-view-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 0 0 18px 0;
+    padding: 0;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.snippet-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    height: 36px;
+    padding: 0 11px;
+    border: 1px solid var(--snippet-border, #e2e8f0);
+    border-radius: 6px;
+    background: var(--snippet-card-bg, #ffffff);
+    color: var(--snippet-text-secondary, #64748b);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+    .snippet-back-btn:hover {
+        color: var(--snippet-accent, #3b82f6);
+        background: var(--snippet-accent-soft, rgba(59, 130, 246, 0.10));
+        border-color: var(--snippet-accent, #3b82f6);
+    }
+
+    .snippet-back-btn i {
+        font-size: 11px;
+    }
+
+
+/* =========================================================
+   VIEW ACTIONS
+========================================================= */
+
+.snippet-view-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin: 0;
+}
+
+    .snippet-view-actions .btn {
+        height: 36px;
+        padding: 0 12px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+
+    /* Primary Action */
+
+    .snippet-view-actions .btn-primary {
+        background: var(--snippet-accent, #3b82f6);
+        border-color: var(--snippet-accent, #3b82f6);
+        color: #ffffff;
+    }
+
+        .snippet-view-actions .btn-primary:hover {
+            background: var(--snippet-accent-hover, #2563eb);
+            border-color: var(--snippet-accent-hover, #2563eb);
+        }
+
+
+    /* Secondary Action */
+
+    .snippet-view-actions .btn-outline-secondary {
+        background: transparent;
+        border-color: var(--snippet-border, #e2e8f0);
+        color: var(--snippet-text-secondary, #64748b);
+    }
+
+        .snippet-view-actions .btn-outline-secondary:hover {
+            background: var(--snippet-accent-soft, rgba(59, 130, 246, 0.10));
+            border-color: var(--snippet-accent, #3b82f6);
+            color: var(--snippet-accent, #3b82f6);
+        }
+
+
+/* =========================================================
+   MAIN INFO CARD
+========================================================= */
+
+.snippet-view-info {
+    margin: 0 0 18px 0;
+    padding: 20px;
+    background: var(--snippet-card-bg, #ffffff);
+    border: 1px solid var(--snippet-border, #e2e8f0);
+    border-radius: 8px;
+    box-shadow: var(--snippet-shadow, 0 2px 8px rgba(15, 23, 42, 0.04));
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.snippet-view-title {
+    margin: 0 0 8px 0;
+    padding: 0;
+    color: var(--snippet-text, #1e293b);
+    font-size: 24px;
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+
+/* =========================================================
+   META
+========================================================= */
+
+.snippet-view-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 0 0 12px 0;
+    color: var(--snippet-text-secondary, #64748b);
+    font-size: 11px;
+}
+
+
+    /* Language / Meta Badge */
+
+    .snippet-view-meta .badge,
+    .snippet-view-meta span {
+        display: inline-flex;
+        align-items: center;
+    }
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.snippet-view-description {
+    margin: 0;
+    color: var(--snippet-text-secondary, #64748b);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   CODE CARD
+========================================================= */
+
+.snippet-view-code {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: var(--snippet-card-bg, #ffffff);
+    border: 1px solid var(--snippet-border, #e2e8f0);
+    border-radius: 8px;
+    box-shadow: var(--snippet-shadow, 0 2px 8px rgba(15, 23, 42, 0.04));
+}
+
+
+/* =========================================================
+   CODE HEADER
+========================================================= */
+
+.snippet-view-code-header {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0 13px;
+    box-sizing: border-box;
+    background: var(--snippet-card-bg, #ffffff);
+    border-bottom: 1px solid var(--snippet-border, #e2e8f0);
+}
+
+
+    /* =========================================================
+   CODE HEADER LANGUAGE
+========================================================= */
+
+    .snippet-view-code-header .language,
+    .snippet-view-code-header span {
+        color: var(--snippet-text-secondary, #64748b);
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+
+    /* =========================================================
+   CODE COPY BUTTON
+========================================================= */
+
+    .snippet-view-code-header .btn {
+        height: 30px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 0 9px;
+        border-radius: 5px;
+        font-size: 11px;
+        font-weight: 500;
+    }
+
+    .snippet-view-code-header .btn-outline-secondary {
+        background: transparent;
+        border-color: var(--snippet-border, #e2e8f0);
+        color: var(--snippet-text-secondary, #64748b);
+    }
+
+        .snippet-view-code-header .btn-outline-secondary:hover {
+            background: var(--snippet-accent-soft, rgba(59, 130, 246, 0.10));
+            border-color: var(--snippet-accent, #3b82f6);
+            color: var(--snippet-accent, #3b82f6);
+        }
+
+
+/* =========================================================
+   CODE BODY
+========================================================= */
+
+.snippet-view-code-body {
+    max-height: 600px;
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+    background: var(--snippet-code-bg, #09111f);
+}
+
+
+    /* =========================================================
+   CODE PRE
+========================================================= */
+
+    .snippet-view-code-body pre {
+        min-width: max-content;
+        margin: 0;
+        padding: 16px;
+        box-sizing: border-box;
+        background: transparent;
+        color: #dbeafe;
+        font-family: "Cascadia Code", "Fira Code", Consolas, "SFMono-Regular", "Liberation Mono", monospace;
+        font-size: 12px;
+        line-height: 1.65;
+        tab-size: 4;
+    }
+
+
+    /* =========================================================
+   CODE
+========================================================= */
+
+    .snippet-view-code-body code {
+        white-space: pre;
+        color: inherit;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+    }
+
+
+    /* =========================================================
+   SCROLLBAR
+========================================================= */
+
+    .snippet-view-code-body::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    .snippet-view-code-body::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .snippet-view-code-body::-webkit-scrollbar-thumb {
+        background: var(--snippet-border-hover, #cbd5e1);
+        border-radius: 10px;
+    }
+
+        .snippet-view-code-body::-webkit-scrollbar-thumb:hover {
+            background: var(--snippet-text-muted, #94a3b8);
+        }
+
+
+/* =========================================================
+   DARK THEME
+========================================================= */
+
+html[data-theme="dark"] .snippet-view,
+body[data-theme="dark"] .snippet-view,
+html[data-bs-theme="dark"] .snippet-view,
+body[data-bs-theme="dark"] .snippet-view,
+html.dark .snippet-view,
+body.dark .snippet-view,
+html.dark-mode .snippet-view,
+body.dark-mode .snippet-view,
+html.dark-theme .snippet-view,
+body.dark-theme .snippet-view,
+.dark .snippet-view,
+.dark-mode .snippet-view,
+.dark-theme .snippet-view {
+    --snippet-card-bg: #151c2c;
+    --snippet-input-bg: #111827;
+    --snippet-code-bg: #09111f;
+    --snippet-border: #273449;
+    --snippet-border-hover: #3b4a63;
+    --snippet-text: #f1f5f9;
+    --snippet-text-secondary: #94a3b8;
+    --snippet-text-muted: #64748b;
+    --snippet-accent: #3b82f6;
+    --snippet-accent-hover: #2563eb;
+    --snippet-accent-soft: rgba(59, 130, 246, 0.12);
+}
+
+
+/* =========================================================
+   LIGHT THEME
+========================================================= */
+
+html[data-theme="light"] .snippet-view,
+body[data-theme="light"] .snippet-view {
+    --snippet-card-bg: #ffffff;
+    --snippet-input-bg: #ffffff;
+    --snippet-code-bg: #f8fafc;
+    --snippet-border: #e2e8f0;
+    --snippet-border-hover: #cbd5e1;
+    --snippet-text: #1e293b;
+    --snippet-text-secondary: #64748b;
+    --snippet-text-muted: #94a3b8;
+    --snippet-accent: #3b82f6;
+    --snippet-accent-hover: #2563eb;
+    --snippet-accent-soft: rgba(59, 130, 246, 0.10);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+    .snippet-view-top {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .snippet-view-actions {
+        width: 100%;
+    }
+
+        .snippet-view-actions .btn {
+            flex: 1;
+        }
+
+    .snippet-view-info {
+        padding: 16px;
+    }
+
+    .snippet-view-title {
+        font-size: 21px;
+    }
+
+    .snippet-view-code-header {
+        min-height: 40px;
+        padding: 0 10px;
+    }
+
+    .snippet-view-code-body {
+        max-height: 500px;
+    }
+
+        .snippet-view-code-body pre {
+            padding: 13px;
+            font-size: 11px;
+        }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .snippet-view-info {
+        padding: 14px;
+    }
+
+    .snippet-view-title {
+        font-size: 19px;
+    }
+
+    .snippet-view-actions {
+        gap: 6px;
+    }
+
+        .snippet-view-actions .btn {
+            height: 34px;
+            padding: 0 9px;
+            font-size: 11px;
+        }
+
+    .snippet-view-code-body {
+        max-height: 450px;
+    }
+}
+
+
+/* Code text */
+.snippet-view-code-body pre,
+.snippet-view-code-body code {
+    color: var(--snippet-code-text);
+}
+
+
+/* Light mode */
+:root {
+    --snippet-code-text: #1f2937;
+}
+
+
+/* Dark mode */
+body.dark-mode {
+    --snippet-code-text: #e5e7eb;
 }

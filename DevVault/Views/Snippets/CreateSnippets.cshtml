@@ -13,9 +13,7 @@
            asp-action="Index">Developer Tools</a>
         <i class="bi bi-chevron-right"></i>
         <a asp-controller="Snippets"
-           asp-action="Index"></a>
-            @* href="/Snippets"> *@
-            Snippets</a> 
+           asp-action="Index">Snippets</a>
         <i class="bi bi-chevron-right"></i>
         <span>Create Snippet</span>
     </div>
@@ -36,11 +34,8 @@
 
     <div class="snippet-create-card">
 
-        <form method="post" asp-action="Create">
-
-
+        <form id="formid">
             <!-- TITLE -->
-
             <div class="snippet-form-group">
 
                 <label for="Title">
@@ -51,8 +46,7 @@
                        id="Title"
                        name="Title"
                        class="snippet-form-input"
-                       placeholder="Enter snippet title"
-                       value="ASP.NET JWT Authentication"
+                       placeholder="Enter snippet title"                       
                        required />
             </div>
 
@@ -69,7 +63,7 @@
                         name="Language"
                         class="snippet-form-select"
                         required>
-
+                    <option value="">Select the language</option>
                     <option value="CSharp">C#</option>
                     <option value="Java">Java</option>
                     <option value="JavaScript">JavaScript</option>
@@ -130,7 +124,7 @@
                           name="Description"
                           class="snippet-form-textarea"
                           rows="3"
-                          placeholder="Describe what this snippet does...">JWT authentication configuration for ASP.NET Core.</textarea>
+                          placeholder="Describe what this snippet does..."></textarea>
 
             </div>
 
